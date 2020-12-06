@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainActivity">
+
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.travelplanner_0_1_1.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" >
+        <action
+            android:id="@+id/action_mainActivity_to_inputActivity"
+            app:destination="@id/inputActivity" />
+    </activity>
+    <activity
+        android:id="@+id/inputActivity"
+        android:name="com.example.travelplanner_0_1_1.InputActivity"
+        android:label="activity_input"
+        tools:layout="@layout/activity_input" >
+        <action
+            android:id="@+id/action_inputActivity_to_homeActivity"
+            app:destination="@id/homeActivity" />
+    </activity>
+    <activity
+        android:id="@+id/homeActivity"
+        android:name="com.example.travelplanner_0_1_1.HomeActivity"
+        android:label="activity_home"
+        tools:layout="@layout/activity_home" >
+        <action
+            android:id="@+id/action_homeActivity_to_displayDataActivity"
+            app:destination="@id/displayDataActivity" />
+        <action
+            android:id="@+id/action_homeActivity_to_comparisonActivity"
+            app:destination="@id/comparisonActivity" >
+            <action
+                android:id="@+id/action_action_homeActivity_to_comparisonActivity_to_plannerActivity"
+                app:destination="@id/plannerActivity" />
+        </action>
+        <action
+            android:id="@+id/action_homeActivity_to_plannerActivity"
+            app:destination="@id/plannerActivity" />
+    </activity>
+    <activity
+        android:id="@+id/displayDataActivity"
+        android:name="com.example.travelplanner_0_1_1.DisplayDataActivity"
+        android:label="activity_display_data"
+        tools:layout="@layout/activity_display_data" >
+        <action
+            android:id="@+id/action_displayDataActivity_to_comparisonActivity"
+            app:destination="@id/comparisonActivity" />
+        <action
+            android:id="@+id/action_displayDataActivity_to_plannerActivity"
+            app:destination="@id/plannerActivity" />
+    </activity>
+    <activity
+        android:id="@+id/comparisonActivity"
+        android:name="com.example.travelplanner_0_1_1.ComparisonActivity"
+        android:label="activity_comparison"
+        tools:layout="@layout/activity_comparison" >
+        <action
+            android:id="@+id/action_comparisonActivity_to_plannerActivity"
+            app:destination="@id/plannerActivity" />
+    </activity>
+    <activity
+        android:id="@+id/plannerActivity"
+        android:name="com.example.travelplanner_0_1_1.PlannerActivity"
+        android:label="activity_planner"
+        tools:layout="@layout/activity_planner" >
+        <action
+            android:id="@+id/action_plannerActivity_to_comparisonActivity"
+            app:destination="@id/comparisonActivity" />
+    </activity>
+</navigation>

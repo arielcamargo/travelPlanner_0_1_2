@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InputActivity">
+
+    <TextView
+        android:id="@+id/locationPrompt"
+        android:layout_width="304dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="88dp"
+        android:text="@string/location_prompt"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/getLocation"
+        android:layout_width="312dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="50dp"
+        android:ems="10"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:text="@string/location_prompt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/getBudget"
+        android:layout_width="312dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="200dp"
+        android:ems="10"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:text="@string/getBudget"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/getDestination"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/getDestination" />
+
+    <TextView
+        android:id="@+id/text_view10"
+        android:layout_width="300dp"
+        android:layout_height="238dp"
+        android:gravity="center"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/getLocation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/locationPrompt" />
+
+    <Button
+        android:id="@+id/submitInput"
+        android:layout_width="232dp"
+        android:layout_height="71dp"
+        android:text="@string/submitInput"
+        android:onClick="getData"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/getBudget"
+        app:layout_constraintStart_toStartOf="@+id/getBudget"
+        app:layout_constraintTop_toBottomOf="@+id/getBudget" />
+
+    <EditText
+        android:id="@+id/getDestination"
+        android:layout_width="312dp"
+        android:layout_height="42dp"
+        android:ems="10"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:text="Please Enter Your Destination"
+        app:layout_constraintBottom_toTopOf="@+id/getBudget"
+        app:layout_constraintEnd_toEndOf="@+id/getLocation"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/getLocation"
+        app:layout_constraintTop_toBottomOf="@+id/getLocation" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
