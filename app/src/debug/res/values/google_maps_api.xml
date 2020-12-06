@@ -22,5 +22,5 @@
     -->
 
     <!-- NOTE: temp key-->
-    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyCi1NzaZVzTv7YhhkisZwhGJ-E_QjVKXzQ</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyCGAnDlG13YXNfiwZbvjt0zAbVtnVx1UdU</string>
 </resources>

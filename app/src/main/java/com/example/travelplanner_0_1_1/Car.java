@@ -8,11 +8,12 @@ public class Car
         int parkingPass = 178;
         int fastMPH = 60;
         int slowMPH = 20;
-        double gasfuelprice = 2.42;
-        int avgmpg = 32;
+        double gasPrice = 2.42;
+        int avgMpg = 32;
         double money;
         double distance;
         String vehicle = "Car";
+
         public Car(double carDistance)
         {
             distance = carDistance;
@@ -39,7 +40,7 @@ public class Car
 
         public void setMoney()
         {
-            money = insurance + maintenance + parkingPass + (gasfuelprice / avgmpg * 10 * 34 * distance);
+            money = insurance + maintenance + parkingPass + (gasPrice / avgMpg * 10 * 34 * distance);
         }
 
 }

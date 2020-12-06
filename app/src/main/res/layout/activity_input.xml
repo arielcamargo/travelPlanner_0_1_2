@@ -60,11 +60,10 @@
         app:layout_constraintTop_toBottomOf="@+id/locationPrompt" />
 
     <Button
-        android:id="@+id/submitInput"
+        android:id="@+id/goToMenu"
         android:layout_width="232dp"
         android:layout_height="71dp"
         android:text="@string/submitInput"
-        android:onClick="getData"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/getBudget"
         app:layout_constraintStart_toStartOf="@+id/getBudget"
