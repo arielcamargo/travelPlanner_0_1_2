@@ -59,6 +59,8 @@ public class InputActivity extends AppCompatActivity implements View.OnClickList
         etDestination.setFocusable(false);
         etDestination.setOnClickListener(this);
 
+        goToMenu.setOnClickListener(this);
+
         placeFields = Arrays.asList(Place.Field.ADDRESS, Place.Field.LAT_LNG);
 
         //Set text on text

@@ -11,6 +11,7 @@
     <!--Sac State Formal Voice Color Palette-->
     <color name="redwoodGroveGreen">#002e23</color>
     <color name="sacStateGreen">#004e38</color>
+    <color name="opaquesacStateGreen">#FA004E38</color>
     <color name="stingerGreen">#008453</color>
     <color name="evergreenAsh">#00aa31</color>
     <color name="spruceGreen">#58b947</color>
@@ -23,7 +24,9 @@
     <color name="webColor2">#cbb778</color>
     <color name="webColor3">#cfb668</color>
     <color name="webColor4">#e1c57a</color>
-    <color name="webColor5">#f0e1b0</color>
+    <color name="webColor5">#D7f0e1b0</color>
+    <color name="webColor6">#ffe9ac</color>
+    <color name="webColor7">#347454</color>
 
     <!--Sac State Standard Voice Color Palette-->
     <!--Todo: add rest of colors-->

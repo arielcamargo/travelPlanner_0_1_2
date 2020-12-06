@@ -19,8 +19,8 @@
     </string>
     <string name="go">Start>></string>
     <string name="location_prompt">Please Enter your Location</string>
-    <string name="submitInput"><![CDATA[Go>>]]></string>
-    <string name="getBudget">Budget (Optional)</string>
+    <string name="submit_input"><![CDATA[Go>>]]></string>
+    <string name="get_budget">Budget (Optional)</string>
     <string name="title_activity_maps">Map</string>
     <string name="temp_display_data">This activity will display the data for the mode of transportation that the user selects</string>
     <string name="temp_planner">This Activity is where you can create a travel plan</string>
