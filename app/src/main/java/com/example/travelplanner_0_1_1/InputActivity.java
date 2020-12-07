@@ -35,6 +35,7 @@ public class InputActivity extends AppCompatActivity implements View.OnClickList
     private double sendDouble = -1; //default if none is given
 
     private Button goToNext;
+    private Button budgetHelper;
     private TextView userBudget;
 
     private AutocompleteSupportFragment getHomeAddress;
@@ -42,7 +43,7 @@ public class InputActivity extends AppCompatActivity implements View.OnClickList
     private String address;
     private LatLng addressLatLng;
 
-    private final double BIAS_RANGE = 0.075;
+    private final double BIAS_RANGE = 0.125;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,9 @@ public class InputActivity extends AppCompatActivity implements View.OnClickList
 
         userBudget = findViewById(R.id.inputBudget);
         userBudget.setOnClickListener(this);
+
+        budgetHelper = findViewById(R.id.budgetHelper);
+        budgetHelper.setOnClickListener(this);
 
         addressFragment = getSupportFragmentManager().findFragmentById(R.id.display_address);
 
@@ -93,17 +97,24 @@ public class InputActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.goToNext:
-                Intent intent = new Intent(this, DisplayDataActivity.class);
+                Intent intent = new Intent(this, HomeActivity.class);
 
                 intent.putExtra("miles", sendDouble);
                 startActivity(intent);
                 break;
             case R.id.places_autocomplete_clear_button:
+                //when the user clicks the X button, clear the data
                 getHomeAddress.setText(null);
                 goToNext.setText(R.string.skip);
                 address = "";
                 addressLatLng = null;
+                sendDouble = -1;
                 getSupportFragmentManager().setFragmentResult("clearMap", null);
+            case R.id.budgetHelper:
+                //todo: create popup that will show the user some guidelines on how to estimate their
+                // budget
+
+                break;
         }
     }
 
@@ -123,7 +134,6 @@ public class InputActivity extends AppCompatActivity implements View.OnClickList
         getSupportFragmentManager().setFragmentResult("homeAddress", result);
 
         goToNext.setText(R.string.go);
-
     }
 
     @Override

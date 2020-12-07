@@ -1,6 +1,8 @@
 package com.example.travelplanner_0_1_1;
 import java.text.DecimalFormat;
+
 public class Car
+
     {
         int time;
         int insurance = 1462;

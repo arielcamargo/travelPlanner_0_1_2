@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="175dp"
+    tools:context=".VehicleButtonFragment">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="12dp">
+
+        <ImageView
+            android:id="@+id/vehicleButtonBackground"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/vehicle_btn_bckgrnd_des"
+            android:foreground="#5F000000"
+            android:scaleType="centerCrop"
+            android:src="@drawable/car_image" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="175dp">
+
+            <TextView
+                android:id="@+id/vehicleButtonTitle"
+                android:layout_width="254dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/trajan_pro_bold"
+                android:shadowColor="@color/colorBlack"
+                android:shadowRadius="15"
+                android:text="@string/car"
+                android:textAlignment="center"
+                android:textColor="@color/colorWhite"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/vehicleButtonInfo"
+                android:layout_width="216dp"
+                android:layout_height="67dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/round_frame"
+                android:backgroundTint="#CDFFFFFF"
+                android:fontFamily="@font/lato"
+                android:paddingStart="8dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="4dp"
+                android:paddingBottom="2dp"
+                android:text="@string/app_name"
+                android:textColor="@color/colorBlack"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/vehicleButtonSelect"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/next_button"
+                android:backgroundTint="@color/colorWhite"
+                android:fontFamily="@font/lato_bold"
+                android:padding="8dp"
+                android:text="@string/select"
+                android:textAlignment="viewStart"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>

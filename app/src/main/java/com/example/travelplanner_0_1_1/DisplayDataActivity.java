@@ -11,11 +11,13 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        String type = getIntent().getStringExtra("type");
+
         setContentView(R.layout.activity_display_data);
         Car car = new Car(getIntent().getDoubleExtra("miles", 0.0));
         car.setMoney();
         textview = findViewById(R.id.textView);
-        textview.setText(car.toString());
+        textview.setText(type + ", " + car.toString());
     }
 
     @Override
