@@ -4,77 +4,147 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/webColor5"
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/sacStateLogo"
-        android:layout_width="220dp"
-        android:layout_height="170dp"
-        android:layout_marginTop="24dp"
-        android:contentDescription="@string/sac_state_logo"
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/app_name"
         android:scaleType="centerCrop"
-        android:visibility="visible"
+        android:src="@drawable/guy_west_bridge"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/guy_west_bridge" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/appName"
-        android:layout_width="329dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/app_string_name"
-        android:textAlignment="center"
-        android:textColor="@color/redwoodGroveGreen"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="@+id/sacStateLogo"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="@+id/sacStateLogo"
-        app:layout_constraintTop_toBottomOf="@+id/sacStateLogo" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="307dp"
-        android:layout_height="245dp"
-        android:layout_marginTop="12dp"
-        android:background="@color/sacStateGreen"
-        android:scrollbarStyle="insideInset"
-        app:layout_constraintEnd_toEndOf="@+id/appName"
-        app:layout_constraintHorizontal_bias="0.454"
-        app:layout_constraintStart_toStartOf="@+id/appName"
-        app:layout_constraintTop_toBottomOf="@+id/appName">
+        <ImageView
+            android:id="@+id/logoView"
+            android:layout_width="290dp"
+            android:layout_height="72dp"
+            android:layout_marginTop="160dp"
+            android:background="@color/colorWhite"
+            android:scaleType="centerCrop"
+            android:src="@drawable/nickname_logo" />
+
+        <ImageView
+            android:id="@+id/gradient"
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/gradient" />
 
         <TextView
-            android:id="@+id/appInfo"
+            android:id="@+id/appName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:lineSpacingExtra="2sp"
-            android:text="@string/app_string_info"
+            android:layout_height="66dp"
+            android:background="@color/redwoodGroveGreen"
+            android:fontFamily="@font/trajan_pro_bold"
+            android:gravity="center"
+            android:text="@string/app_name"
             android:textAlignment="center"
             android:textColor="@color/colorWhite"
-            android:textSize="18sp" />
-    </ScrollView>
+            android:textSize="42sp" />
 
-    <Button
-        android:id="@+id/startProgram"
-        android:layout_width="256dp"
-        android:layout_height="72dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/redwoodGroveGreen"
-        android:onClick="startProgram"
-        android:text="@string/go"
-        android:textAlignment="center"
-        android:textColor="@color/colorWhite"
-        android:textSize="32sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/scrollView2"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="@+id/scrollView2"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
-        app:layout_constraintVertical_bias="0.295" />
+        <ImageView
+            android:id="@+id/gradient2"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/gradient" />
+
+        <ScrollView
+            android:id="@+id/infoScrollView"
+            android:layout_width="357dp"
+            android:layout_height="225dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/webColor5"
+            android:fadeScrollbars="false"
+            android:fadingEdge="vertical"
+            android:fadingEdgeLength="10dp"
+            android:isScrollContainer="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="0"
+            android:scrollbarStyle="insideInset"
+            android:scrollbarThumbVertical="@android:drawable/btn_default_small"
+            android:scrollbarTrackVertical="@android:drawable/title_bar_tall"
+            android:scrollbars="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:paddingStart="10dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="5dp"
+                android:paddingBottom="30dp">
+
+                <TextView
+                    android:id="@+id/appInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="@font/lato_italic"
+                    android:padding="2sp"
+                    android:paddingStart="4sp"
+                    android:paddingTop="2sp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="2sp"
+                    android:text="@string/app_string_info"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </ScrollView>
+
+        <TableRow
+            android:layout_width="357dp"
+            android:layout_height="35dp"
+            android:background="@color/opaquesacStateGreen">
+
+            <CheckBox
+                android:id="@+id/userAgreement"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:buttonTint="@color/colorWhite"
+                android:textColor="@color/colorWhite" />
+
+            <Button
+                android:id="@+id/viewUserAgreement"
+                android:layout_width="320dp"
+                android:layout_height="34dp"
+                android:backgroundTint="@color/evergreenAsh"
+                android:fontFamily="@font/lato_italic"
+                android:gravity="center"
+                android:text="@string/user_agreement"
+                android:textAlignment="center"
+                android:textColor="@color/colorWhite" />
+        </TableRow>
+
+        <Button
+            android:id="@+id/startProgram"
+            android:layout_width="265dp"
+            android:layout_height="71dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/colorWhite"
+            android:enabled="false"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/go"
+            android:textAlignment="center"
+            android:textSize="32sp" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

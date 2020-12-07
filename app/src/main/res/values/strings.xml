@@ -18,11 +18,49 @@
         End of text
     </string>
     <string name="go">Start>></string>
+    <string name="skip">Skip>></string>
     <string name="location_prompt">Please Enter your Location</string>
-    <string name="submit_input"><![CDATA[Go>>]]></string>
-    <string name="get_budget">Budget (Optional)</string>
+    <string name="submitInput"><![CDATA[Go>>]]></string>
+    <string name="getBudget">Annual travel budget (Optional)</string>
     <string name="title_activity_maps">Map</string>
     <string name="temp_display_data">This activity will display the data for the mode of transportation that the user selects</string>
     <string name="temp_planner">This Activity is where you can create a travel plan</string>
     <string name="temp_comparison">This activity will allow the user to compare the different modes of transportation</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="car">car</string>
+    <string name="user_agreement">&lt;-I agree to <u><i>terms and conditions</i></u></string>
+    <string name="title_activity_popup">PopupActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="address_prompt">Enter in your home address below, we won\'t share that info with
+        anyone. You may put a general location if you don\'t want to put your actual address but
+        that will reduce the accuracy of our recommendations for you</string>
+    <string name="vehicle_btn_bckgrnd_des">image of whichever type this button will send user to</string>
+    <string name="select">Select</string>
+
+    <string-array name="vehicle_array_subtypes">
+        <item>car</item>
+        <item>electric car</item>
+        <item>bike</item>
+        <item>electric bike</item>
+        <item>transit</item>
+        <item>motorcycle</item>
+        <item>walk</item>
+        <item>ride share</item>
+    </string-array>
+
+    <string-array name="vehicle_array">
+        <item>Car</item>
+        <item>Bike</item>
+        <item>Transit</item>
+        <item>Motorcycle</item>
+        <item>Walk</item>
+    </string-array>
 </resources>
