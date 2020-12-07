@@ -44,6 +44,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         VehicleButtonFragment[] fragmentOrder = new VehicleButtonFragment[]{display2, display3, display1, display4, display0};
         createButtons(fragmentOrder);
+
+        vehicleDisplayOrder[0] = display0.getTitleText();
+        vehicleDisplayOrder[1] = display1.getTitleText();
+        vehicleDisplayOrder[2] = display2.getTitleText();
+        vehicleDisplayOrder[3] = display3.getTitleText();
+        vehicleDisplayOrder[4] = display4.getTitleText();
     }
 
     private void createButtons(VehicleButtonFragment[] fragmentOrder) {
@@ -51,45 +57,27 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         fragmentOrder[0].setTitle("Car");
         fragmentOrder[0].setInfo("click this to get info on car");
         fragmentOrder[0].setOnClickListener(this);
-        vehicleDisplayOrder[0] = "car";
 
         fragmentOrder[1].setBackgroundImg(R.drawable.motorcycle_image);
         fragmentOrder[1].setTitle("Motorcycle");
         fragmentOrder[1].setInfo("click this to get info on motorcycle");
         fragmentOrder[1].setOnClickListener(this);
-        vehicleDisplayOrder[1] = "motorcycle";
 
         fragmentOrder[2].setBackgroundImg(R.drawable.transit_image);
         fragmentOrder[2].setTitle("Transit");
         fragmentOrder[2].setInfo("click this to get info on Transit");
         fragmentOrder[2].setOnClickListener(this);
-        vehicleDisplayOrder[2] = "transit";
 
         fragmentOrder[3].setBackgroundImg(R.drawable.bike_image);
         fragmentOrder[3].setTitle("Bike");
         fragmentOrder[3].setInfo("click this to get info on Bike");
         fragmentOrder[3].setOnClickListener(this);
-        vehicleDisplayOrder[3] = "bike";
 
         fragmentOrder[4].setBackgroundImg(R.drawable.walking_image);
         fragmentOrder[4].setTitle("Walk");
         fragmentOrder[4].setInfo("click this to get info on walk");
         fragmentOrder[4].setOnClickListener(this);
-        vehicleDisplayOrder[4] = "walk";
     }
-
-    /* intent = new Intent(this, ComparisonActivity.class);
-    //    startActivity(intent);
-
-    public void createPlan(View view){
-        Intent intent = new Intent(this, PlannerActivity.class);
-        startActivity(intent);
-    }
-
-    public void viewData(View view){
-        Intent intent = new Intent(this, DisplayDataActivity.class);
-        startActivity(intent);
-    }*/
 
     @Override
     public void onClick(View view) {
@@ -116,6 +104,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 else
                     intent.putExtra("type", vehicleDisplayOrder[4]);
 
+                intent.putExtra("vehicleDisplayOrder", vehicleDisplayOrder);
                 intent.putExtra("miles", userDistance);
                 break;
         }

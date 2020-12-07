@@ -69,4 +69,8 @@ public class VehicleButtonFragment extends Fragment {
     public void setOnClickListener(View.OnClickListener listener) {
         vehicleSelect.setOnClickListener(listener);
     }
+
+    public String getTitleText(){
+        return title.getText().toString().toLowerCase();
+    }
 }
