@@ -16,7 +16,7 @@ import android.os.Bundle;
 public class DisplayDataActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
 
-    private ImageView displayVehicleImage;
+    private ImageView displayBackgroundImage;
     private Spinner displayVehicleTitle;
     private Button displayToComparison;
     private Button displayToPlanner;
@@ -28,14 +28,14 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
     //TODO: add in the rest of the fields of all the UI elements in Fragment
 
     private String[] vehicleDisplayOrder;
-
+    private String type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_data);
 
-        String type = getIntent().getStringExtra("type");
+        type = getIntent().getStringExtra("type");
         vehicleDisplayOrder = getIntent().getStringArrayExtra("vehicleDisplayOrder");
 
         Car car = new Car(getIntent().getDoubleExtra("miles", 0.0));
@@ -49,7 +49,8 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
         showNextDisplay.setOnClickListener(this);
 
         //initialize the rest of the components to be edited by them
-        displayVehicleImage = findViewById(R.id.displayVehicleImage);
+        displayBackgroundImage = findViewById(R.id.displayBackgroundImage);
+
         displayVehicleTitle = findViewById(R.id.displayTitleVehicle);
 
         vehicleDistanceInfo = findViewById(R.id.vehicleDistanceInfo);
@@ -59,14 +60,25 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
         displayScrollView = findViewById(R.id.displayScrollView);
 
         ArrayAdapter<String> adapter;
-        adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, getResources().getStringArray(R.array.vehicle_array));
+        adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, vehicleDisplayOrder);
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
 
         displayVehicleTitle.setAdapter(adapter);
         displayVehicleTitle.setOnItemSelectedListener(this);
+        displayVehicleTitle.setSelection(indexOf(type));
 
         //edits all the components based on what vehicle type the user clicked on
         displayData(type);
+
+    }
+
+    private int indexOf(String type){
+        int i;
+        for( i = 0; i < 5; i++){
+            if(vehicleDisplayOrder[i].equalsIgnoreCase(type))
+                break;
+        }
+        return i;
     }
 
     @Override
@@ -100,20 +112,19 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
     public void displayData(String vehicleType) {
         switch (vehicleType) {
             case "car":
-            default:
-                displayVehicleImage.setImageResource(R.drawable.car_image);
+                displayBackgroundImage.setImageResource(R.drawable.car_image);
                 break;
             case "motorcycle":
-                displayVehicleImage.setImageResource(R.drawable.motorcycle_image);
+                displayBackgroundImage.setImageResource(R.drawable.motorcycle_image);
                 break;
             case "transit":
-                displayVehicleImage.setImageResource(R.drawable.transit_image);
+                displayBackgroundImage.setImageResource(R.drawable.transit_image);
                 break;
             case "bike":
-                displayVehicleImage.setImageResource(R.drawable.bike_image);
+                displayBackgroundImage.setImageResource(R.drawable.bike_image);
                 break;
             case "walk":
-                displayVehicleImage.setImageResource(R.drawable.walking_image);
+                displayBackgroundImage.setImageResource(R.drawable.walking_image);
                 break;
         }
     }

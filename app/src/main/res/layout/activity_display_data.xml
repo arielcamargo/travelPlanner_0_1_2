@@ -27,7 +27,7 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:id="@+id/displayVehicleImage"
+                    android:id="@+id/displayBackgroundImage"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:scaleType="centerCrop"
@@ -48,7 +48,7 @@
                     android:entries="@array/vehicle_array"
                     android:spinnerMode="dropdown"
                     android:textAlignment="center"
-                    app:layout_constraintBottom_toBottomOf="@+id/displayVehicleImage"
+                    app:layout_constraintBottom_toBottomOf="@+id/displayBackgroundImage"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -56,7 +56,7 @@
             <ImageView
                 android:id="@+id/displayDivider1"
                 android:layout_width="match_parent"
-                android:layout_height="4dp"
+                android:layout_height="5dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/gradient" />
 
