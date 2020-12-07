@@ -1,86 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".InputActivity">
 
-    <TextView
-        android:id="@+id/locationPrompt"
-        android:layout_width="304dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="88dp"
-        android:text="@string/location_prompt"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/getLocation"
-        android:layout_width="312dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="50dp"
-        android:ems="10"
-        android:importantForAutofill="no"
-        android:inputType="textPersonName"
-        android:text="@string/location_prompt"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/addressPrompt"
+            android:layout_width="366dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/address_prompt"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            android:textStyle="italic" />
 
-    <EditText
-        android:id="@+id/getBudget"
-        android:layout_width="312dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="200dp"
-        android:ems="10"
-        android:importantForAutofill="no"
-        android:inputType="textPersonName"
-        android:text="@string/getBudget"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/getDestination"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/getDestination" />
+        <fragment
+            android:id="@+id/get_home_address"
+            android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+            android:layout_width="match_parent"
+            android:layout_height="48dp" />
 
-    <TextView
-        android:id="@+id/text_view10"
-        android:layout_width="300dp"
-        android:layout_height="238dp"
-        android:gravity="center"
-        android:textColor="@color/colorAccent"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/getLocation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/locationPrompt" />
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/display_address"
+            android:name="com.example.travelplanner_0_1_1.AddressFragment"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:background="@color/sacStateGreen"
+            tools:layout="@layout/fragment_address" />
 
-    <Button
-        android:id="@+id/goToMenu"
-        android:layout_width="232dp"
-        android:layout_height="71dp"
-        android:text="go"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/getBudget"
-        app:layout_constraintStart_toStartOf="@+id/getBudget"
-        app:layout_constraintTop_toBottomOf="@+id/getBudget" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
+            android:layout_width="370dp"
+            android:layout_height="109dp"
+            android:layout_marginBottom="16dp"
+            android:layout_weight="60"
+            app:errorEnabled="true"
+            app:helperText="Estimate your annual travel budget for Sac State"
+            app:helperTextTextColor="@color/colorBlack">
 
-    <EditText
-        android:id="@+id/getDestination"
-        android:layout_width="312dp"
-        android:layout_height="42dp"
-        android:ems="10"
-        android:importantForAutofill="no"
-        android:inputType="textPersonName"
-        android:text="Please Enter Your Destination"
-        app:layout_constraintBottom_toTopOf="@+id/getBudget"
-        app:layout_constraintEnd_toEndOf="@+id/getLocation"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/getLocation"
-        app:layout_constraintTop_toBottomOf="@+id/getLocation" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputBudget"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:hint="@string/getBudget"
+                android:inputType="numberDecimal"
+                android:maxLines="1" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:id="@+id/budgetHelper"
+                android:layout_width="244dp"
+                android:layout_height="87dp"
+                android:layout_weight="1"
+                android:text="Help me estimate my budget" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/goToNext"
+            android:layout_width="174dp"
+            android:layout_height="72dp"
+            android:layout_marginBottom="80dp"
+            android:backgroundTint="@color/opaquesacStateGreen"
+            android:text="@string/skip"
+            android:textColor="@color/colorWhite"
+            android:textSize="24sp" />
+
+    </LinearLayout>
+
+</FrameLayout>
