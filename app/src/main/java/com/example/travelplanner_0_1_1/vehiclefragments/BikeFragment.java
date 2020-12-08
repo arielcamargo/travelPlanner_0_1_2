@@ -21,5 +21,7 @@ public class BikeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_bike, container, false);
+
+        //todo: fill in the rest of this fragment for whatever specific info related to bikes
     }
 }

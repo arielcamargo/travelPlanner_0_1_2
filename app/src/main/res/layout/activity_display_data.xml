@@ -68,7 +68,7 @@
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/VehicleType1"
+                    android:id="@+id/vehicleType1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/hornetYellow"
@@ -76,7 +76,7 @@
                     android:textColor="@color/colorWhite" />
 
                 <RadioButton
-                    android:id="@+id/VehicleType2"
+                    android:id="@+id/vehicleType2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/sacStateGold"
@@ -84,7 +84,7 @@
                     android:textColor="@color/colorWhite" />
 
                 <RadioButton
-                    android:id="@+id/VehicleType3"
+                    android:id="@+id/vehicleType3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/spruceGreen"
@@ -92,7 +92,7 @@
                     android:textColor="@color/colorWhite" />
 
                 <RadioButton
-                    android:id="@+id/VehicleType4"
+                    android:id="@+id/vehicleType4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/spruceGreen"
@@ -190,7 +190,7 @@
                 android:gravity="center_horizontal">
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/displayMapPrompt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lato"
@@ -215,7 +215,7 @@
             </TableRow>
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/tempTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="(specific data for the mode of transportation) Create own fragment for data" />
@@ -229,7 +229,7 @@
                 android:src="@drawable/gradient" />
 
             <fragment
-                android:id="@+id/fragment"
+                android:id="@+id/vehicleFragmentHolder"
                 android:name="com.example.travelplanner_0_1_1.vehiclefragments.CarFragment"
                 android:layout_width="match_parent"
                 android:layout_height="293dp" />
