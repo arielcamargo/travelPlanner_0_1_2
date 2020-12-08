@@ -14,6 +14,7 @@ public class Car
         int avgMpg = 32;
         double money;
         double distance;
+        double avgCO2 = 286.68;
         String vehicle = "Car";
 
         public Car(double carDistance)
@@ -22,6 +23,7 @@ public class Car
 
         }
 
+        public double getTotalC02(){return avgCO2 * distance;}
         public double getMoney()
         {
             return money;
@@ -31,6 +33,10 @@ public class Car
         {
             return distance;
         }
+
+        public int getInsurance(){return insurance;}
+
+        public double getGas(){return gasPrice / avgMpg * 10 * 34 * distance;}
 
         public String toString()
         {

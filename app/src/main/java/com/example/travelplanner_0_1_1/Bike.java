@@ -12,13 +12,13 @@ public class Bike
     int slowMPH = 10;
     double gasfuelprice = 0;
     int avgmpg = 0;
-    int avgCO2 = 0;
+    double avgCO2 = 0;
     int totalCO2 = 0;
     double money;
-    int distance;
+    double distance;
     String vehicle = "Bike";
 
-    public Bike(int bikeDistance)
+    public Bike(double bikeDistance)
     {
         distance = bikeDistance;
     }
@@ -28,10 +28,15 @@ public class Bike
         return money;
     }
 
-    public int getDistance()
+
+    public double getDistance()
     {
         return distance;
     }
+
+
+    public double getGas(){return 0.00;}
+    public double getTotalC02(){return avgCO2 * distance;}
 
     public String toString()
     {
@@ -52,12 +57,7 @@ public class Bike
     {
         return insurance;
     }
-    public int gettotalCO2()
-    {
-        totalCO2 = distance * avgCO2;
 
-        return totalCO2;
-    }
 
     public double getTime()
     {

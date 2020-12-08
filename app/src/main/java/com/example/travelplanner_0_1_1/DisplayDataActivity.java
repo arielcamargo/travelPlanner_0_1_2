@@ -17,6 +17,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.os.Bundle;
 
+import java.text.DecimalFormat;
+
 public class DisplayDataActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     private LinearLayout displayLayout;
@@ -38,7 +40,7 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
     private int subType = 1;
 
     //text views for displaying all the information
-    private TextView vehicleInfo, vehicleCostInfo, vehicleCostInfoBreakdown, vehicleEmissionsInfo, vehicleDistanceInfo;
+    private TextView vehicleInfo, vehicleCostInfo, vehicleCostInfoBreakdown, vehicleEmissionsInfo, vehicleDistanceInfo, getVehicleEmissionsInfo;
 
     //map fragment for showing the distance
     private Fragment mapFragment;
@@ -226,43 +228,54 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void initCar() {
+        DecimalFormat df = new DecimalFormat("###.##");
+        Car car = new Car(getIntent().getDoubleExtra("miles", 0.0));
         displayBackgroundImage.setImageResource(R.drawable.car_image);
-        vehicleCostInfoBreakdown.setText("gas: \ninsurance:\netc: \nper person: (if rideshare)\nAverage cost(min - max): avg cost");
-        vehicleDistanceInfo.setText("distance: " + getIntent().getDoubleExtra("miles", 0.0) + "miles");
+        vehicleCostInfoBreakdown.setText("gas: $" + df.format(car.getGas()) + " per year\ninsurance: $" + df.format(car.getInsurance())+
+                " per year\netc: \nper person: (if rideshare)\nAverage cost(min - max): avg cost");
+        vehicleDistanceInfo.setText("distance: " + df.format(car.getDistance()) + " miles");
+        vehicleEmissionsInfo.setText("carbon emissions: " + df.format(car.getTotalC02()) + " grams of CO2");
 
         updateRadioGroup();
     }
 
     private void initMotorcycle() {
+        DecimalFormat df = new DecimalFormat("###.##");
         displayBackgroundImage.setImageResource(R.drawable.motorcycle_image);
         vehicleCostInfoBreakdown.setText("gas: \ninsurance:\netc: \nper person: (if rideshare)\nAverage cost(min - max): avg cost");
-        vehicleDistanceInfo.setText("distance: " + getIntent().getDoubleExtra("miles", 0.0) + "miles");
+        vehicleDistanceInfo.setText("distance: " + getIntent().getDoubleExtra("miles", 0.0) + " miles");
 
         updateRadioGroup();
     }
 
     private void initTransit() {
+        DecimalFormat df = new DecimalFormat("###.##");
         displayBackgroundImage.setImageResource(R.drawable.transit_image);
 
         vehicleCostInfoBreakdown.setText("gas: \ninsurance:\netc: \nper person: (if rideshare)\nAverage cost(min - max): avg cost");
-        vehicleDistanceInfo.setText("distance: " + getIntent().getDoubleExtra("miles", 0.0) + "miles");
+        vehicleDistanceInfo.setText("distance: " + getIntent().getDoubleExtra("miles", 0.0) + " miles");
         updateRadioGroup();
     }
 
     private void initBike() {
+        DecimalFormat df = new DecimalFormat("###.##");
+        Bike bike = new Bike(getIntent().getDoubleExtra("miles", 0.0));
         displayBackgroundImage.setImageResource(R.drawable.bike_image);
 
-        vehicleCostInfoBreakdown.setText("gas: \ninsurance:\netc: \nper person: (if rideshare)\nAverage cost(min - max): avg cost");
-        vehicleDistanceInfo.setText("distance: " + getIntent().getDoubleExtra("miles", 0.0) + "miles");
+        vehicleCostInfoBreakdown.setText("gas: $" + df.format(bike.getGas()) + " per year\ninsurance: $" + df.format(bike.getInsurance())+
+                " per year\netc: \nper person: (if rideshare)\nAverage cost(min - max): avg cost");
+        vehicleDistanceInfo.setText("distance: " + getIntent().getDoubleExtra("miles", 0.0) + " miles one way");
+        vehicleEmissionsInfo.setText("carbon emissions: " + df.format(bike.getTotalC02()) + " grams of CO2 per year");
         updateRadioGroup();
 
     }
 
     private void initWalk() {
+        DecimalFormat df = new DecimalFormat("###.##");
         displayBackgroundImage.setImageResource(R.drawable.walking_image);
 
         vehicleCostInfoBreakdown.setText("gas: \ninsurance:\netc: \nper person: (if rideshare)\nAverage cost(min - max): avg cost");
-        vehicleDistanceInfo.setText("distance: " + getIntent().getDoubleExtra("miles", 0.0) + "miles");
+        vehicleDistanceInfo.setText("distance: " + getIntent().getDoubleExtra("miles", 0.0) + " miles");
         updateRadioGroup();
     }
 
