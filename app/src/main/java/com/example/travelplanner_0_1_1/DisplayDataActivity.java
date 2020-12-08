@@ -227,12 +227,16 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
 
     private void initCar() {
         displayBackgroundImage.setImageResource(R.drawable.car_image);
+        vehicleCostInfoBreakdown.setText("gas: \ninsurance:\netc: \nper person: (if rideshare)\nAverage cost(min - max): avg cost");
+        vehicleDistanceInfo.setText("distance: " + getIntent().getDoubleExtra("miles", 0.0) + "miles");
 
         updateRadioGroup();
     }
 
     private void initMotorcycle() {
         displayBackgroundImage.setImageResource(R.drawable.motorcycle_image);
+        vehicleCostInfoBreakdown.setText("gas: \ninsurance:\netc: \nper person: (if rideshare)\nAverage cost(min - max): avg cost");
+        vehicleDistanceInfo.setText("distance: " + getIntent().getDoubleExtra("miles", 0.0) + "miles");
 
         updateRadioGroup();
     }
@@ -240,12 +244,16 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
     private void initTransit() {
         displayBackgroundImage.setImageResource(R.drawable.transit_image);
 
+        vehicleCostInfoBreakdown.setText("gas: \ninsurance:\netc: \nper person: (if rideshare)\nAverage cost(min - max): avg cost");
+        vehicleDistanceInfo.setText("distance: " + getIntent().getDoubleExtra("miles", 0.0) + "miles");
         updateRadioGroup();
     }
 
     private void initBike() {
         displayBackgroundImage.setImageResource(R.drawable.bike_image);
 
+        vehicleCostInfoBreakdown.setText("gas: \ninsurance:\netc: \nper person: (if rideshare)\nAverage cost(min - max): avg cost");
+        vehicleDistanceInfo.setText("distance: " + getIntent().getDoubleExtra("miles", 0.0) + "miles");
         updateRadioGroup();
 
     }
@@ -253,6 +261,8 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
     private void initWalk() {
         displayBackgroundImage.setImageResource(R.drawable.walking_image);
 
+        vehicleCostInfoBreakdown.setText("gas: \ninsurance:\netc: \nper person: (if rideshare)\nAverage cost(min - max): avg cost");
+        vehicleDistanceInfo.setText("distance: " + getIntent().getDoubleExtra("miles", 0.0) + "miles");
         updateRadioGroup();
     }
 
