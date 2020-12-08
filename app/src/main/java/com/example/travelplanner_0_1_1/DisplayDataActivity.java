@@ -58,8 +58,8 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
         type = getIntent().getStringExtra("type");
         vehicleDisplayOrder = getIntent().getStringArrayExtra("vehicleDisplayOrder");
 
-        Car car = new Car(getIntent().getDoubleExtra("miles", 0.0));
-        car.setMoney();
+        //Car car = new Car(getIntent().getDoubleExtra("miles", 0.0));
+        //car.setMoney();
 
         displayBackgroundImage = findViewById(R.id.displayBackgroundImage);
 
@@ -81,7 +81,7 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
         vehicleEmissionsInfo = findViewById(R.id.vehicleEmissionsInfo);
         vehicleDistanceInfo = findViewById(R.id.vehicleDistanceInfo);
         //temporary line below
-        vehicleDistanceInfo.setText(type + ", " + car.toString());
+        //vehicleDistanceInfo.setText(type + ", " + car.toString());
 
         mapFragment = getSupportFragmentManager().findFragmentById(R.id.mapFragment);
 
@@ -207,25 +207,35 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
 
     private void initCar() {
         displayBackgroundImage.setImageResource(R.drawable.car_image);
+        vehicleCostInfoBreakdown.setText("gas: \ninsurance:\netc: \nper person: (if rideshare)\nAverage cost(min - max): avg cost");
+        vehicleDistanceInfo.setText("distance: " + getIntent().getDoubleExtra("miles", 0.0) + "miles");
 
     }
 
     private void initMotorcycle() {
         displayBackgroundImage.setImageResource(R.drawable.motorcycle_image);
-
+        vehicleCostInfoBreakdown.setText("gas: \ninsurance:\netc: \nper person: (if rideshare)\nAverage cost(min - max): avg cost");
+        vehicleDistanceInfo.setText("distance: " + getIntent().getDoubleExtra("miles", 0.0) + "miles");
     }
 
     private void initTransit() {
         displayBackgroundImage.setImageResource(R.drawable.transit_image);
+        vehicleCostInfoBreakdown.setText("gas: $0.00\ninsurance:\netc: \nper person: (if rideshare)\nAverage cost(min - max): avg cost");
+        vehicleDistanceInfo.setText("distance: " + getIntent().getDoubleExtra("miles", 0.0) + "miles");
 
     }
 
     private void initBike() {
         displayBackgroundImage.setImageResource(R.drawable.bike_image);
+        vehicleCostInfoBreakdown.setText("gas: $0.00\ninsurance:\netc: \nper person: (if rideshare)\nAverage cost(min - max): avg cost");
+        vehicleDistanceInfo.setText("distance: " + getIntent().getDoubleExtra("miles", 0.0) + "miles");
 
     }
 
     private void initWalk() {
+
         displayBackgroundImage.setImageResource(R.drawable.walking_image);
+        vehicleCostInfoBreakdown.setText("gas: $0.00\ninsurance:\netc: \nper person: (if rideshare)\nAverage cost(min - max): avg cost");
+        vehicleDistanceInfo.setText("distance: " + getIntent().getDoubleExtra("miles", 0.0) + "miles");
     }
 }
