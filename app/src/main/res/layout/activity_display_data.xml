@@ -18,6 +18,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
+            android:id="@+id/displayLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -61,6 +62,7 @@
                 android:src="@drawable/gradient" />
 
             <RadioGroup
+                android:id="@+id/subTypeGroup"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/redwoodGroveGreen"
@@ -250,8 +252,8 @@
 
     <TableRow
         android:id="@+id/tableRow"
-        android:layout_width="wrap_content"
-        android:layout_height="80dp"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
         android:background="@color/colorBlack"
         android:gravity="center|center_horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -260,23 +262,24 @@
         <Button
             android:id="@+id/displayToComparison"
             android:layout_width="wrap_content"
-            android:layout_height="80dp"
+            android:layout_height="70dp"
             android:backgroundTint="@color/colorWhite"
             android:text="compare this" />
 
         <Button
             android:id="@+id/displayToPlanner"
             android:layout_width="wrap_content"
-            android:layout_height="80dp"
+            android:layout_height="70dp"
             android:backgroundTint="@color/colorWhite"
             android:text="add to my plan" />
 
         <Button
             android:id="@+id/showNextDisplay"
-            android:layout_width="wrap_content"
-            android:layout_height="80dp"
+            android:layout_width="138dp"
+            android:layout_height="70dp"
             android:background="@drawable/next_button"
             android:backgroundTint="@color/colorWhite"
-            android:text="Show me next option" />
+            android:padding="10dp"
+            android:text="Show next option" />
     </TableRow>
 </androidx.constraintlayout.widget.ConstraintLayout>
