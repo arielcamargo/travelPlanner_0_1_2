@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/redwoodGroveGreen"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".ActivityAbout">
+
+    <TextView
+        android:id="@+id/aboutTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/trajan_pro_bold"
+        android:text="About this App"
+        android:textAlignment="center"
+        android:textColor="@color/colorWhite"
+        android:textSize="32sp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="#FFFFFF"
+        android:fontFamily="@font/lato"
+        android:padding="10dp"
+        android:text="@string/app_string_info"
+        android:textAlignment="center"
+        android:textColor="@color/colorBlack"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/goToInput"
+        android:layout_width="168dp"
+        android:layout_height="65dp"
+        android:backgroundTint="@color/colorWhite"
+        android:fontFamily="@font/lato"
+        android:text="@string/ok"
+        android:textSize="24sp" />
+
+</LinearLayout>

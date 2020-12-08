@@ -91,6 +91,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.vehicleButtonSelect:
             default:
+                display0.getVehicleSelect().setEnabled(false);
+                display1.getVehicleSelect().setEnabled(false);
+                display2.getVehicleSelect().setEnabled(false);
+                display3.getVehicleSelect().setEnabled(false);
+                display4.getVehicleSelect().setEnabled(false);
+
                 intent = new Intent(this, DisplayDataActivity.class);
 
                 if (view == display0.getVehicleSelect())
@@ -106,6 +112,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
                 intent.putExtra("vehicleDisplayOrder", vehicleDisplayOrder);
                 intent.putExtra("miles", userDistance);
+
+                display0.getVehicleSelect().setEnabled(true);
+                display1.getVehicleSelect().setEnabled(true);
+                display2.getVehicleSelect().setEnabled(true);
+                display3.getVehicleSelect().setEnabled(true);
+                display4.getVehicleSelect().setEnabled(true);
                 break;
         }
         startActivity(intent);

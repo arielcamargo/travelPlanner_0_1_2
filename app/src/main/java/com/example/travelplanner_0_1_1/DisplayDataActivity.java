@@ -9,7 +9,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -17,15 +19,17 @@ import android.os.Bundle;
 
 public class DisplayDataActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
+    private LinearLayout displayLayout;
 
     //background image
-    private ImageView displayBackgroundImage;
+    private ImageView displayBackgroundImage, displayDivider2;
 
     //for allowing the user to quickly change vehicle transportation modes
     private Spinner displayVehicleTitle;
     private ScrollView displayScrollView;
 
     //radio buttons for certain types, some can be set invisible for when there's less than 4 kinds
+    private RadioGroup subTypeGroup;
     private RadioButton vehicleType1, vehicleType2, vehicleType3, vehicleType4;
 
     //for whichever subType the radio buttons has selected, default value is 1, values are [1,2,3,4]
@@ -58,13 +62,19 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
         type = getIntent().getStringExtra("type");
         vehicleDisplayOrder = getIntent().getStringArrayExtra("vehicleDisplayOrder");
 
-        //Car car = new Car(getIntent().getDoubleExtra("miles", 0.0));
-        //car.setMoney();
+        Car car = new Car(getIntent().getDoubleExtra("miles", 0.0));
+        car.setMoney();
+
+        displayLayout = findViewById(R.id.displayLayout);
 
         displayBackgroundImage = findViewById(R.id.displayBackgroundImage);
+        //to be made visible/invisible when no toggle radio group
+        displayDivider2 = findViewById(R.id.displayDivider2);
 
         displayVehicleTitle = findViewById(R.id.displayTitleVehicle);
         displayScrollView = findViewById(R.id.displayScrollView);
+
+        subTypeGroup = findViewById(R.id.subTypeGroup);
 
         vehicleType1 = findViewById(R.id.vehicleType1);
         vehicleType1.setOnClickListener(this);
@@ -81,7 +91,7 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
         vehicleEmissionsInfo = findViewById(R.id.vehicleEmissionsInfo);
         vehicleDistanceInfo = findViewById(R.id.vehicleDistanceInfo);
         //temporary line below
-        //vehicleDistanceInfo.setText(type + ", " + car.toString());
+        vehicleDistanceInfo.setText(type + ", " + car.toString());
 
         mapFragment = getSupportFragmentManager().findFragmentById(R.id.mapFragment);
 
@@ -133,21 +143,29 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
         switch (view.getId()) {
             case R.id.vehicleType1:
                 subType = 1;
+                displayData(type);
                 break;
             case R.id.vehicleType2:
                 subType = 2;
+                displayData(type);
                 break;
             case R.id.vehicleType3:
                 subType = 3;
+                displayData(type);
                 break;
             case R.id.vehicleType4:
                 subType = 4;
+                displayData(type);
                 break;
             case R.id.distanceFromHome:
                 //update map
+                distanceFromHome.setEnabled(false);
+                distanceFromSacState.setEnabled(true);
                 break;
             case R.id.distanceFromSac:
-                //update map too
+                //update map but show directions from Sac State
+                distanceFromHome.setEnabled(true);
+                distanceFromSacState.setEnabled(false);
                 break;
             case R.id.displayToComparison:
                 intent = new Intent(this, ComparisonActivity.class);
@@ -158,10 +176,10 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
                 startActivity(intent);
                 break;
             case R.id.showNextDisplay:
+                showNextDisplay.setEnabled(false);
                 displayScrollView.post(new Runnable() {
                     @Override
                     public void run() {
-                        String title = displayVehicleTitle.getSelectedItem().toString().toLowerCase();
                         int nextPos = (displayVehicleTitle.getSelectedItemPosition() + 1) % 5;
 
                         displayData(vehicleDisplayOrder[nextPos]);
@@ -169,12 +187,14 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
                         displayScrollView.scrollTo(0, 0);
                     }
                 });
+                showNextDisplay.setEnabled(true);
                 break;
         }
     }
 
     //method for swapping to whichever mode of transportation necessary
     public void displayData(String vehicleType) {
+        type = vehicleType;
         switch (vehicleType) {
             case "car":
                 initCar();
@@ -207,35 +227,75 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
 
     private void initCar() {
         displayBackgroundImage.setImageResource(R.drawable.car_image);
-        vehicleCostInfoBreakdown.setText("gas: \ninsurance:\netc: \nper person: (if rideshare)\nAverage cost(min - max): avg cost");
-        vehicleDistanceInfo.setText("distance: " + getIntent().getDoubleExtra("miles", 0.0) + "miles");
 
+        updateRadioGroup();
     }
 
     private void initMotorcycle() {
         displayBackgroundImage.setImageResource(R.drawable.motorcycle_image);
-        vehicleCostInfoBreakdown.setText("gas: \ninsurance:\netc: \nper person: (if rideshare)\nAverage cost(min - max): avg cost");
-        vehicleDistanceInfo.setText("distance: " + getIntent().getDoubleExtra("miles", 0.0) + "miles");
+
+        updateRadioGroup();
     }
 
     private void initTransit() {
         displayBackgroundImage.setImageResource(R.drawable.transit_image);
-        vehicleCostInfoBreakdown.setText("gas: $0.00\ninsurance:\netc: \nper person: (if rideshare)\nAverage cost(min - max): avg cost");
-        vehicleDistanceInfo.setText("distance: " + getIntent().getDoubleExtra("miles", 0.0) + "miles");
 
+        updateRadioGroup();
     }
 
     private void initBike() {
         displayBackgroundImage.setImageResource(R.drawable.bike_image);
-        vehicleCostInfoBreakdown.setText("gas: $0.00\ninsurance:\netc: \nper person: (if rideshare)\nAverage cost(min - max): avg cost");
-        vehicleDistanceInfo.setText("distance: " + getIntent().getDoubleExtra("miles", 0.0) + "miles");
+
+        updateRadioGroup();
 
     }
 
     private void initWalk() {
-
         displayBackgroundImage.setImageResource(R.drawable.walking_image);
-        vehicleCostInfoBreakdown.setText("gas: $0.00\ninsurance:\netc: \nper person: (if rideshare)\nAverage cost(min - max): avg cost");
-        vehicleDistanceInfo.setText("distance: " + getIntent().getDoubleExtra("miles", 0.0) + "miles");
+
+        updateRadioGroup();
+    }
+
+    private void updateRadioGroup() {
+        if (type.equals("walk")) {
+            //can add other types to condition up above if no group added
+            displayLayout.removeView(subTypeGroup);
+            displayLayout.removeView(displayDivider2);
+
+        } else {
+            if (subTypeGroup.getParent() == null) {
+                //if radio group missing
+                displayLayout.addView(subTypeGroup, 2);
+                displayLayout.addView(displayDivider2, 3);
+            }
+
+            if (type.equals("car")) {
+
+                if (vehicleType4.getParent() == null) {
+                    subTypeGroup.addView(vehicleType3);
+                    subTypeGroup.addView(vehicleType4);
+                }
+                vehicleType1.setText("normal");
+                vehicleType2.setText("ride share");
+                vehicleType3.setText("hybrid");
+                vehicleType4.setText("electric");
+            } else {
+                if (vehicleType4.getParent() != null) {
+                    subTypeGroup.removeView(vehicleType3);
+                    subTypeGroup.removeView(vehicleType4);
+                }
+                switch (type) {
+                    case "motorcycle":
+                    case "bike":
+                        vehicleType1.setText("normal");
+                        vehicleType2.setText("electric");
+                        break;
+                    case "transit":
+                        vehicleType1.setText("bus");
+                        vehicleType2.setText("light rail");
+                        break;
+                }
+            }
+        }
     }
 }

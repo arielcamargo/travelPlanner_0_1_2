@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.travelplanner_0_1_1">
-
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -16,7 +15,7 @@
         android:roundIcon="@drawable/sac_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".ActivityAbout"></activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -31,16 +30,17 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps" />
         <activity android:name=".PlannerActivity" />
         <activity android:name=".ComparisonActivity" />
         <activity android:name=".DisplayDataActivity" />
         <activity android:name=".HomeActivity" />
-        <activity android:name=".InputActivity"
+        <activity
+            android:name=".InputActivity"
             android:parentActivityName=".MainActivity">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".MainActivity" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         </activity>
         <activity android:name=".MainActivity">
             <intent-filter>

@@ -6,7 +6,8 @@
     <!--You are able to have strings that span multiple lines without changing the text-->
     <string name="app_string_info">
         What is this app about? Every year there is tons of traffic at Sac State. The goal of this app is to reduce traffic
-        and show you alternative modes of transportation. This can help reduce traffic, carbon
+        and show you alternative modes of transportation. This can help reduce traffic, carbon emissions.
+        talk about facts that are bad about single occupant vehicles
     </string>
     <string name="go">Start>></string>
     <string name="skip">Skip>></string>
@@ -19,7 +20,8 @@
     <string name="temp_comparison">This activity will allow the user to compare the different modes of transportation</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="car">car</string>
-    <string name="user_agreement">&lt;-I agree to <u><i>terms and conditions</i></u></string>
+    <string name="user_agreement">I agree to <u><i>terms and conditions</i></u></string>
+    <string name="user_agreement_text">This is where the terms and conditions will go. it may be long so the user can scroll down</string>
     <string name="title_activity_popup">PopupActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
