@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startProgram.setEnabled(((CheckBox) view).isChecked());
                 break;
             case R.id.startProgram:
-                Intent intent = new Intent(this, HomeActivity.class);
+                Intent intent = new Intent(this, InputActivity.class);
                 startActivity(intent);
                 break;
             case R.id.viewUserAgreement:
