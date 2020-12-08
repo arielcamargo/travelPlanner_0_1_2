@@ -11,7 +11,6 @@ import android.widget.CheckBox;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button startProgram;
-    private Button viewUserAgreement;
     private CheckBox userAgreement;
 
     @Override
@@ -25,9 +24,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         userAgreement = findViewById(R.id.userAgreement);
         userAgreement.setChecked(false);
         userAgreement.setOnClickListener(this);
-
-        viewUserAgreement = findViewById(R.id.viewUserAgreement);
-        viewUserAgreement.setOnClickListener(this);
     }
 
     @Override
@@ -37,12 +33,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startProgram.setEnabled(((CheckBox) view).isChecked());
                 break;
             case R.id.startProgram:
-                Intent intent = new Intent(this, InputActivity.class);
+                Intent intent = new Intent(this, ActivityAbout.class);
                 startActivity(intent);
-                break;
-            case R.id.viewUserAgreement:
-
-                //todo: create popup window to display user agreement here
                 break;
         }
     }
