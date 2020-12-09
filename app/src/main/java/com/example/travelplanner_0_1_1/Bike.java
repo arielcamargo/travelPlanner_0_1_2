@@ -21,6 +21,7 @@ public class Bike
     public Bike(double bikeDistance)
     {
         distance = bikeDistance;
+        setMoney();
     }
 
     public double getMoney()

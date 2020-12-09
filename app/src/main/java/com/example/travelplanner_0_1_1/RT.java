@@ -11,14 +11,14 @@ public class RT
     //	double gasfuelprice = 2.42;
 //	int avgmpg = 32;
     int avgCO2 = 64; // grams/mile
-    int totalCO2;
+    double totalCO2;
     double money;
-    int distance;
+    double distance;
     String vehicle = "RT";
-    public RT(int RTDistance)
+    public RT(double RTDistance)
     {
         distance = RTDistance;
-
+        setMoney();
     }
 
     public double getMoney()
@@ -26,7 +26,7 @@ public class RT
         return money;
     }
 
-    public int getDistance()
+    public double getDistance()
     {
         return distance;
     }
@@ -45,10 +45,10 @@ public class RT
 
     public void setMoney()
     {
-        money = monthlyPass * 4;// + (gasfuelprice / avgmpg * 10 * 34 * distance);
+        money = 0.00;// + (gasfuelprice / avgmpg * 10 * 34 * distance);
     }
 
-    public int gettotalCO2()
+    public double getTotalCO2()
     {
         totalCO2 = distance * avgCO2;
 
