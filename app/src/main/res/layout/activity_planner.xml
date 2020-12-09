@@ -38,4 +38,12 @@
         android:layout_width="370dp"
         android:layout_height="wrap_content"
         android:text="Compare transportation" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Browse"
+        android:onClick="browser"
+        android:layout_gravity="center"/>
+
 </LinearLayout>
