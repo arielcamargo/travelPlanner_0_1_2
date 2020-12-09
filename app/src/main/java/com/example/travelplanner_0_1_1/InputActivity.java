@@ -1,49 +1,34 @@
 package com.example.travelplanner_0_1_1;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentResultListener;
-
 import android.content.Intent;
-import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentResultListener;
 
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.Place;
 import com.google.android.libraries.places.api.model.RectangularBounds;
-import com.google.android.libraries.places.widget.Autocomplete;
-import com.google.android.libraries.places.widget.AutocompleteActivity;
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
-import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
 
 import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
 
 public class InputActivity extends AppCompatActivity implements View.OnClickListener, PlaceSelectionListener {
 
     private double sendDouble = -1; //default if none is given
 
     private Button goToNext;
-    private Button budgetHelper;
-    private TextView userBudget;
 
     private AutocompleteSupportFragment getHomeAddress;
-    private Fragment addressFragment;
     private String address;
     private LatLng addressLatLng;
-
-    private final double BIAS_RANGE = 0.125;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,13 +38,11 @@ public class InputActivity extends AppCompatActivity implements View.OnClickList
         goToNext = findViewById(R.id.goToNext);
         goToNext.setOnClickListener(this);
 
-        userBudget = findViewById(R.id.inputBudget);
+        TextView userBudget = findViewById(R.id.inputBudget);
         userBudget.setOnClickListener(this);
 
-        budgetHelper = findViewById(R.id.budgetHelper);
+        Button budgetHelper = findViewById(R.id.budgetHelper);
         budgetHelper.setOnClickListener(this);
-
-        addressFragment = getSupportFragmentManager().findFragmentById(R.id.display_address);
 
         String api_key = getString(R.string.google_maps_key);
         if (!Places.isInitialized())
@@ -69,7 +52,9 @@ public class InputActivity extends AppCompatActivity implements View.OnClickList
         getHomeAddress = (AutocompleteSupportFragment) getSupportFragmentManager().findFragmentById(R.id.get_home_address);
 
         //bounds it to specific area
+        assert getHomeAddress != null;
         getHomeAddress.setCountries("US");
+        double BIAS_RANGE = 0.125;
         getHomeAddress.setLocationBias(
                 RectangularBounds.newInstance(
                         new LatLng(AddressFragment.SAC_STATE_LOC.latitude - BIAS_RANGE, AddressFragment.SAC_STATE_LOC.longitude - BIAS_RANGE),
@@ -82,12 +67,12 @@ public class InputActivity extends AppCompatActivity implements View.OnClickList
 
         //get the address that the user selects
         getHomeAddress.setOnPlaceSelectedListener(this);
-        getHomeAddress.getView().findViewById(R.id.places_autocomplete_clear_button).setOnClickListener(this);
+        getHomeAddress.requireView().findViewById(R.id.places_autocomplete_clear_button).setOnClickListener(this);
 
         getSupportFragmentManager().setFragmentResultListener("sendDistance", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
-               sendDouble = bundle.getDouble("distance");
+                sendDouble = bundle.getDouble("distance");
             }
         });
 
@@ -109,7 +94,7 @@ public class InputActivity extends AppCompatActivity implements View.OnClickList
                 address = "";
                 addressLatLng = null;
                 sendDouble = -1;
-                getSupportFragmentManager().setFragmentResult("clearMap", null);
+                getSupportFragmentManager().setFragmentResult("clearMap", new Bundle());
             case R.id.budgetHelper:
                 //todo: create popup that will show the user some guidelines on how to estimate their
                 // budget

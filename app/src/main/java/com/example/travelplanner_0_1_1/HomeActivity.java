@@ -9,12 +9,7 @@ import android.widget.Button;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private String userLocation;
-    private int userBudget;
     private double userDistance;
-
-    private Button menuToCompare;
-    private Button menuToPlanner;
 
     private VehicleButtonFragment display0;
     private VehicleButtonFragment display1;
@@ -23,7 +18,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private VehicleButtonFragment display4;
     private VehicleButtonFragment display5;
 
-    private String[] vehicleDisplayOrder = new String[6];
+    private final String[] vehicleDisplayOrder = new String[6];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +27,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         userDistance = getIntent().getDoubleExtra("miles", -1);
 
-        menuToCompare = findViewById(R.id.menuToCompare);
+        Button menuToCompare = findViewById(R.id.menuToCompare);
         menuToCompare.setOnClickListener(this);
-        menuToPlanner = findViewById(R.id.menuToPlanner);
+        Button menuToPlanner = findViewById(R.id.menuToPlanner);
         menuToPlanner.setOnClickListener(this);
 
         display0 = (VehicleButtonFragment) getSupportFragmentManager().findFragmentById(R.id.fragment0);

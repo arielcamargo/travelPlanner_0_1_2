@@ -112,7 +112,7 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
         showNextDisplay.setOnClickListener(this);
 
         ArrayAdapter<String> adapter;
-        adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, vehicleDisplayOrder);
+        adapter = new ArrayAdapter<>(this, R.layout.spinner_item, vehicleDisplayOrder);
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
 
         displayVehicleTitle.setAdapter(adapter);
