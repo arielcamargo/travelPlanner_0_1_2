@@ -2,8 +2,7 @@ package com.example.travelplanner_0_1_1;
 
 import java.text.DecimalFormat;
 
-public class Bike
-{
+public class Bike {
     double time;
     int insurance = 275;
     int maintenance = 175;
@@ -18,29 +17,30 @@ public class Bike
     double distance;
     String vehicle = "Bike";
 
-    public Bike(double bikeDistance)
-    {
+    public Bike(double bikeDistance) {
         distance = bikeDistance;
         setMoney();
     }
 
-    public double getMoney()
-    {
+    public double getMoney() {
         return money;
     }
 
 
-    public double getDistance()
-    {
+    public double getDistance() {
         return distance;
     }
 
 
-    public double getGas(){return 0.00;}
-    public double getTotalC02(){return avgCO2 * distance  * 10 * 34;}
+    public double getGas() {
+        return 0.00;
+    }
 
-    public String toString()
-    {
+    public double getTotalC02() {
+        return avgCO2 * distance * 10 * 34;
+    }
+
+    public String toString() {
         DecimalFormat df = new DecimalFormat("###.##");
         return ("\nSac State is " + distance + " miles away by " + vehicle
                 + ".\n You should expect to spend $" + df.format(money) + " per year riding a " + vehicle
@@ -50,8 +50,7 @@ public class Bike
     }
 
 
-    public void setMoney()
-    {
+    public void setMoney() {
         money = insurance + maintenance;// + (gasfuelprice / avgmpg * 10 * 34 * distance);
     }
 
@@ -59,18 +58,16 @@ public class Bike
         return parkingPass;
     }
 
-    public int getMaintenance()
-    {
+    public int getMaintenance() {
         return maintenance;
     }
-    public int getInsurance()
-    {
+
+    public int getInsurance() {
         return insurance;
     }
 
 
-    public double getTime()
-    {
+    public double getTime() {
         time = distance / ((fastMPH + slowMPH) / 2.0) * 1.0;
 
         // convert hours to minutes

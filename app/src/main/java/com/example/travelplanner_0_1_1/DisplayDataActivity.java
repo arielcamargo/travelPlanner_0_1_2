@@ -182,7 +182,7 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
                 displayScrollView.post(new Runnable() {
                     @Override
                     public void run() {
-                        int nextPos = (displayVehicleTitle.getSelectedItemPosition() + 1) % 5;
+                        int nextPos = (displayVehicleTitle.getSelectedItemPosition() + 1) % 6;
 
                         displayData(vehicleDisplayOrder[nextPos]);
                         displayVehicleTitle.setSelection(nextPos);
@@ -213,6 +213,9 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
             case "walk":
                 initWalk();
                 break;
+            case "jump bike":
+                initJumpBike();
+                break;
         }
     }
 
@@ -222,7 +225,6 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
         displayData(title);
     }
 
-    //todo fill in the rest of the methods below
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
     }
@@ -231,8 +233,8 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
         DecimalFormat df = new DecimalFormat("###.##");
         Car car = new Car(getIntent().getDoubleExtra("miles", 0.0));
         displayBackgroundImage.setImageResource(R.drawable.car_image);
-        vehicleCostInfoBreakdown.setText("gas: $" + df.format(car.getGas()) + " per year\ninsurance: $" + df.format(car.getInsurance())+
-                " per year\nMaintenance: $" + car.getMaintenance() +"\nParking Pass: $" + car.getParkingPass() +" per year\nTotal Cost: $" + df.format(car.getMoney()) + " per year" );
+        vehicleCostInfoBreakdown.setText("gas: $" + df.format(car.getGas()) + " per year\ninsurance: $" + df.format(car.getInsurance()) +
+                " per year\nMaintenance: $" + car.getMaintenance() + "\nParking Pass: $" + car.getParkingPass() + " per year\nTotal Cost: $" + df.format(car.getMoney()) + " per year");
         vehicleDistanceInfo.setText("distance: " + df.format(car.getDistance()) + " miles");
         vehicleEmissionsInfo.setText("carbon emissions: " + df.format(car.getTotalC02()) + " grams of CO2");
 
@@ -243,8 +245,8 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
         DecimalFormat df = new DecimalFormat("###.##");
         Motorcycle motorcycle = new Motorcycle(getIntent().getDoubleExtra("miles", 0.0));
         displayBackgroundImage.setImageResource(R.drawable.motorcycle_image);
-        vehicleCostInfoBreakdown.setText("gas: $" + df.format(motorcycle.getGas()) + " per year\ninsurance: $" + df.format(motorcycle.getInsurance())+
-                " per year\nMaintenance: $" + motorcycle.getMaintenance() +"\nParking Pass: $" + motorcycle.getParkingPass() +" per year\nTotal Cost: $" + df.format(motorcycle.getMoney()) + " per year" );
+        vehicleCostInfoBreakdown.setText("gas: $" + df.format(motorcycle.getGas()) + " per year\ninsurance: $" + df.format(motorcycle.getInsurance()) +
+                " per year\nMaintenance: $" + motorcycle.getMaintenance() + "\nParking Pass: $" + motorcycle.getParkingPass() + " per year\nTotal Cost: $" + df.format(motorcycle.getMoney()) + " per year");
         vehicleDistanceInfo.setText("distance: " + df.format(motorcycle.getDistance()) + " miles");
         vehicleEmissionsInfo.setText("carbon emissions: " + df.format(motorcycle.getTotalC02()) + " grams of CO2");
 
@@ -256,8 +258,8 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
         RT rt = new RT(getIntent().getDoubleExtra("miles", 0.0));
         displayBackgroundImage.setImageResource(R.drawable.transit_image);
 
-        vehicleCostInfoBreakdown.setText("gas: $" + df.format(rt.getGas()) + " per year\ninsurance: $" + df.format(rt.getInsurance())+
-                " per year\nMaintenance: $" + rt.getMaintenance() +"\nParking Pass: $" + rt.getParkingPass() +" per year\nTotal Cost: $" + df.format(rt.getMoney()) + " per year" );
+        vehicleCostInfoBreakdown.setText("gas: $" + df.format(rt.getGas()) + " per year\ninsurance: $" + df.format(rt.getInsurance()) +
+                " per year\nMaintenance: $" + rt.getMaintenance() + "\nParking Pass: $" + rt.getParkingPass() + " per year\nTotal Cost: $" + df.format(rt.getMoney()) + " per year");
         vehicleDistanceInfo.setText("distance: " + getIntent().getDoubleExtra("miles", 0.0) + " miles one way");
         vehicleEmissionsInfo.setText("carbon emissions: " + df.format(rt.getTotalC02()) + " grams of CO2 per year");
         updateRadioGroup();
@@ -268,8 +270,8 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
         Bike bike = new Bike(getIntent().getDoubleExtra("miles", 0.0));
         displayBackgroundImage.setImageResource(R.drawable.bike_image);
 
-        vehicleCostInfoBreakdown.setText("gas: $" + df.format(bike.getGas()) + " per year\ninsurance: $" + df.format(bike.getInsurance())+
-                " per year\nMaintenance: $" + bike.getMaintenance() +"\nParking Pass: $" + bike.getParkingPass() +" per year\nTotal Cost: $" + df.format(bike.getMoney()) + " per year" );
+        vehicleCostInfoBreakdown.setText("gas: $" + df.format(bike.getGas()) + " per year\ninsurance: $" + df.format(bike.getInsurance()) +
+                " per year\nMaintenance: $" + bike.getMaintenance() + "\nParking Pass: $" + bike.getParkingPass() + " per year\nTotal Cost: $" + df.format(bike.getMoney()) + " per year");
         vehicleDistanceInfo.setText("distance: " + getIntent().getDoubleExtra("miles", 0.0) + " miles one way");
         vehicleEmissionsInfo.setText("carbon emissions: " + df.format(bike.getTotalC02()) + " grams of CO2 per year");
         updateRadioGroup();
@@ -281,10 +283,22 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
         Walk walk = new Walk(getIntent().getDoubleExtra("miles", 0.0));
         displayBackgroundImage.setImageResource(R.drawable.walking_image);
 
-        vehicleCostInfoBreakdown.setText("gas: $" + df.format(walk.getGas()) + " per year\ninsurance: $" + df.format(walk.getInsurance())+
-                " per year\nMaintenance: $" + walk.getMaintenance() +"\nParking Pass: $" + walk.getParkingPass() +" per year\nTotal Cost: $" + df.format(walk.getMoney()) + " per year" );
+        vehicleCostInfoBreakdown.setText("gas: $" + df.format(walk.getGas()) + " per year\ninsurance: $" + df.format(walk.getInsurance()) +
+                " per year\nMaintenance: $" + walk.getMaintenance() + "\nParking Pass: $" + walk.getParkingPass() + " per year\nTotal Cost: $" + df.format(walk.getMoney()) + " per year");
         vehicleDistanceInfo.setText("distance: " + getIntent().getDoubleExtra("miles", 0.0) + " miles one way");
         vehicleEmissionsInfo.setText("carbon emissions: " + df.format(walk.getTotalC02()) + " grams of CO2 per year");
+        updateRadioGroup();
+    }
+
+    private void initJumpBike() {
+        DecimalFormat df = new DecimalFormat("###.##");
+        JumpBikes jumpBikes = new JumpBikes(getIntent().getDoubleExtra("miles", 0.0));
+        displayBackgroundImage.setImageResource(R.drawable.jump_bike);
+
+        vehicleCostInfoBreakdown.setText("gas: $" + df.format(jumpBikes.getGas()) + " per year\ninsurance: $" + df.format(jumpBikes.getInsurance()) +
+                " per year\nMaintenance: $" + jumpBikes.getMaintenance() + "\nParking Pass: $" + jumpBikes.getParkingPass() + " per year\nTotal Cost: $" + df.format(jumpBikes.getMoney()) + " per year");
+        vehicleDistanceInfo.setText("distance: " + getIntent().getDoubleExtra("miles", 0.0) + " miles one way");
+        vehicleEmissionsInfo.setText("carbon emissions: " + df.format(jumpBikes.getTotalC02()) + " grams of CO2 per year");
         updateRadioGroup();
     }
 
@@ -325,6 +339,10 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
                     case "transit":
                         vehicleType1.setText("bus");
                         vehicleType2.setText("light rail");
+                        break;
+                    case "jump bike":
+                        vehicleType1.setText("bike");
+                        vehicleType2.setText("scooter");
                         break;
                 }
             }

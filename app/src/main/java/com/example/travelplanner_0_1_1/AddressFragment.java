@@ -88,7 +88,6 @@ public class AddressFragment extends Fragment implements OnMapReadyCallback, Tas
 
         UiSettings settings = googleMap.getUiSettings();
         settings.setAllGesturesEnabled(false);
-        settings.setZoomControlsEnabled(true);
         settings.setMapToolbarEnabled(false);
     }
 
@@ -98,7 +97,7 @@ public class AddressFragment extends Fragment implements OnMapReadyCallback, Tas
         directions = googleMap.addPolyline((PolylineOptions) values[0]);
 
         Bundle result = new Bundle();
-        distance = FetchUrl.distance;
+        distance = fetchUrl.getDistance();
         result.putDouble("distance", distance);
         getParentFragmentManager().setFragmentResult("sendDistance", result);
     }
@@ -153,7 +152,7 @@ public class AddressFragment extends Fragment implements OnMapReadyCallback, Tas
 
     //method that is called to create the directions from the home marker to Sac state marker
     private void createDirections() {
-        FetchUrl fetchUrl = new FetchUrl(AddressFragment.this);
+        fetchUrl = new FetchUrl(AddressFragment.this);
         fetchUrl.execute(getUrl(homeMarker.getPosition(), SAC_STATE_LOC, "driving"), "driving");
     }
 

@@ -16,7 +16,7 @@ public class FetchUrl extends AsyncTask<String, Void, String> {
 
     private TaskLoadedCallback taskLoadedCallback;
     private String directionMode = "driving";
-    public volatile static double distance = -1;
+    public double distance = -1;
 
     public FetchUrl(TaskLoadedCallback taskLoadedCallback) {
         this.taskLoadedCallback = taskLoadedCallback;
@@ -79,5 +79,9 @@ public class FetchUrl extends AsyncTask<String, Void, String> {
         distance = Double.parseDouble(dist);
 
         return data;
+    }
+
+    public double getDistance(){
+        return distance;
     }
 }

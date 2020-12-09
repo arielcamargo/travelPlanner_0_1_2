@@ -21,8 +21,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private VehicleButtonFragment display2;
     private VehicleButtonFragment display3;
     private VehicleButtonFragment display4;
+    private VehicleButtonFragment display5;
 
-    private String[] vehicleDisplayOrder = new String[5];
+    private String[] vehicleDisplayOrder = new String[6];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +42,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         display2 = (VehicleButtonFragment) getSupportFragmentManager().findFragmentById(R.id.fragment2);
         display3 = (VehicleButtonFragment) getSupportFragmentManager().findFragmentById(R.id.fragment3);
         display4 = (VehicleButtonFragment) getSupportFragmentManager().findFragmentById(R.id.fragment4);
+        display5 = (VehicleButtonFragment) getSupportFragmentManager().findFragmentById(R.id.fragment5);
 
-        VehicleButtonFragment[] fragmentOrder = new VehicleButtonFragment[]{display2, display3, display1, display4, display0};
+        VehicleButtonFragment[] fragmentOrder = new VehicleButtonFragment[]{display5, display2, display3, display1, display4, display0};
         createButtons(fragmentOrder);
 
         vehicleDisplayOrder[0] = display0.getTitleText();
@@ -50,6 +52,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         vehicleDisplayOrder[2] = display2.getTitleText();
         vehicleDisplayOrder[3] = display3.getTitleText();
         vehicleDisplayOrder[4] = display4.getTitleText();
+        vehicleDisplayOrder[5] = display5.getTitleText();
     }
 
     private void createButtons(VehicleButtonFragment[] fragmentOrder) {
@@ -77,6 +80,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         fragmentOrder[4].setTitle("Walk");
         fragmentOrder[4].setInfo("click this to get info on walk");
         fragmentOrder[4].setOnClickListener(this);
+
+        fragmentOrder[5].setBackgroundImg(R.drawable.jump_bike);
+        fragmentOrder[5].setTitle("Jump Bike");
+        fragmentOrder[5].setInfo("click this to get info on Jump Bikes");
+        fragmentOrder[5].setOnClickListener(this);
     }
 
     @Override
@@ -96,6 +104,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 display2.getVehicleSelect().setEnabled(false);
                 display3.getVehicleSelect().setEnabled(false);
                 display4.getVehicleSelect().setEnabled(false);
+                display5.getVehicleSelect().setEnabled(false);
+
 
                 intent = new Intent(this, DisplayDataActivity.class);
 
@@ -107,8 +117,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                     intent.putExtra("type", vehicleDisplayOrder[2]);
                 else if (view == display3.getVehicleSelect())
                     intent.putExtra("type", vehicleDisplayOrder[3]);
-                else
+                else if(view == display4.getVehicleSelect())
                     intent.putExtra("type", vehicleDisplayOrder[4]);
+                else
+                    intent.putExtra("type", vehicleDisplayOrder[5]);
 
                 intent.putExtra("vehicleDisplayOrder", vehicleDisplayOrder);
                 intent.putExtra("miles", userDistance);
@@ -118,6 +130,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 display2.getVehicleSelect().setEnabled(true);
                 display3.getVehicleSelect().setEnabled(true);
                 display4.getVehicleSelect().setEnabled(true);
+                display5.getVehicleSelect().setEnabled(true);
                 break;
         }
         startActivity(intent);

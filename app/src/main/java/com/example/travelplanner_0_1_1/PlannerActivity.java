@@ -16,7 +16,7 @@ public class PlannerActivity extends Activity implements View.OnClickListener {
     }
 
     public void browser(View view) {
-        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.csus.edu/"));
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://docs.google.com/forms/d/e/1FAIpQLSe9FMmJBj64aQFojoDPZBMfLj1JMwvZLAVWqD_PRT049u1HFQ/viewform"));
         startActivity(browserIntent);
     }
 

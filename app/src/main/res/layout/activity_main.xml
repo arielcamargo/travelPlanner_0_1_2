@@ -62,15 +62,12 @@
             android:layout_height="225dp"
             android:layout_marginTop="16dp"
             android:background="@color/sacStateGold"
-            android:fadeScrollbars="false"
+            android:fadeScrollbars="true"
             android:fadingEdge="vertical"
-            android:fadingEdgeLength="10dp"
             android:isScrollContainer="true"
-            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarAlwaysDrawVerticalTrack="false"
             android:scrollbarFadeDuration="0"
             android:scrollbarStyle="insideInset"
-            android:scrollbarThumbVertical="@android:drawable/btn_default_small"
-            android:scrollbarTrackVertical="@android:drawable/title_bar_tall"
             android:scrollbars="vertical">
 
             <LinearLayout
@@ -96,7 +93,7 @@
                     android:paddingEnd="10dp"
                     android:paddingBottom="2sp"
                     android:text="@string/user_agreement_text"
-                    android:textAlignment="center"
+                    android:textAlignment="textStart"
                     android:textColor="@color/colorWhite"
                     android:textSize="20sp" />
             </LinearLayout>
