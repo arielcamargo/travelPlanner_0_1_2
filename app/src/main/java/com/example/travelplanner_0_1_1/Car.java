@@ -20,7 +20,7 @@ public class Car
         public Car(double carDistance)
         {
             distance = carDistance;
-
+            setMoney();
         }
 
         public double getTotalC02(){return avgCO2 * distance;}
