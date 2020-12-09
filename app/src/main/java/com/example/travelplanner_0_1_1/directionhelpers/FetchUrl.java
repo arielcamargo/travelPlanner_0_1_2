@@ -3,8 +3,6 @@ package com.example.travelplanner_0_1_1.directionhelpers;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.example.travelplanner_0_1_1.AddressFragment;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;

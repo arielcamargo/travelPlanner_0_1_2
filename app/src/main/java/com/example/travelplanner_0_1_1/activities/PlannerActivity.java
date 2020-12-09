@@ -1,10 +1,12 @@
-package com.example.travelplanner_0_1_1;
+package com.example.travelplanner_0_1_1.activities;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.travelplanner_0_1_1.R;
 
 public class PlannerActivity extends Activity implements View.OnClickListener {
 

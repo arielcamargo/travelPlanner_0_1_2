@@ -1,9 +1,11 @@
-package com.example.travelplanner_0_1_1;
+package com.example.travelplanner_0_1_1.activities;
 
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.travelplanner_0_1_1.R;
 
 public class ComparisonActivity extends AppCompatActivity implements View.OnClickListener {
     //TODO: Get distance into ComparisonActivity.java,

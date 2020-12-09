@@ -1,4 +1,4 @@
-package com.example.travelplanner_0_1_1.vehiclefragments;
+package com.example.travelplanner_0_1_1.fragments.vehiclefragments;
 
 import android.os.Bundle;
 
@@ -10,18 +10,19 @@ import android.view.ViewGroup;
 
 import com.example.travelplanner_0_1_1.R;
 
-public class WalkFragment extends Fragment {
+public class MotorcycleFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_walk, container, false);
+        return inflater.inflate(R.layout.fragment_motorcycle, container, false);
 
-        //todo: fill in the rest of this fragment for whatever specific info related to walking
+        //todo: fill in the rest of this fragment for whatever specific info related to motorcycle
     }
 }

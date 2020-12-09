@@ -1,4 +1,4 @@
-package com.example.travelplanner_0_1_1;
+package com.example.travelplanner_0_1_1.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+
+import com.example.travelplanner_0_1_1.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 

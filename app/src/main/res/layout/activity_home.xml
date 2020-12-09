@@ -7,7 +7,7 @@
     android:background="@color/redwoodGroveGreen"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".HomeActivity">
+    tools:context=".activities.HomeActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -57,42 +57,42 @@
 
             <fragment
                 android:id="@+id/fragment0"
-                android:name="com.example.travelplanner_0_1_1.VehicleButtonFragment"
+                android:name="com.example.travelplanner_0_1_1.fragments.VehicleButtonFragment"
                 android:layout_width="match_parent"
                 android:layout_height="175dp"
                 android:layout_marginBottom="10dp" />
 
             <fragment
                 android:id="@+id/fragment1"
-                android:name="com.example.travelplanner_0_1_1.VehicleButtonFragment"
+                android:name="com.example.travelplanner_0_1_1.fragments.VehicleButtonFragment"
                 android:layout_width="match_parent"
                 android:layout_height="175dp"
                 android:layout_marginBottom="10dp" />
 
             <fragment
                 android:id="@+id/fragment2"
-                android:name="com.example.travelplanner_0_1_1.VehicleButtonFragment"
+                android:name="com.example.travelplanner_0_1_1.fragments.VehicleButtonFragment"
                 android:layout_width="match_parent"
                 android:layout_height="175dp"
                 android:layout_marginBottom="10dp" />
 
             <fragment
                 android:id="@+id/fragment3"
-                android:name="com.example.travelplanner_0_1_1.VehicleButtonFragment"
+                android:name="com.example.travelplanner_0_1_1.fragments.VehicleButtonFragment"
                 android:layout_width="match_parent"
                 android:layout_height="175dp"
                 android:layout_marginBottom="10dp" />
 
             <fragment
                 android:id="@+id/fragment4"
-                android:name="com.example.travelplanner_0_1_1.VehicleButtonFragment"
+                android:name="com.example.travelplanner_0_1_1.fragments.VehicleButtonFragment"
                 android:layout_width="match_parent"
                 android:layout_height="175dp"
                 android:layout_marginBottom="10dp" />
 
             <fragment
                 android:id="@+id/fragment5"
-                android:name="com.example.travelplanner_0_1_1.VehicleButtonFragment"
+                android:name="com.example.travelplanner_0_1_1.fragments.VehicleButtonFragment"
                 android:layout_width="match_parent"
                 android:layout_height="175dp"
                 android:layout_marginBottom="10dp" />

@@ -1,23 +1,23 @@
-package com.example.travelplanner_0_1_1;
+package com.example.travelplanner_0_1_1.vehicles;
 
 import java.text.DecimalFormat;
 
-public class Car {
+public class JumpBikes
+{
     int time;
-    int insurance = 1462;
-    int maintenance = 368;
-    int parkingPass = 178;
-    int fastMPH = 60;
-    int slowMPH = 20;
-    double gasPrice = 2.42;
+    int maintenance = 0;
+    int Pass = 30;
+    int MPH = 12;
+    double gasPrice = 0.00;
     int avgMpg = 32;
     double money;
     double distance;
-    double avgCO2 = 286.68;
-    String vehicle = "Car";
+    double avgCO2 = 0.00;
+    String vehicle = "JumpBikes";
+    int insurance = 0;
 
-    public Car(double carDistance) {
-        distance = carDistance;
+    public JumpBikes(double jumpBikeDistance) {
+        distance = jumpBikeDistance;
         setMoney();
     }
 
@@ -30,7 +30,7 @@ public class Car {
     }
 
     public int getParkingPass() {
-        return parkingPass;
+        return Pass;
     }
 
     public int getMaintenance() {
@@ -57,7 +57,6 @@ public class Car {
     }
 
     public void setMoney() {
-        money = insurance + maintenance + parkingPass + (gasPrice / avgMpg * 10 * 34 * distance);
+        money = distance / MPH * 0.32 * 10 * 54 + 1 * 540;
     }
-
 }

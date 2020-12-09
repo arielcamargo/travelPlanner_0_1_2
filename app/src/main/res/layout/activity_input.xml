@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".InputActivity">
+    tools:context=".activities.InputActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,7 +30,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/display_address"
-            android:name="com.example.travelplanner_0_1_1.AddressFragment"
+            android:name="com.example.travelplanner_0_1_1.fragments.AddressFragment"
             android:layout_width="match_parent"
             android:layout_height="280dp"
             android:background="@color/sacStateGreen"

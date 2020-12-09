@@ -1,4 +1,4 @@
-package com.example.travelplanner_0_1_1;
+package com.example.travelplanner_0_1_1.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentResultListener;
 
+import com.example.travelplanner_0_1_1.R;
+import com.example.travelplanner_0_1_1.fragments.AddressFragment;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.libraries.places.api.Places;

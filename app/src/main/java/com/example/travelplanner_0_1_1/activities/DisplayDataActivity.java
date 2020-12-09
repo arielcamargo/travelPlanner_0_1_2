@@ -1,4 +1,4 @@
-package com.example.travelplanner_0_1_1;
+package com.example.travelplanner_0_1_1.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -16,6 +16,14 @@ import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.os.Bundle;
+
+import com.example.travelplanner_0_1_1.R;
+import com.example.travelplanner_0_1_1.vehicles.Bike;
+import com.example.travelplanner_0_1_1.vehicles.Car;
+import com.example.travelplanner_0_1_1.vehicles.JumpBikes;
+import com.example.travelplanner_0_1_1.vehicles.Motorcycle;
+import com.example.travelplanner_0_1_1.vehicles.RT;
+import com.example.travelplanner_0_1_1.vehicles.Walk;
 
 import java.text.DecimalFormat;
 

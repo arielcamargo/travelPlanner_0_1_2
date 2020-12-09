@@ -15,7 +15,7 @@
         android:roundIcon="@drawable/sac_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ActivityAbout"></activity>
+        <activity android:name=".activities.ActivityAbout"></activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -28,21 +28,18 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+        <activity android:name=".activities.PlannerActivity" />
+        <activity android:name=".activities.ComparisonActivity" />
+        <activity android:name=".activities.DisplayDataActivity" />
+        <activity android:name=".activities.HomeActivity" />
         <activity
-            android:name=".MapsActivity"
-            android:label="@string/title_activity_maps" />
-        <activity android:name=".PlannerActivity" />
-        <activity android:name=".ComparisonActivity" />
-        <activity android:name=".DisplayDataActivity" />
-        <activity android:name=".HomeActivity" />
-        <activity
-            android:name=".InputActivity"
-            android:parentActivityName=".MainActivity">
+            android:name=".activities.InputActivity"
+            android:parentActivityName=".activities.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".activities.MainActivity" />
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
