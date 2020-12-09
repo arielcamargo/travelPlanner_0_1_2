@@ -14,13 +14,16 @@ public class RT
     double totalCO2;
     double money;
     double distance;
+    int insurance = 0;
+    int parkingPass = 0;
+    int maintenance = 0;
     String vehicle = "RT";
     public RT(double RTDistance)
     {
         distance = RTDistance;
         setMoney();
     }
-
+    public double getTotalC02(){return avgCO2 * distance  * 10 * 34;}
     public double getMoney()
     {
         return money;
@@ -31,6 +34,7 @@ public class RT
         return distance;
     }
 
+    public double getGas(){return 0.00;}
     public String toString()
     {
         DecimalFormat df = new DecimalFormat("###.##");
@@ -48,9 +52,21 @@ public class RT
         money = 0.00;// + (gasfuelprice / avgmpg * 10 * 34 * distance);
     }
 
+    public int getParkingPass() {
+        return parkingPass;
+    }
+
+    public int getMaintenance()
+    {
+        return maintenance;
+    }
+    public int getInsurance()
+    {
+        return insurance;
+    }
     public double getTotalCO2()
     {
-        totalCO2 = distance * avgCO2;
+        totalCO2 = distance * avgCO2  * 10 * 34;
 
         return totalCO2;
     }

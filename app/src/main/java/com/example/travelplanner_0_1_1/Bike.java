@@ -37,7 +37,7 @@ public class Bike
 
 
     public double getGas(){return 0.00;}
-    public double getTotalC02(){return avgCO2 * distance;}
+    public double getTotalC02(){return avgCO2 * distance  * 10 * 34;}
 
     public String toString()
     {
@@ -49,11 +49,20 @@ public class Bike
                 + "The average time it would take would be " + String.format("%.2f", time) + " minutes.\n");
     }
 
+
     public void setMoney()
     {
         money = insurance + maintenance;// + (gasfuelprice / avgmpg * 10 * 34 * distance);
     }
 
+    public int getParkingPass() {
+        return parkingPass;
+    }
+
+    public int getMaintenance()
+    {
+        return maintenance;
+    }
     public int getInsurance()
     {
         return insurance;

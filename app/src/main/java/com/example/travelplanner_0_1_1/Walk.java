@@ -23,7 +23,7 @@ public class Walk
         setMoney();
     }
 
-    public double getTotalC02(){return avgCO2 * distance;}
+    public double getTotalC02(){return avgCO2 * distance * 10 * 34;}
     public double getMoney()
     {
         return money;
@@ -45,7 +45,14 @@ public class Walk
                 + ".\n You should expect to spend $" + df.format(money) + " per year to drive a " + vehicle
                 + ".\n");
     }
+    public int getParkingPass() {
+        return parkingPass;
+    }
 
+    public int getMaintenance()
+    {
+        return maintenance;
+    }
     public void setMoney()
     {
         money = insurance + maintenance + parkingPass + (gasPrice / avgMpg * 10 * 34 * distance);

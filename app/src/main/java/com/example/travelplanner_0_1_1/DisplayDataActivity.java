@@ -232,7 +232,7 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
         Car car = new Car(getIntent().getDoubleExtra("miles", 0.0));
         displayBackgroundImage.setImageResource(R.drawable.car_image);
         vehicleCostInfoBreakdown.setText("gas: $" + df.format(car.getGas()) + " per year\ninsurance: $" + df.format(car.getInsurance())+
-                " per year\netc: \nper person: (if rideshare)\nAverage cost(min - max): avg cost");
+                " per year\nMaintenance: $" + car.getMaintenance() +"\nParking Pass: $" + car.getParkingPass() +" per year\nTotal Cost: $" + df.format(car.getMoney()) + " per year" );
         vehicleDistanceInfo.setText("distance: " + df.format(car.getDistance()) + " miles");
         vehicleEmissionsInfo.setText("carbon emissions: " + df.format(car.getTotalC02()) + " grams of CO2");
 
@@ -241,19 +241,25 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
 
     private void initMotorcycle() {
         DecimalFormat df = new DecimalFormat("###.##");
+        Motorcycle motorcycle = new Motorcycle(getIntent().getDoubleExtra("miles", 0.0));
         displayBackgroundImage.setImageResource(R.drawable.motorcycle_image);
-        vehicleCostInfoBreakdown.setText("gas: \ninsurance:\netc: \nper person: (if rideshare)\nAverage cost(min - max): avg cost");
-        vehicleDistanceInfo.setText("distance: " + getIntent().getDoubleExtra("miles", 0.0) + " miles");
+        vehicleCostInfoBreakdown.setText("gas: $" + df.format(motorcycle.getGas()) + " per year\ninsurance: $" + df.format(motorcycle.getInsurance())+
+                " per year\nMaintenance: $" + motorcycle.getMaintenance() +"\nParking Pass: $" + motorcycle.getParkingPass() +" per year\nTotal Cost: $" + df.format(motorcycle.getMoney()) + " per year" );
+        vehicleDistanceInfo.setText("distance: " + df.format(motorcycle.getDistance()) + " miles");
+        vehicleEmissionsInfo.setText("carbon emissions: " + df.format(motorcycle.getTotalC02()) + " grams of CO2");
 
         updateRadioGroup();
     }
 
     private void initTransit() {
         DecimalFormat df = new DecimalFormat("###.##");
+        RT rt = new RT(getIntent().getDoubleExtra("miles", 0.0));
         displayBackgroundImage.setImageResource(R.drawable.transit_image);
 
-        vehicleCostInfoBreakdown.setText("gas: \ninsurance:\netc: \nper person: (if rideshare)\nAverage cost(min - max): avg cost");
-        vehicleDistanceInfo.setText("distance: " + getIntent().getDoubleExtra("miles", 0.0) + " miles");
+        vehicleCostInfoBreakdown.setText("gas: $" + df.format(rt.getGas()) + " per year\ninsurance: $" + df.format(rt.getInsurance())+
+                " per year\nMaintenance: $" + rt.getMaintenance() +"\nParking Pass: $" + rt.getParkingPass() +" per year\nTotal Cost: $" + df.format(rt.getMoney()) + " per year" );
+        vehicleDistanceInfo.setText("distance: " + getIntent().getDoubleExtra("miles", 0.0) + " miles one way");
+        vehicleEmissionsInfo.setText("carbon emissions: " + df.format(rt.getTotalC02()) + " grams of CO2 per year");
         updateRadioGroup();
     }
 
@@ -263,7 +269,7 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
         displayBackgroundImage.setImageResource(R.drawable.bike_image);
 
         vehicleCostInfoBreakdown.setText("gas: $" + df.format(bike.getGas()) + " per year\ninsurance: $" + df.format(bike.getInsurance())+
-                " per year\netc: \nper person: (if rideshare)\nAverage cost(min - max): avg cost");
+                " per year\nMaintenance: $" + bike.getMaintenance() +"\nParking Pass: $" + bike.getParkingPass() +" per year\nTotal Cost: $" + df.format(bike.getMoney()) + " per year" );
         vehicleDistanceInfo.setText("distance: " + getIntent().getDoubleExtra("miles", 0.0) + " miles one way");
         vehicleEmissionsInfo.setText("carbon emissions: " + df.format(bike.getTotalC02()) + " grams of CO2 per year");
         updateRadioGroup();
@@ -272,10 +278,13 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
 
     private void initWalk() {
         DecimalFormat df = new DecimalFormat("###.##");
+        Walk walk = new Walk(getIntent().getDoubleExtra("miles", 0.0));
         displayBackgroundImage.setImageResource(R.drawable.walking_image);
 
-        vehicleCostInfoBreakdown.setText("gas: \ninsurance:\netc: \nper person: (if rideshare)\nAverage cost(min - max): avg cost");
-        vehicleDistanceInfo.setText("distance: " + getIntent().getDoubleExtra("miles", 0.0) + " miles");
+        vehicleCostInfoBreakdown.setText("gas: $" + df.format(walk.getGas()) + " per year\ninsurance: $" + df.format(walk.getInsurance())+
+                " per year\nMaintenance: $" + walk.getMaintenance() +"\nParking Pass: $" + walk.getParkingPass() +" per year\nTotal Cost: $" + df.format(walk.getMoney()) + " per year" );
+        vehicleDistanceInfo.setText("distance: " + getIntent().getDoubleExtra("miles", 0.0) + " miles one way");
+        vehicleEmissionsInfo.setText("carbon emissions: " + df.format(walk.getTotalC02()) + " grams of CO2 per year");
         updateRadioGroup();
     }
 

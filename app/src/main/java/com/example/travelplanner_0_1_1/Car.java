@@ -23,10 +23,19 @@ public class Car
             setMoney();
         }
 
-        public double getTotalC02(){return avgCO2 * distance;}
+        public double getTotalC02(){return avgCO2 * distance * 10 * 34;}
         public double getMoney()
         {
             return money;
+        }
+
+        public int getParkingPass() {
+            return parkingPass;
+        }
+
+        public int getMaintenance()
+        {
+            return maintenance;
         }
 
         public double getDistance()
