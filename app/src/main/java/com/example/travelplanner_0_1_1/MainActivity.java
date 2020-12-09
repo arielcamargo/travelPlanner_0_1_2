@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 
+//if you see this message, you've successfully downloaded changes
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button startProgram;
