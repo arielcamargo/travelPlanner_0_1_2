@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -27,14 +26,16 @@
             android:layout_marginTop="160dp"
             android:background="@color/colorWhite"
             android:scaleType="centerCrop"
-            android:src="@drawable/nickname_logo" />
+            android:src="@drawable/nickname_logo"
+            android:contentDescription="@string/sac_state_logo" />
 
         <ImageView
             android:id="@+id/gradient"
             android:layout_width="match_parent"
             android:layout_height="6dp"
             android:scaleType="fitXY"
-            android:src="@drawable/gradient" />
+            android:src="@drawable/gradient"
+            android:contentDescription="@string/gradient"/>
 
         <TextView
             android:id="@+id/appName"
@@ -54,7 +55,8 @@
             android:layout_height="4dp"
             android:rotationY="180"
             android:scaleType="fitXY"
-            android:src="@drawable/gradient" />
+            android:src="@drawable/gradient"
+            android:contentDescription="@string/gradient" />
 
         <ScrollView
             android:id="@+id/infoScrollView"

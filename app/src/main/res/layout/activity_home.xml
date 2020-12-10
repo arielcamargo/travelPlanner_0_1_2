@@ -20,7 +20,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="@color/colorWhite"
-            android:text="Compare plans" />
+            android:text="@string/menu_to_compare"
+            tools:ignore="ButtonStyle" />
 
         <Button
             android:id="@+id/menuToPlanner"
@@ -28,7 +29,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="@color/colorWhite"
-            android:text="plan my commute" />
+            android:text="@string/menu_to_planner"
+            tools:ignore="ButtonStyle" />
 
     </LinearLayout>
 
@@ -36,7 +38,7 @@
         android:id="@+id/menuInfo"
         android:layout_width="395dp"
         android:layout_height="47dp"
-        android:text="Here are the different ways you can get to school. Click on one to get more info about it"
+        android:text="@string/menu_info"
         android:textAlignment="viewStart"
         android:textColor="@color/colorWhite"
         android:textSize="16sp" />

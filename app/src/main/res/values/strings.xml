@@ -44,6 +44,31 @@
         that will reduce the accuracy of our recommendations for you</string>
     <string name="vehicle_btn_bckgrnd_des">image of whichever type this button will send user to</string>
     <string name="select">Select</string>
+    <string name="menu_to_planner">plan my commute</string>
+    <string name="menu_info">Here are the different ways you can get to school. Click on one to get more info about it</string>
+    <string name="menu_to_compare">Compare plans</string>
+    <string name="gradient">gradient</string>
+    <string name="estimate_my_budget">Help me estimate my budget</string>
+    <string name="about_this_app">About this App</string>
+    <string name="create_your_travel_plan">Create your Travel Plan</string>
+    <string name="travel_planner_prompt">If you have not, compare the different plans first before so you can plan the best option for your commute</string>
+    <string name="background">background</string>
+    <string name="vehicle_type_4_txt">electric</string>
+    <string name="vehicle_type_3_txt">hybrid</string>
+    <string name="vehicle_type_2_txt">rideshare</string>
+    <string name="vehicle_type_1_txt">normal</string>
+    <string name="vehicle_info_description">vehicle description, why you should use this vehicle, about 4-5 lines of text max</string>
+    <string name="vehicle_cost_description">Cost</string>
+    <string name="vehicle_cost_info_description">gas: \ninsurance:\netc: \nper person: (if rideshare)\nAverage cost(min - max): avg cost</string>
+    <string name="vehicle_emissions_description">carbon emissions</string>
+    <string name="vehicle_distance_description">distance</string>
+    <string name="display_map_prompt">STARTING POSITION:</string>
+    <string name="from_home">From home</string>
+    <string name="from_sac_state">From Sac State</string>
+    <string name="display_more_info_description">more info about car</string>
+    <string name="compare_this">compare this</string>
+    <string name="add_to_my_plan">add to my plan</string>
+    <string name="show_next_option">Show next option</string>
 
     <string-array name="vehicle_array_subtypes">
         <item>car</item>
