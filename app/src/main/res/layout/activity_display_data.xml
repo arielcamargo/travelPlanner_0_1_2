@@ -77,6 +77,7 @@
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/hornetYellow"
                     android:text="@string/vehicle_type_1_txt"
+                    android:checked="true"
                     android:textColor="@color/colorWhite" />
 
                 <RadioButton
