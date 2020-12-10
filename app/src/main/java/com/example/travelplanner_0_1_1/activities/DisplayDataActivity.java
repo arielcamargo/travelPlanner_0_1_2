@@ -207,7 +207,20 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
         type = vehicleType;
         switch (vehicleType) {
             case "car":
-                initCar();
+                switch(subType) {
+                    case(1):
+                        initCar();
+                        break;
+                    case(2):
+                        initMotorcycle();
+                        break;
+                    case(3):
+                        initBike();
+                        break;
+                    case(4):
+                        initJumpBike();
+                        break;
+                }
                 break;
             case "motorcycle":
                 initMotorcycle();
