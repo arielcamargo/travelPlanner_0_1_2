@@ -15,7 +15,6 @@ public class FetchUrl extends AsyncTask<String, Void, String> {
     private TaskLoadedCallback taskLoadedCallback;
     private String directionMode = "driving";
     private String key = "from home";
-
     private String dist, dur;
 
     public FetchUrl(TaskLoadedCallback taskLoadedCallback) {
@@ -45,6 +44,7 @@ public class FetchUrl extends AsyncTask<String, Void, String> {
         PointsParser parserTask = new PointsParser(this, taskLoadedCallback, directionMode);
         // Invokes the thread for parsing the JSON data
         parserTask.execute(s);
+
     }
 
     private String downloadUrl(String strUrl) throws IOException {
@@ -74,14 +74,14 @@ public class FetchUrl extends AsyncTask<String, Void, String> {
             iStream.close();
             urlConnection.disconnect();
         }
+        if (!data.contains("ZERO_RESULTS")) {
+            //save distance from download
+            dist = data.substring(data.indexOf(" \"distance\""), data.indexOf(" mi\""));
 
-        //save distance from download
-        dist = data.substring(data.indexOf(" \"distance\""), data.indexOf(" mi\""));
+            //save time from download
+            dur = data.substring(data.indexOf(" \"duration\""), data.indexOf(" mins\""));
 
-        //save time from download
-        dur = data.substring(data.indexOf(" \"duration\""), data.indexOf(" mins\""));
-
-
+        }
         return data;
     }
 
@@ -89,8 +89,8 @@ public class FetchUrl extends AsyncTask<String, Void, String> {
         double distance;
         try {
             dist = dist.replaceAll("[^0-9.]", "");
-            distance =  Double.parseDouble(dist);
-        } catch (Exception e){
+            distance = Double.parseDouble(dist);
+        } catch (Exception e) {
             distance = -1;
         }
         return distance;
