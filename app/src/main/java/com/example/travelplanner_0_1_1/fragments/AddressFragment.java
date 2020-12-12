@@ -40,7 +40,8 @@ public class AddressFragment extends Fragment implements OnMapReadyCallback, Tas
     public static final LatLng SAC_STATE_LOC = new LatLng(38.5575016, -121.4276552);
     private Marker homeMarker, sacStateMarker;
     private Polyline directions;
-    private FetchUrl fetchUrl;
+    private FetchUrl fetchUrlFromHome;
+    private FetchUrl fetchUrlFromSac;
 
     private double distance;
 
@@ -87,22 +88,27 @@ public class AddressFragment extends Fragment implements OnMapReadyCallback, Tas
         googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
         UiSettings settings = googleMap.getUiSettings();
-        settings.setAllGesturesEnabled(false);
+        settings.setZoomControlsEnabled(true);
         settings.setMapToolbarEnabled(false);
     }
 
     //Thread will call this to add the polyline to the map
     @Override
-    public void onTaskDone(Object... values) {
-        directions = googleMap.addPolyline((PolylineOptions) values[0]);
+    public void onTaskDone(FetchUrl fetchUrl, Object... values) {
+        if(fetchUrl == fetchUrlFromHome ) {
+            directions = googleMap.addPolyline((PolylineOptions) values[0]);
 
-        Bundle result = new Bundle();
-        distance = fetchUrl.getDistance();
-        result.putDouble("distance", distance);
-        getParentFragmentManager().setFragmentResult("sendDistance", result);
+            Bundle result = new Bundle();
+            distance = fetchUrl.getDistance();
+            result.putDouble("distance", distance);
+            getParentFragmentManager().setFragmentResult("sendDistance", result);
+        } else {
+
+
+        }
     }
 
-    //Listener for when the Parent fragment (Inputfragment) sends data to this fragment
+    //Listener for when the Parent fragment (Input fragment) sends data to this fragment
     //this does not use the navigation component because we aren't moving to and from the fragment
     @Override
     public void onFragmentResult(@NonNull final String requestKey, @NonNull final Bundle result) {
@@ -152,8 +158,11 @@ public class AddressFragment extends Fragment implements OnMapReadyCallback, Tas
 
     //method that is called to create the directions from the home marker to Sac state marker
     private void createDirections() {
-        fetchUrl = new FetchUrl(AddressFragment.this);
-        fetchUrl.execute(getUrl(homeMarker.getPosition(), SAC_STATE_LOC, "driving"), "driving");
+        fetchUrlFromHome = new FetchUrl(AddressFragment.this);
+        fetchUrlFromHome.execute(getUrl(homeMarker.getPosition(), SAC_STATE_LOC, "driving"), "driving", "from home");
+
+        fetchUrlFromSac = new FetchUrl(AddressFragment.this);
+        fetchUrlFromSac.execute(getUrl(SAC_STATE_LOC, homeMarker.getPosition(), "driving"), "driving", "from home");
     }
 
     //used to create the url to be used to get the directions

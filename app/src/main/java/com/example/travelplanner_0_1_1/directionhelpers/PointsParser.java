@@ -20,13 +20,15 @@ public class PointsParser extends AsyncTask<String, Integer, List<List<HashMap<S
 
     private TaskLoadedCallback taskCallback;
     private String directionMode = "driving";
+    private FetchUrl fetchUrl;
 
     public PointsParser(Context mContext, String directionMode) {
         this.taskCallback = (TaskLoadedCallback) mContext;
         this.directionMode = directionMode;
     }
 
-    public PointsParser(TaskLoadedCallback taskCallback, String directionMode) {
+    public PointsParser(FetchUrl fetchUrl, TaskLoadedCallback taskCallback, String directionMode) {
+        this.fetchUrl = fetchUrl;
         this.taskCallback = taskCallback;
         this.directionMode = directionMode;
     }
@@ -89,8 +91,7 @@ public class PointsParser extends AsyncTask<String, Integer, List<List<HashMap<S
 
         // Drawing polyline in the Google Map for the i-th route
         if (lineOptions != null) {
-            //mMap.addPolyline(lineOptions);
-            taskCallback.onTaskDone(lineOptions);
+            taskCallback.onTaskDone(fetchUrl, lineOptions);
 
         } else {
             Log.d(DIR_HELPER, "without Polylines drawn");

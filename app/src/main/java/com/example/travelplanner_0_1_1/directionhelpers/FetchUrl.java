@@ -14,7 +14,11 @@ public class FetchUrl extends AsyncTask<String, Void, String> {
 
     private TaskLoadedCallback taskLoadedCallback;
     private String directionMode = "driving";
-    public double distance = -1;
+    private String key = "from home";
+    private double distance = -1;
+    private int time;
+
+    private String dist, dur;
 
     public FetchUrl(TaskLoadedCallback taskLoadedCallback) {
         this.taskLoadedCallback = taskLoadedCallback;
@@ -25,6 +29,7 @@ public class FetchUrl extends AsyncTask<String, Void, String> {
         // For storing data from web service
         String data = "";
         directionMode = strings[1];
+        key = strings[2];
         try {
             // Fetching the data from web service
             data = downloadUrl(strings[0]);
@@ -39,7 +44,7 @@ public class FetchUrl extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
 
-        PointsParser parserTask = new PointsParser(taskLoadedCallback, directionMode);
+        PointsParser parserTask = new PointsParser(this, taskLoadedCallback, directionMode);
         // Invokes the thread for parsing the JSON data
         parserTask.execute(s);
     }
@@ -72,14 +77,23 @@ public class FetchUrl extends AsyncTask<String, Void, String> {
             urlConnection.disconnect();
         }
 
-        String dist = data.substring(data.indexOf(" \"text\" : \""), data.indexOf(" mi\""));
-        dist = dist.substring(11);
-        distance = Double.parseDouble(dist);
+        //save distance from download
+        dist = data.substring(data.indexOf(" \"text\""), data.indexOf(" mi\""));
+
+        //save time from download
+       dur = data.substring(data.indexOf(" \"duration\""), data.indexOf(" mins\""));
+
 
         return data;
     }
 
-    public double getDistance(){
-        return distance;
+    public double getDistance() {
+        dist = dist.replaceAll("[^0-9.]", "");
+        return Double.parseDouble(dist);
+    }
+
+    public int getTime() {
+        dur = dur.replaceAll("[^0-9.]", "");
+        return Integer.parseInt(dur);
     }
 }
