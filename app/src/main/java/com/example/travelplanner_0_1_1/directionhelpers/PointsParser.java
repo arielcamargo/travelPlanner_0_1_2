@@ -20,6 +20,7 @@ public class PointsParser extends AsyncTask<String, Integer, List<List<HashMap<S
     private final TaskLoadedCallback taskCallback;
     private final String directionMode;
     private final FetchUrl fetchUrl;
+    private String distance, duration;
 
 
     public PointsParser(FetchUrl fetchUrl, TaskLoadedCallback taskCallback, String directionMode) {
@@ -45,6 +46,9 @@ public class PointsParser extends AsyncTask<String, Integer, List<List<HashMap<S
             routes = parser.parse(jObject);
             Log.d(DIR_HELPER, "Executing routes");
             Log.d(DIR_HELPER, routes.toString());
+
+            distance = parser.getDistance(jObject);
+            duration = parser.getDuration(jObject);
 
         } catch (Exception e) {
             Log.d(DIR_HELPER, e.toString());
@@ -87,7 +91,7 @@ public class PointsParser extends AsyncTask<String, Integer, List<List<HashMap<S
 
             // Drawing polyline in the Google Map for the i-th route
             if (lineOptions != null) {
-                taskCallback.onTaskDone(fetchUrl, lineOptions);
+                taskCallback.onTaskDone(fetchUrl, lineOptions, distance, duration);
 
             } else {
                 Log.d(DIR_HELPER, "without Polylines drawn");

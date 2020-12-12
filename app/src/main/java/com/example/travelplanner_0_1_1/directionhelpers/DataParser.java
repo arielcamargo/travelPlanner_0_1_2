@@ -1,6 +1,7 @@
 package com.example.travelplanner_0_1_1.directionhelpers;
 
 import com.google.android.gms.maps.model.LatLng;
+import com.google.gson.JsonObject;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -11,29 +12,30 @@ import java.util.HashMap;
 import java.util.List;
 
 public class DataParser {
-    public List<List<HashMap<String, String>>> parse(JSONObject jObject) {
 
+    public List<List<HashMap<String, String>>> parse(JSONObject jObject) {
         List<List<HashMap<String, String>>> routes = new ArrayList<>();
         JSONArray jRoutes;
         JSONArray jLegs;
         JSONArray jSteps;
         try {
             jRoutes = jObject.getJSONArray("routes");
-            /** Traversing all routes */
+            // Traverse all routes
             for (int i = 0; i < jRoutes.length(); i++) {
                 jLegs = ((JSONObject) jRoutes.get(i)).getJSONArray("legs");
                 List path = new ArrayList<>();
-                /** Traversing all legs */
+
+                // Traverse all legs
                 for (int j = 0; j < jLegs.length(); j++) {
                     jSteps = ((JSONObject) jLegs.get(j)).getJSONArray("steps");
 
-                    /** Traversing all steps */
+                    // Traverse all steps
                     for (int k = 0; k < jSteps.length(); k++) {
                         String polyline = "";
                         polyline = (String) ((JSONObject) ((JSONObject) jSteps.get(k)).get("polyline")).get("points");
                         List<LatLng> list = decodePoly(polyline);
 
-                        /** Traversing all points */
+                        // Traverse all points
                         for (int l = 0; l < list.size(); l++) {
                             HashMap<String, String> hm = new HashMap<>();
                             hm.put("lat", Double.toString((list.get(l)).latitude));
@@ -51,6 +53,31 @@ public class DataParser {
         }
         return routes;
     }
+
+    public String getDistance(JSONObject jsonObject) throws JSONException {
+
+        JSONArray routeArray = jsonObject.getJSONArray("routes");
+        JSONObject routes = routeArray.getJSONObject(0);
+
+        JSONArray newTempARr = routes.getJSONArray("legs");
+        JSONObject newDisTimeOb = newTempARr.getJSONObject(0);
+
+        JSONObject distOb = newDisTimeOb.getJSONObject("distance");
+        return distOb.getString("text");
+    }
+
+    public String getDuration(JSONObject jsonObject) throws JSONException {
+
+        JSONArray routeArray = jsonObject.getJSONArray("routes");
+        JSONObject routes = routeArray.getJSONObject(0);
+
+        JSONArray newTempARr = routes.getJSONArray("legs");
+        JSONObject newDisTimeOb = newTempARr.getJSONObject(0);
+
+        JSONObject timeOb = newDisTimeOb.getJSONObject("duration");
+        return timeOb.getString("text");
+    }
+
 
     private List<LatLng> decodePoly(String encoded) {
 

@@ -15,7 +15,6 @@ public class FetchUrl extends AsyncTask<String, Void, String> {
     private final TaskLoadedCallback taskLoadedCallback;
     private String directionMode = "driving";
     private String key = "from home";
-    private String dist, dur;
 
     public FetchUrl(TaskLoadedCallback taskLoadedCallback) {
         this.taskLoadedCallback = taskLoadedCallback;
@@ -74,30 +73,7 @@ public class FetchUrl extends AsyncTask<String, Void, String> {
             iStream.close();
             urlConnection.disconnect();
         }
-        if (!data.contains("ZERO_RESULTS")) {
-            //save distance from download
-            dist = data.substring(data.indexOf(" \"distance\""), data.indexOf(" mi\""));
 
-            //save time from download
-            dur = data.substring(data.indexOf(" \"duration\""), data.indexOf(" mins\""));
-
-        }
         return data;
-    }
-
-    public double getDistance() {
-        double distance;
-        try {
-            dist = dist.replaceAll("[^0-9.]", "");
-            distance = Double.parseDouble(dist);
-        } catch (Exception e) {
-            distance = -1;
-        }
-        return distance;
-    }
-
-    public int getTime() {
-        dur = dur.replaceAll("[^0-9.]", "");
-        return Integer.parseInt(dur);
     }
 }

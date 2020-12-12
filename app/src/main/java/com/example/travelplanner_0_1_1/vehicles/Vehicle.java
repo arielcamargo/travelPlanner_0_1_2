@@ -69,12 +69,12 @@ public abstract class Vehicle implements TaskLoadedCallback {
         this.context = context;
     }
 
-    public void setDirections(LatLng home, TaskLoadedCallback taskLoadedCallback)  {
-        fetchUrlFromSac = new FetchUrl(this);
-        fetchUrlFromSac.execute(getUrl(home, SAC_STATE_LOC, DIRECTION_OPTIONS[dirSelection]), DIRECTION_OPTIONS[dirSelection], "from home");
-
+    public void setDirections(LatLng home, TaskLoadedCallback taskLoadedCallback) {
         fetchUrlFromHome = new FetchUrl(taskLoadedCallback);
         fetchUrlFromHome.execute(getUrl(SAC_STATE_LOC, home, DIRECTION_OPTIONS[dirSelection]), DIRECTION_OPTIONS[dirSelection], "from Sac");
+
+        fetchUrlFromSac = new FetchUrl(this);
+        fetchUrlFromSac.execute(getUrl(home, SAC_STATE_LOC, DIRECTION_OPTIONS[dirSelection]), DIRECTION_OPTIONS[dirSelection], "from home");
     }
 
 
@@ -96,19 +96,31 @@ public abstract class Vehicle implements TaskLoadedCallback {
     public void onTaskDone(FetchUrl fetchUrl, Object... values) {
         if (fetchUrl == fetchUrlFromSac) {
             dirFromSac = (PolylineOptions) values[0];
-            distFromSac = fetchUrl.getDistance();
-            timeFromSac = fetchUrl.getTime();
+            distFromSac = parseDistance((String) values[1]);
+            timeFromSac = parseDuration((String) values[2]);
         } else {
-            dirFromHome = (PolylineOptions) values[0];
-            distFromHome = fetchUrl.getDistance();
-            timeFromHome = fetchUrl.getTime();
+            updateHomeDir(fetchUrl, values);
         }
     }
 
-    public void updateHomeDir(FetchUrl fetchUrl, Object... values){
+    public void updateHomeDir(FetchUrl fetchUrl, Object... values) {
         dirFromHome = (PolylineOptions) values[0];
-        distFromHome = fetchUrl.getDistance();
-        timeFromHome = fetchUrl.getTime();
+        distFromHome = parseDistance((String) values[1]);
+        timeFromHome = parseDuration((String) values[2]);
+    }
+
+    public double parseDistance(String value) {
+        double distance = -1;
+        value = value.replaceAll("[^0-9.]", "");
+        distance = Double.parseDouble(value);
+        return distance;
+    }
+
+    public int parseDuration(String value) {
+        int duration = -1;
+        value = value.replaceAll("[^0-9.]", "");
+        duration = Integer.parseInt(value);
+        return duration;
     }
 
     public void setSubType(int subType) {
