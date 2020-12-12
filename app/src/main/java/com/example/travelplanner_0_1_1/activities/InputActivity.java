@@ -14,6 +14,7 @@ import com.example.travelplanner_0_1_1.directionhelpers.FetchUrl;
 import com.example.travelplanner_0_1_1.directionhelpers.TaskLoadedCallback;
 import com.example.travelplanner_0_1_1.fragments.AddressFragment;
 import com.example.travelplanner_0_1_1.vehicles.NewCar;
+import com.example.travelplanner_0_1_1.vehicles.Vehicle;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.libraries.places.api.Places;
@@ -23,7 +24,6 @@ import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
 
 import java.util.Arrays;
-import java.util.concurrent.ExecutionException;
 
 public class InputActivity extends AppCompatActivity implements View.OnClickListener, PlaceSelectionListener {
 
@@ -76,8 +76,8 @@ public class InputActivity extends AppCompatActivity implements View.OnClickList
         getHomeAddress.setOnPlaceSelectedListener(this);
         getHomeAddress.requireView().findViewById(R.id.places_autocomplete_clear_button).setOnClickListener(this);
 
-        car = new NewCar(this);
-
+        car = new NewCar();
+        Vehicle.vehicles[0] = car;
     }
 
     @Override
@@ -86,7 +86,10 @@ public class InputActivity extends AppCompatActivity implements View.OnClickList
             case R.id.goToNext:
                 Intent intent = new Intent(this, HomeActivity.class);
 
-                intent.putExtra("miles", sendDouble);
+                Bundle args = new Bundle();
+                args.putDouble("miles", sendDouble);
+
+                intent.putExtra("args", args);
                 startActivity(intent);
                 break;
             case R.id.places_autocomplete_clear_button:
@@ -126,7 +129,7 @@ public class InputActivity extends AppCompatActivity implements View.OnClickList
                 getSupportFragmentManager().setFragmentResult("homeAddress", result);
                 sendDouble = car.getDistFromHome();
             }
-        });
+        }, this);
 
         goToNext.setText(R.string.go);
     }

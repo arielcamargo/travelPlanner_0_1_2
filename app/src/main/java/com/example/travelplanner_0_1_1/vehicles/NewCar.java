@@ -1,12 +1,12 @@
 package com.example.travelplanner_0_1_1.vehicles;
 
-import android.content.Context;
+import android.os.Parcel;
 
 //for the car, motorcycle, and Rt
 public class NewCar extends Vehicle {
 
-    public NewCar(Context context) {
-        super(context);
+    public NewCar() {
+        super();
 
         dirSelection = 0;
 
@@ -21,6 +21,10 @@ public class NewCar extends Vehicle {
         costId = new String[]{"gas", "insurance", "maintenance", "parking pass"};
 
         avgEmissions = 286.68;
+
+    }
+
+    public NewCar(Parcel in){
 
     }
 

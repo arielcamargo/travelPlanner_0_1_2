@@ -1,14 +1,15 @@
 package com.example.travelplanner_0_1_1.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.travelplanner_0_1_1.R;
 import com.example.travelplanner_0_1_1.fragments.VehicleButtonFragment;
+import com.example.travelplanner_0_1_1.vehicles.Vehicle;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -21,6 +22,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private VehicleButtonFragment display4;
     private VehicleButtonFragment display5;
 
+    private Vehicle[] vehicles;
     private final String[] vehicleDisplayOrder = new String[6];
 
     @Override
@@ -28,7 +30,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        userDistance = getIntent().getDoubleExtra("miles", -1);
+       // userDistance = getIntent().getDoubleExtra("miles", -1);
+        Bundle args = getIntent().getBundleExtra("args");
+        userDistance = args.getDouble("miles");
+        vehicles = Vehicle.vehicles;
 
         Button menuToCompare = findViewById(R.id.menuToCompare);
         menuToCompare.setOnClickListener(this);
@@ -56,7 +61,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private void createButtons(VehicleButtonFragment[] fragmentOrder) {
         fragmentOrder[0].setBackgroundImg(R.drawable.car_image);
         fragmentOrder[0].setTitle("Car");
-        fragmentOrder[0].setInfo("click this to get info on car");
+        String dist = vehicles[0].getType();
+        fragmentOrder[0].setInfo("click this to get info on " + dist);
         fragmentOrder[0].setOnClickListener(this);
 
         fragmentOrder[1].setBackgroundImg(R.drawable.motorcycle_image);
@@ -115,7 +121,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                     intent.putExtra("type", vehicleDisplayOrder[2]);
                 else if (view == display3.getVehicleSelect())
                     intent.putExtra("type", vehicleDisplayOrder[3]);
-                else if(view == display4.getVehicleSelect())
+                else if (view == display4.getVehicleSelect())
                     intent.putExtra("type", vehicleDisplayOrder[4]);
                 else
                     intent.putExtra("type", vehicleDisplayOrder[5]);

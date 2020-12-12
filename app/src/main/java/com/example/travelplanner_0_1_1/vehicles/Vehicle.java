@@ -8,11 +8,15 @@ import com.example.travelplanner_0_1_1.directionhelpers.TaskLoadedCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.PolylineOptions;
 
-import java.util.concurrent.ExecutionException;
-
 //this class contains all the common attributes of all the vehicle types
 //protected attributes should not be accessed from outside of vehicles package
 public abstract class Vehicle implements TaskLoadedCallback {
+
+    //TODO: This is a temporary solution to accessing the vehicle class about each and every activity
+    // however this is not the best coding practice. The supposed solution is to pass it through bundles
+    // as a parcelable object which means the vehicle class needs to implement parcelable but that requires
+    // more learning and testing. https://developer.android.com/reference/android/os/Parcelable
+    public static final Vehicle[] vehicles = new Vehicle[6];
 
     public static final LatLng SAC_STATE_LOC = new LatLng(38.5575016, -121.4276552);
 
@@ -59,29 +63,26 @@ public abstract class Vehicle implements TaskLoadedCallback {
     private FetchUrl fetchUrlFromSac;
     private FetchUrl fetchUrlFromHome;
 
-    private Context context;
-
     private PolylineOptions dirFromSac;
     private PolylineOptions dirFromHome;
 
-    public Vehicle(Context context) {
-        //needs the context in order to get api key from values
-        this.context = context;
+    public Vehicle() {
     }
 
-    public void setDirections(LatLng home, TaskLoadedCallback taskLoadedCallback) {
+
+    public void setDirections(LatLng home, TaskLoadedCallback taskLoadedCallback, Context context) {
         fetchUrlFromHome = new FetchUrl(taskLoadedCallback);
-        fetchUrlFromHome.execute(getUrl(SAC_STATE_LOC, home, DIRECTION_OPTIONS[dirSelection]), DIRECTION_OPTIONS[dirSelection], "from Sac");
+        fetchUrlFromHome.execute(getUrl(SAC_STATE_LOC, home, DIRECTION_OPTIONS[dirSelection], context), DIRECTION_OPTIONS[dirSelection], "from Sac");
 
         fetchUrlFromSac = new FetchUrl(this);
-        fetchUrlFromSac.execute(getUrl(home, SAC_STATE_LOC, DIRECTION_OPTIONS[dirSelection]), DIRECTION_OPTIONS[dirSelection], "from home");
+        fetchUrlFromSac.execute(getUrl(home, SAC_STATE_LOC, DIRECTION_OPTIONS[dirSelection], context), DIRECTION_OPTIONS[dirSelection], "from home");
     }
 
 
     //used to create the url to be used to get the directions
     //TODO: https://developers.google.com/maps/documentation/directions/overview#TravelModes
     //research above for the other modes of transportation and options for things like traffic
-    private String getUrl(LatLng origin, LatLng dest, String directionMode) {
+    private String getUrl(LatLng origin, LatLng dest, String directionMode, Context context) {
         String str_origin = "origin=" + origin.latitude + "," + origin.longitude;
         String str_dest = "destination=" + dest.latitude + "," + dest.longitude;
         String mode = "mode=" + directionMode;
@@ -101,6 +102,10 @@ public abstract class Vehicle implements TaskLoadedCallback {
         } else {
             updateHomeDir(fetchUrl, values);
         }
+
+        calculateEmissions();
+        calculateGas();
+        calculateNetCost();
     }
 
     public void updateHomeDir(FetchUrl fetchUrl, Object... values) {
@@ -117,10 +122,19 @@ public abstract class Vehicle implements TaskLoadedCallback {
     }
 
     public int parseDuration(String value) {
-        int duration = -1;
+        int duration = -1, hrDur = 0;
+
+        if (value.contains("hr")) {
+            String hrs = value.substring(0, value.indexOf("hr"));
+            hrs.replaceAll("[^0-9.]", "");
+            hrDur = 60 * Integer.parseInt(hrs);
+            //trim first half
+            value = value.substring(value.indexOf("hr"));
+        }
+
         value = value.replaceAll("[^0-9.]", "");
         duration = Integer.parseInt(value);
-        return duration;
+        return duration + hrDur;
     }
 
     public void setSubType(int subType) {
@@ -138,7 +152,7 @@ public abstract class Vehicle implements TaskLoadedCallback {
     public abstract void calculateGas();
 
     //we can have this made here since its adding up all the fields
-    public void setNetCost() {
+    public void calculateNetCost() {
         netCost = 0;
         for (int i = 0; i < costTypes; i++) {
             netCost += costs[i];

@@ -23,6 +23,7 @@ import com.example.travelplanner_0_1_1.vehicles.Car;
 import com.example.travelplanner_0_1_1.vehicles.JumpBikes;
 import com.example.travelplanner_0_1_1.vehicles.Motorcycle;
 import com.example.travelplanner_0_1_1.vehicles.RT;
+import com.example.travelplanner_0_1_1.vehicles.Vehicle;
 import com.example.travelplanner_0_1_1.vehicles.Walk;
 
 import java.text.DecimalFormat;
@@ -64,6 +65,8 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
     private String[] vehicleDisplayOrder;
     private String type;
 
+    private Vehicle[] vehicles;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +74,8 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
 
         type = getIntent().getStringExtra("type");
         vehicleDisplayOrder = getIntent().getStringArrayExtra("vehicleDisplayOrder");
+
+        vehicles = Vehicle.vehicles;
 
         Car car = new Car(getIntent().getDoubleExtra("miles", 0.0));
         car.setMoney();
@@ -256,7 +261,7 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
         displayBackgroundImage.setImageResource(R.drawable.car_image);
         vehicleCostInfoBreakdown.setText("gas: $" + df.format(car.getGas()) + " per year\ninsurance: $" + df.format(car.getInsurance()) +
                 " per year\nMaintenance: $" + car.getMaintenance() + "\nParking Pass: $" + car.getParkingPass() + " per year\nTotal Cost: $" + df.format(car.getMoney()) + " per year");
-        vehicleDistanceInfo.setText("distance: " + df.format(car.getDistance()) + " miles");
+        vehicleDistanceInfo.setText("distance: " + vehicles[0].getDistFromHome() + " miles");
         vehicleEmissionsInfo.setText("carbon emissions: " + df.format(car.getTotalC02()) + " grams of CO2");
 
         updateRadioGroup();
