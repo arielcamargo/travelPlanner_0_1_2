@@ -23,6 +23,7 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.UiSettings;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
@@ -159,7 +160,7 @@ public class AddressFragment extends Fragment implements OnMapReadyCallback, Tas
     //method that is called to create the directions from the home marker to Sac state marker
     private void createDirections() {
         fetchUrlFromHome = new FetchUrl(AddressFragment.this);
-        fetchUrlFromHome.execute(getUrl(homeMarker.getPosition(), SAC_STATE_LOC, "driving"), "driving", "from home");
+        fetchUrlFromHome.execute(getUrl(homeMarker.getPosition(), SAC_STATE_LOC, "transit"), "transit", "from home");
 
         fetchUrlFromSac = new FetchUrl(AddressFragment.this);
         fetchUrlFromSac.execute(getUrl(SAC_STATE_LOC, homeMarker.getPosition(), "driving"), "driving", "from home");

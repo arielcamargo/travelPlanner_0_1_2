@@ -22,10 +22,6 @@ public class PointsParser extends AsyncTask<String, Integer, List<List<HashMap<S
     private String directionMode = "driving";
     private FetchUrl fetchUrl;
 
-    public PointsParser(Context mContext, String directionMode) {
-        this.taskCallback = (TaskLoadedCallback) mContext;
-        this.directionMode = directionMode;
-    }
 
     public PointsParser(FetchUrl fetchUrl, TaskLoadedCallback taskCallback, String directionMode) {
         this.fetchUrl = fetchUrl;
