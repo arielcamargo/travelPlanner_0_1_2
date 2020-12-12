@@ -2,6 +2,7 @@ package com.example.travelplanner_0_1_1.fragments;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -111,14 +112,13 @@ public class AddressFragment extends Fragment implements OnMapReadyCallback, Fra
                         //animates the marker to move from its previous spot to new spot
                         homeMarker.setTitle(result.getString("addressLoc"));
                         MarkerAnimation.animateMarkerToGB(homeMarker, homePos, new LatLngInterpolator.Linear());
-                        Handler handler = new Handler();
-                        handler.postDelayed(new Runnable() {
-                            //create thread that waits for marker to finish moving in order to update
-                            //directions
-                            public void run() {
-                                directions = googleMap.addPolyline(polylineOptions);
-                            }
-                        }, MarkerAnimation.ANIMATION_DURATION);
+
+                        new Handler(Looper.getMainLooper()).postDelayed(
+                                new Runnable() {
+                                    public void run() {
+                                        directions = googleMap.addPolyline(polylineOptions);
+                                    }
+                                }, MarkerAnimation.ANIMATION_DURATION);
                     }
                 } else {
                     //if the request is to clear the search field

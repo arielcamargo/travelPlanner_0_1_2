@@ -1,6 +1,5 @@
 package com.example.travelplanner_0_1_1.directionhelpers;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -18,9 +17,9 @@ public class PointsParser extends AsyncTask<String, Integer, List<List<HashMap<S
 
     protected final String DIR_HELPER = "dir_helper";
 
-    private TaskLoadedCallback taskCallback;
-    private String directionMode = "driving";
-    private FetchUrl fetchUrl;
+    private final TaskLoadedCallback taskCallback;
+    private final String directionMode;
+    private final FetchUrl fetchUrl;
 
 
     public PointsParser(FetchUrl fetchUrl, TaskLoadedCallback taskCallback, String directionMode) {
@@ -38,7 +37,7 @@ public class PointsParser extends AsyncTask<String, Integer, List<List<HashMap<S
 
         try {
             jObject = new JSONObject(jsonData[0]);
-            Log.d(DIR_HELPER, jsonData[0].toString());
+            Log.d(DIR_HELPER, jsonData[0]);
             DataParser parser = new DataParser();
             Log.d(DIR_HELPER, parser.toString());
 

@@ -12,7 +12,7 @@ import java.net.URL;
 
 public class FetchUrl extends AsyncTask<String, Void, String> {
 
-    private TaskLoadedCallback taskLoadedCallback;
+    private final TaskLoadedCallback taskLoadedCallback;
     private String directionMode = "driving";
     private String key = "from home";
     private String dist, dur;
@@ -30,7 +30,7 @@ public class FetchUrl extends AsyncTask<String, Void, String> {
         try {
             // Fetching the data from web service
             data = downloadUrl(strings[0]);
-            Log.d("mylog", "Background task data " + data.toString());
+            Log.d("mylog", "Background task data " + data);
         } catch (Exception e) {
             Log.d("Background Task", e.toString());
         }
@@ -60,13 +60,13 @@ public class FetchUrl extends AsyncTask<String, Void, String> {
             // Reading data from url
             iStream = urlConnection.getInputStream();
             BufferedReader br = new BufferedReader(new InputStreamReader(iStream));
-            StringBuffer sb = new StringBuffer();
-            String line = "";
+            StringBuilder sb = new StringBuilder();
+            String line;
             while ((line = br.readLine()) != null) {
                 sb.append(line);
             }
             data = sb.toString();
-            Log.d("mylog", "Downloaded URL: " + data.toString());
+            Log.d("mylog", "Downloaded URL: " + data);
             br.close();
         } catch (Exception e) {
             Log.d("mylog", "Exception downloading URL: " + e.toString());
