@@ -8,6 +8,8 @@ import com.example.travelplanner_0_1_1.directionhelpers.TaskLoadedCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.PolylineOptions;
 
+import java.util.concurrent.ExecutionException;
+
 //this class contains all the common attributes of all the vehicle types
 //protected attributes should not be accessed from outside of vehicles package
 public abstract class Vehicle implements TaskLoadedCallback {
@@ -67,13 +69,14 @@ public abstract class Vehicle implements TaskLoadedCallback {
         this.context = context;
     }
 
-    public void setDirections(LatLng home) {
+    public void setDirections(LatLng home, TaskLoadedCallback taskLoadedCallback)  {
         fetchUrlFromSac = new FetchUrl(this);
         fetchUrlFromSac.execute(getUrl(home, SAC_STATE_LOC, DIRECTION_OPTIONS[dirSelection]), DIRECTION_OPTIONS[dirSelection], "from home");
 
-        fetchUrlFromHome = new FetchUrl(this);
+        fetchUrlFromHome = new FetchUrl(taskLoadedCallback);
         fetchUrlFromHome.execute(getUrl(SAC_STATE_LOC, home, DIRECTION_OPTIONS[dirSelection]), DIRECTION_OPTIONS[dirSelection], "from Sac");
     }
+
 
     //used to create the url to be used to get the directions
     //TODO: https://developers.google.com/maps/documentation/directions/overview#TravelModes
@@ -84,9 +87,8 @@ public abstract class Vehicle implements TaskLoadedCallback {
         String mode = "mode=" + directionMode;
         String parameters = str_origin + "&" + str_dest + "&" + mode;
         String output = "json";
-        String url = "https://maps.googleapis.com/maps/api/directions/" + output + "?"
+        return "https://maps.googleapis.com/maps/api/directions/" + output + "?"
                 + parameters + "&key=" + context.getString(R.string.google_maps_key);
-        return url;
     }
 
     //when the setDirections are completed
@@ -101,6 +103,12 @@ public abstract class Vehicle implements TaskLoadedCallback {
             distFromHome = fetchUrl.getDistance();
             timeFromHome = fetchUrl.getTime();
         }
+    }
+
+    public void updateHomeDir(FetchUrl fetchUrl, Object... values){
+        dirFromHome = (PolylineOptions) values[0];
+        distFromHome = fetchUrl.getDistance();
+        timeFromHome = fetchUrl.getTime();
     }
 
     public void setSubType(int subType) {
@@ -191,5 +199,13 @@ public abstract class Vehicle implements TaskLoadedCallback {
 
     public String[] getCons() {
         return cons;
+    }
+
+    public PolylineOptions getDirFromSac() {
+        return dirFromSac;
+    }
+
+    public PolylineOptions getDirFromHome() {
+        return dirFromHome;
     }
 }

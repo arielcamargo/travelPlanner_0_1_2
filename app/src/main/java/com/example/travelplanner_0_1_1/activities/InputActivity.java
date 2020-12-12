@@ -8,10 +8,12 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentResultListener;
 
 import com.example.travelplanner_0_1_1.R;
+import com.example.travelplanner_0_1_1.directionhelpers.FetchUrl;
+import com.example.travelplanner_0_1_1.directionhelpers.TaskLoadedCallback;
 import com.example.travelplanner_0_1_1.fragments.AddressFragment;
+import com.example.travelplanner_0_1_1.vehicles.NewCar;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.libraries.places.api.Places;
@@ -31,6 +33,8 @@ public class InputActivity extends AppCompatActivity implements View.OnClickList
     private AutocompleteSupportFragment getHomeAddress;
     private String address;
     private LatLng addressLatLng;
+
+    private NewCar car;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,12 +75,7 @@ public class InputActivity extends AppCompatActivity implements View.OnClickList
         getHomeAddress.setOnPlaceSelectedListener(this);
         getHomeAddress.requireView().findViewById(R.id.places_autocomplete_clear_button).setOnClickListener(this);
 
-        getSupportFragmentManager().setFragmentResultListener("sendDistance", this, new FragmentResultListener() {
-            @Override
-            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
-                sendDouble = bundle.getDouble("distance");
-            }
-        });
+        car = new NewCar(this);
 
     }
 
@@ -106,19 +105,27 @@ public class InputActivity extends AppCompatActivity implements View.OnClickList
     }
 
     @Override
-    public void onPlaceSelected(@NonNull Place place) {
+    public void onPlaceSelected(@NonNull final Place place) {
         //store address
         address = place.getAddress();
         addressLatLng = place.getLatLng();
 
-        //passes address data to addressFragment through fragment manager
-        Bundle result = new Bundle();
-        result.putString("addressName", place.getName());
-        result.putString("addressLoc", address);
-        result.putDouble("lat", addressLatLng.latitude);
-        result.putDouble("lng", addressLatLng.longitude);
-        //sends address to map to update the map
-        getSupportFragmentManager().setFragmentResult("homeAddress", result);
+        car.setDirections(addressLatLng, new TaskLoadedCallback() {
+            @Override
+            public void onTaskDone(FetchUrl fetchUrl, Object... values) {
+                car.updateHomeDir(fetchUrl, values);
+
+                Bundle result = new Bundle();
+                result.putString("addressName", place.getName());
+                result.putString("addressLoc", address);
+                result.putDouble("lat", addressLatLng.latitude);
+                result.putDouble("lng", addressLatLng.longitude);
+                result.putParcelable("directions", car.getDirFromHome());
+
+                getSupportFragmentManager().setFragmentResult("homeAddress", result);
+                sendDouble = car.getDistFromHome();
+            }
+        });
 
         goToNext.setText(R.string.go);
     }
