@@ -13,8 +13,13 @@ import com.example.travelplanner_0_1_1.R;
 import com.example.travelplanner_0_1_1.directionhelpers.FetchUrl;
 import com.example.travelplanner_0_1_1.directionhelpers.TaskLoadedCallback;
 import com.example.travelplanner_0_1_1.fragments.AddressFragment;
-import com.example.travelplanner_0_1_1.vehicles.NewCar;
+import com.example.travelplanner_0_1_1.vehicles.Bike;
+import com.example.travelplanner_0_1_1.vehicles.Car;
+import com.example.travelplanner_0_1_1.vehicles.JumpBikes;
+import com.example.travelplanner_0_1_1.vehicles.Motorcycle;
+import com.example.travelplanner_0_1_1.vehicles.RT;
 import com.example.travelplanner_0_1_1.vehicles.Vehicle;
+import com.example.travelplanner_0_1_1.vehicles.Walk;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.libraries.places.api.Places;
@@ -27,15 +32,13 @@ import java.util.Arrays;
 
 public class InputActivity extends AppCompatActivity implements View.OnClickListener, PlaceSelectionListener {
 
-    private double sendDouble = -1; //default if none is given
-
     private Button goToNext;
 
     private AutocompleteSupportFragment getHomeAddress;
     private String address;
     private LatLng addressLatLng;
 
-    private NewCar car;
+    private Car car;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,8 +79,13 @@ public class InputActivity extends AppCompatActivity implements View.OnClickList
         getHomeAddress.setOnPlaceSelectedListener(this);
         getHomeAddress.requireView().findViewById(R.id.places_autocomplete_clear_button).setOnClickListener(this);
 
-        car = new NewCar();
+        car = new Car();
         Vehicle.vehicles[0] = car;
+        Vehicle.vehicles[1] = new JumpBikes();
+        Vehicle.vehicles[2] = new Bike();
+        Vehicle.vehicles[3] = new RT();
+        Vehicle.vehicles[4] = new Motorcycle();
+        Vehicle.vehicles[5] = new Walk();
     }
 
     @Override
@@ -86,10 +94,12 @@ public class InputActivity extends AppCompatActivity implements View.OnClickList
             case R.id.goToNext:
                 Intent intent = new Intent(this, HomeActivity.class);
 
-                Bundle args = new Bundle();
-                args.putDouble("miles", sendDouble);
+                for(int i = 1; i <6; i++){
+                    //update directions for other vehicle modes
+                    Vehicle.vehicles[i].setDirections(addressLatLng, this);
 
-                intent.putExtra("args", args);
+                }
+
                 startActivity(intent);
                 break;
             case R.id.places_autocomplete_clear_button:
@@ -98,7 +108,6 @@ public class InputActivity extends AppCompatActivity implements View.OnClickList
                 goToNext.setText(R.string.skip);
                 address = "";
                 addressLatLng = null;
-                sendDouble = -1;
                 getSupportFragmentManager().setFragmentResult("clearMap", new Bundle());
             case R.id.budgetHelper:
                 //todo: create popup that will show the user some guidelines on how to estimate their
@@ -127,7 +136,6 @@ public class InputActivity extends AppCompatActivity implements View.OnClickList
                 result.putParcelable("directions", car.getDirFromHome());
 
                 getSupportFragmentManager().setFragmentResult("homeAddress", result);
-                sendDouble = car.getDistFromHome();
             }
         }, this);
 

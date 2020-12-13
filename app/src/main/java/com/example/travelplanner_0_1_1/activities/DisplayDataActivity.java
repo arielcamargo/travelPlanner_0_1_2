@@ -19,7 +19,6 @@ import android.os.Bundle;
 
 import com.example.travelplanner_0_1_1.R;
 import com.example.travelplanner_0_1_1.vehicles.Bike;
-import com.example.travelplanner_0_1_1.vehicles.Car;
 import com.example.travelplanner_0_1_1.vehicles.JumpBikes;
 import com.example.travelplanner_0_1_1.vehicles.Motorcycle;
 import com.example.travelplanner_0_1_1.vehicles.RT;
@@ -77,8 +76,8 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
 
         vehicles = Vehicle.vehicles;
 
-        Car car = new Car(getIntent().getDoubleExtra("miles", 0.0));
-        car.setMoney();
+        //Car car = new Car(getIntent().getDoubleExtra("miles", 0.0));
+        //car.setMoney();
 
         displayLayout = findViewById(R.id.displayLayout);
 
@@ -105,8 +104,6 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
         vehicleCostInfoBreakdown = findViewById(R.id.vehicleCostInfoBreakdown);
         vehicleEmissionsInfo = findViewById(R.id.vehicleEmissionsInfo);
         vehicleDistanceInfo = findViewById(R.id.vehicleDistanceInfo);
-        //temporary line below
-        vehicleDistanceInfo.setText(type + ", " + car.toString());
 
         mapFragment = getSupportFragmentManager().findFragmentById(R.id.mapFragment);
 
@@ -212,17 +209,17 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
         type = vehicleType;
         switch (vehicleType) {
             case "car":
-                switch(subType) {
-                    case(1):
+                switch (subType) {
+                    case (1):
                         initCar();
                         break;
-                    case(2):
+                    case (2):
                         initMotorcycle();
                         break;
-                    case(3):
+                    case (3):
                         initBike();
                         break;
-                    case(4):
+                    case (4):
                         initJumpBike();
                         break;
                 }
@@ -256,75 +253,91 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void initCar() {
-        DecimalFormat df = new DecimalFormat("###.##");
-        Car car = new Car(getIntent().getDoubleExtra("miles", 0.0));
         displayBackgroundImage.setImageResource(R.drawable.car_image);
-        vehicleCostInfoBreakdown.setText("gas: $" + df.format(car.getGas()) + " per year\ninsurance: $" + df.format(car.getInsurance()) +
-                " per year\nMaintenance: $" + car.getMaintenance() + "\nParking Pass: $" + car.getParkingPass() + " per year\nTotal Cost: $" + df.format(car.getMoney()) + " per year");
-        vehicleDistanceInfo.setText("distance: " + vehicles[0].getDistFromHome() + " miles");
-        vehicleEmissionsInfo.setText("carbon emissions: " + df.format(car.getTotalC02()) + " grams of CO2");
+
+        String cost = String.format("Annual net cost: %.2f", vehicles[0].getNetCost());
+        vehicleCostInfo.setText(cost);
+
+        vehicleCostInfoBreakdown.setText(vehicles[0].costBreakdown());
+        String distance = "distance: " + vehicles[0].getDistFromHome() + " mi";
+        String emissions = "carbon emissions: " + vehicles[0].getNetEmissions() + " grams of CO2";
+
+        vehicleDistanceInfo.setText(distance);
+        vehicleEmissionsInfo.setText(emissions);
 
         updateRadioGroup();
     }
 
     private void initMotorcycle() {
-        DecimalFormat df = new DecimalFormat("###.##");
-        Motorcycle motorcycle = new Motorcycle(getIntent().getDoubleExtra("miles", 0.0));
         displayBackgroundImage.setImageResource(R.drawable.motorcycle_image);
-        vehicleCostInfoBreakdown.setText("gas: $" + df.format(motorcycle.getGas()) + " per year\ninsurance: $" + df.format(motorcycle.getInsurance()) +
-                " per year\nMaintenance: $" + motorcycle.getMaintenance() + "\nParking Pass: $" + motorcycle.getParkingPass() + " per year\nTotal Cost: $" + df.format(motorcycle.getMoney()) + " per year");
-        vehicleDistanceInfo.setText("distance: " + df.format(motorcycle.getDistance()) + " miles");
-        vehicleEmissionsInfo.setText("carbon emissions: " + df.format(motorcycle.getTotalC02()) + " grams of CO2");
+
+        String cost = String.format("Annual net cost: %.2f", vehicles[4].getNetCost());
+        vehicleCostInfo.setText(cost);
+
+        vehicleCostInfoBreakdown.setText(vehicles[4].costBreakdown());
+        String distance = "distance: " + vehicles[4].getDistFromHome() + " mi";
+        String emissions = "carbon emissions: " + vehicles[4].getNetEmissions() + " grams of CO2";
+        vehicleDistanceInfo.setText(distance);
+        vehicleEmissionsInfo.setText(emissions);
 
         updateRadioGroup();
     }
 
     private void initTransit() {
-        DecimalFormat df = new DecimalFormat("###.##");
-        RT rt = new RT(getIntent().getDoubleExtra("miles", 0.0));
         displayBackgroundImage.setImageResource(R.drawable.transit_image);
 
-        vehicleCostInfoBreakdown.setText("gas: $" + df.format(rt.getGas()) + " per year\ninsurance: $" + df.format(rt.getInsurance()) +
-                " per year\nMaintenance: $" + rt.getMaintenance() + "\nParking Pass: $" + rt.getParkingPass() + " per year\nTotal Cost: $" + df.format(rt.getMoney()) + " per year");
-        vehicleDistanceInfo.setText("distance: " + getIntent().getDoubleExtra("miles", 0.0) + " miles one way");
-        vehicleEmissionsInfo.setText("carbon emissions: " + df.format(rt.getTotalC02()) + " grams of CO2 per year");
+        String cost = String.format("Annual net cost: %.2f", vehicles[3].getNetCost());
+        vehicleCostInfo.setText(cost);
+
+        vehicleCostInfoBreakdown.setText(vehicles[3].costBreakdown());
+        String distance = "distance: " + vehicles[3].getDistFromHome() + " mi";
+        String emissions = "carbon emissions: " + vehicles[3].getNetEmissions() + " grams of CO2";
+        vehicleDistanceInfo.setText(distance);
+        vehicleEmissionsInfo.setText(emissions);
         updateRadioGroup();
     }
 
     private void initBike() {
-        DecimalFormat df = new DecimalFormat("###.##");
-        Bike bike = new Bike(getIntent().getDoubleExtra("miles", 0.0));
         displayBackgroundImage.setImageResource(R.drawable.bike_image);
 
-        vehicleCostInfoBreakdown.setText("gas: $" + df.format(bike.getGas()) + " per year\ninsurance: $" + df.format(bike.getInsurance()) +
-                " per year\nMaintenance: $" + bike.getMaintenance() + "\nParking Pass: $" + bike.getParkingPass() + " per year\nTotal Cost: $" + df.format(bike.getMoney()) + " per year");
-        vehicleDistanceInfo.setText("distance: " + getIntent().getDoubleExtra("miles", 0.0) + " miles one way");
-        vehicleEmissionsInfo.setText("carbon emissions: " + df.format(bike.getTotalC02()) + " grams of CO2 per year");
+        String cost = String.format("Annual net cost: %.2f", vehicles[2].getNetCost());
+        vehicleCostInfo.setText(cost);
+
+        vehicleCostInfoBreakdown.setText(vehicles[2].costBreakdown());
+        String distance = "distance: " + vehicles[2].getDistFromHome() + " mi";
+        String emissions = "carbon emissions: " + vehicles[2].getNetEmissions() + " grams of CO2";
+        vehicleDistanceInfo.setText(distance);
+        vehicleEmissionsInfo.setText(emissions);
         updateRadioGroup();
 
     }
 
     private void initWalk() {
-        DecimalFormat df = new DecimalFormat("###.##");
-        Walk walk = new Walk(getIntent().getDoubleExtra("miles", 0.0));
+
         displayBackgroundImage.setImageResource(R.drawable.walking_image);
 
-        vehicleCostInfoBreakdown.setText("gas: $" + df.format(walk.getGas()) + " per year\ninsurance: $" + df.format(walk.getInsurance()) +
-                " per year\nMaintenance: $" + walk.getMaintenance() + "\nParking Pass: $" + walk.getParkingPass() + " per year\nTotal Cost: $" + df.format(walk.getMoney()) + " per year");
-        vehicleDistanceInfo.setText("distance: " + getIntent().getDoubleExtra("miles", 0.0) + " miles one way");
-        vehicleEmissionsInfo.setText("carbon emissions: " + df.format(walk.getTotalC02()) + " grams of CO2 per year");
+        String cost = String.format("Annual net cost: %.2f", vehicles[5].getNetCost());
+        vehicleCostInfo.setText(cost);
+
+        vehicleCostInfoBreakdown.setText(vehicles[5].costBreakdown());
+        String distance = "distance: " + vehicles[5].getDistFromHome() + " mi";
+        String emissions = "carbon emissions: " + vehicles[5].getNetEmissions() + " grams of CO2";
+        vehicleDistanceInfo.setText(distance);
+        vehicleEmissionsInfo.setText(emissions);
         updateRadioGroup();
     }
 
     private void initJumpBike() {
-        DecimalFormat df = new DecimalFormat("###.##");
-        JumpBikes jumpBikes = new JumpBikes(getIntent().getDoubleExtra("miles", 0.0));
         displayBackgroundImage.setImageResource(R.drawable.jump_bike);
 
-        vehicleCostInfoBreakdown.setText("gas: $" + df.format(jumpBikes.getGas()) + " per year\ninsurance: $" + df.format(jumpBikes.getInsurance()) +
-                " per year\nMaintenance: $" + jumpBikes.getMaintenance() + "\nParking Pass: $" + jumpBikes.getParkingPass() + " per year\nTotal Cost: $" + df.format(jumpBikes.getMoney()) + " per year");
-        vehicleDistanceInfo.setText("distance: " + getIntent().getDoubleExtra("miles", 0.0) + " miles one way");
-        vehicleEmissionsInfo.setText("carbon emissions: " + df.format(jumpBikes.getTotalC02()) + " grams of CO2 per year");
+        String cost = String.format("Annual net cost: %.2f", vehicles[1].getNetCost());
+        vehicleCostInfo.setText(cost);
+
+        vehicleCostInfoBreakdown.setText(vehicles[1].costBreakdown());
+        String distance = "distance: " + vehicles[1].getDistFromHome() + " mi";
+        String emissions = "carbon emissions: " + vehicles[1].getNetEmissions() + " grams of CO2";
+        vehicleDistanceInfo.setText(distance);
+        vehicleEmissionsInfo.setText(emissions);
         updateRadioGroup();
     }
 

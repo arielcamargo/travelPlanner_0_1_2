@@ -1,9 +1,9 @@
 package com.example.travelplanner_0_1_1.vehicles;
 
 import java.text.DecimalFormat;
-public class RT
+public class RT extends Vehicle
 {
-    double timeBest;
+    /*double timeBest;
     double timeWorst;
     int monthlyPass = 100;
     int fastMPH = 50;
@@ -99,5 +99,46 @@ public class RT
         }
 
         return timeWorst;
+    }*/
+
+    public RT(){
+        super();
+
+        dirSelection = 3;
+
+        type = "transit";
+
+        subTypes = 2;
+        subTypeId = new String[]{"Bus", "light rail"};
+
+        costTypes = 1;
+        costs = new double[]{100};
+        costId = new String[]{"monthly pass"};
+
+        avgEmissions = 64;
+    }
+
+    @Override
+    public void updateSubType() {
+        switch (subType){
+            case 1:
+                // normal
+                // update variables and calculations for each mode
+                break;
+            case 2:
+                break;
+        }
+    }
+
+    @Override
+    public void calculateEmissions() {
+        netEmissions = (distFromHome + distFromSac) * 10 * 34 * avgEmissions;
+
+
+    }
+
+    @Override
+    public void calculateGas() {
+
     }
 }

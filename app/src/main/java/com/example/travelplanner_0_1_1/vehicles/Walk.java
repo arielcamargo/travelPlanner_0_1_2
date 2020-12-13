@@ -2,9 +2,9 @@ package com.example.travelplanner_0_1_1.vehicles;
 
 import java.text.DecimalFormat;
 
-public class Walk
+public class Walk extends Vehicle
 {
-    int time;
+    /*int time;
     int insurance = 0;
     int maintenance = 0;
     int parkingPass = 0;
@@ -56,5 +56,32 @@ public class Walk
     public void setMoney()
     {
         money = insurance + maintenance + parkingPass + (gasPrice / avgMpg * 10 * 34 * distance);
+    }*/
+
+    public Walk(){
+        super();
+        dirSelection = 1;
+
+        type = "walk";
+
+        costTypes = 0;
+
+        avgEmissions = 0;
+    }
+
+    @Override
+    public void updateSubType() {
+        //do nothing here
+    }
+
+    @Override
+    public void calculateEmissions() {
+        //do nothing here
+
+    }
+
+    @Override
+    public void calculateGas() {
+        //do nothing here
     }
 }

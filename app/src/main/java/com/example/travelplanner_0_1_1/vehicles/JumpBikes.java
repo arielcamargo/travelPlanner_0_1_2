@@ -2,9 +2,9 @@ package com.example.travelplanner_0_1_1.vehicles;
 
 import java.text.DecimalFormat;
 
-public class JumpBikes
+public class JumpBikes extends Vehicle
 {
-    int time;
+    /*int time;
     int maintenance = 0;
     int Pass = 30;
     int MPH = 12;
@@ -58,5 +58,49 @@ public class JumpBikes
 
     public void setMoney() {
         money = distance / MPH * 0.32 * 10 * 54 + 1 * 540;
+    }*/
+    double rent;
+
+    public JumpBikes(){
+        super();
+
+        type = "Jump bike";
+
+        dirSelection = 2;
+
+        subTypes = 1;
+        subTypeId = new String[]{"bike", "scooter"};
+
+        costTypes = 1;
+        costs = new double[]{rent};
+        costId = new String[]{"rental"};
+    }
+
+    @Override
+    public void calculateCosts(){
+        rent = (1 + (timeFromHome + timeFromSac) * 0.32) * 540;
+        costs[0] = rent;
+    }
+
+    @Override
+    public void updateSubType() {
+        switch (subType){
+            case 1:
+                // normal
+                // update variables and calculations for each mode
+                break;
+            case 2:
+                //rideshare
+                break;
+        }
+    }
+
+    @Override
+    public void calculateEmissions() {
+    }
+
+    @Override
+    public void calculateGas() {
+
     }
 }

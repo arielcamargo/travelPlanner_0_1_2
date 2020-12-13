@@ -20,6 +20,7 @@ public abstract class Vehicle implements TaskLoadedCallback {
 
     public static final LatLng SAC_STATE_LOC = new LatLng(38.5575016, -121.4276552);
 
+    //dir selection is which type of direction options want to be used when fetchURL is executed
     protected int dirSelection = 0;
     protected static final String[] DIRECTION_OPTIONS = new String[]{"driving", "walking", "bicycling", "transit"};
 
@@ -40,8 +41,8 @@ public abstract class Vehicle implements TaskLoadedCallback {
     protected int timeFromSac = -1;
     protected int timeFromHome = -1;
 
-    protected double avgMpg = -1;
-    protected double gasCost = -1;
+    protected double avgMpg = 0;
+    protected double gasCost = 0;
 
     //size of costs array
     protected int costTypes = 0;
@@ -55,7 +56,7 @@ public abstract class Vehicle implements TaskLoadedCallback {
     protected double distFromHome = -1;
 
     protected double avgEmissions;
-    protected double nextEmissions;
+    protected double netEmissions;
 
     protected String[] pros;
     protected String[] cons;
@@ -78,6 +79,13 @@ public abstract class Vehicle implements TaskLoadedCallback {
         fetchUrlFromSac.execute(getUrl(home, SAC_STATE_LOC, DIRECTION_OPTIONS[dirSelection], context), DIRECTION_OPTIONS[dirSelection], "from home");
     }
 
+    public void setDirections(LatLng home, Context context) {
+        fetchUrlFromHome = new FetchUrl(this);
+        fetchUrlFromHome.execute(getUrl(SAC_STATE_LOC, home, DIRECTION_OPTIONS[dirSelection], context), DIRECTION_OPTIONS[dirSelection], "from Sac");
+
+        fetchUrlFromSac = new FetchUrl(this);
+        fetchUrlFromSac.execute(getUrl(home, SAC_STATE_LOC, DIRECTION_OPTIONS[dirSelection], context), DIRECTION_OPTIONS[dirSelection], "from home");
+    }
 
     //used to create the url to be used to get the directions
     //TODO: https://developers.google.com/maps/documentation/directions/overview#TravelModes
@@ -105,6 +113,7 @@ public abstract class Vehicle implements TaskLoadedCallback {
 
         calculateEmissions();
         calculateGas();
+        calculateCosts();
         calculateNetCost();
     }
 
@@ -124,6 +133,7 @@ public abstract class Vehicle implements TaskLoadedCallback {
     public int parseDuration(String value) {
         int duration = -1, hrDur = 0;
 
+        //in the case that it takes 1+ hrs to get to campus
         if (value.contains("hr")) {
             String hrs = value.substring(0, value.indexOf("hr"));
             hrs.replaceAll("[^0-9.]", "");
@@ -157,6 +167,25 @@ public abstract class Vehicle implements TaskLoadedCallback {
         for (int i = 0; i < costTypes; i++) {
             netCost += costs[i];
         }
+    }
+
+    public String costBreakdown() {
+        String info = "Cost breakdown:\n";
+        if (costTypes > 0) {
+            for (int i = 0; i < costTypes; i++) {
+                if (i + 1 == costTypes)
+                    info += String.format("%s: \t$%.2f per year", costId[i], costs[i]);
+                else
+                    info += String.format("%s: \t$%.2f per year\n", costId[i], costs[i]);
+            }
+        } else {
+            info += "no costs!";
+        }
+        return info;
+    }
+
+    public void calculateCosts() {
+
     }
 
     public String getType() {
@@ -195,8 +224,8 @@ public abstract class Vehicle implements TaskLoadedCallback {
         return gasCost;
     }
 
-    public double[] getCosts() {
-        return costs;
+    public double getCosts(int i) {
+        return costs[i];
     }
 
     public String[] getCostId() {
@@ -215,8 +244,8 @@ public abstract class Vehicle implements TaskLoadedCallback {
         return distFromHome;
     }
 
-    public double getNextEmissions() {
-        return nextEmissions;
+    public double getNetEmissions() {
+        return netEmissions;
     }
 
     public String[] getPros() {

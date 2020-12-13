@@ -30,9 +30,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-       // userDistance = getIntent().getDoubleExtra("miles", -1);
-        Bundle args = getIntent().getBundleExtra("args");
-        userDistance = args.getDouble("miles");
         vehicles = Vehicle.vehicles;
 
         Button menuToCompare = findViewById(R.id.menuToCompare);
@@ -127,7 +124,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                     intent.putExtra("type", vehicleDisplayOrder[5]);
 
                 intent.putExtra("vehicleDisplayOrder", vehicleDisplayOrder);
-                intent.putExtra("miles", userDistance);
 
                 display0.getVehicleSelect().setEnabled(true);
                 display1.getVehicleSelect().setEnabled(true);
