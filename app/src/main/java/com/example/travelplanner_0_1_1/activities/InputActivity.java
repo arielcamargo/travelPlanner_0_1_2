@@ -127,7 +127,7 @@ public class InputActivity extends AppCompatActivity implements View.OnClickList
         car.setDirections(addressLatLng, new TaskLoadedCallback() {
             @Override
             public void onTaskDone(FetchUrl fetchUrl, Object... values) {
-                car.updateHomeDir(fetchUrl, values);
+                car.updateHomeDir(values);
 
                 Bundle result = new Bundle();
                 result.putString("addressName", place.getName());

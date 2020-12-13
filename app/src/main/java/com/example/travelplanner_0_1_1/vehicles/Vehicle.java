@@ -110,11 +110,24 @@ public abstract class Vehicle implements TaskLoadedCallback {
     @Override
     public void onTaskDone(FetchUrl fetchUrl, Object... values) {
         if (fetchUrl == fetchUrlFromSac) {
-            dirFromSac = (PolylineOptions) values[0];
-            distFromSac = parseDistance((String) values[1]);
-            timeFromSac = parseDuration((String) values[2]);
+            if (values[0] != null) {
+                dirFromSac = (PolylineOptions) values[0];
+                distFromSac = parseDistance((String) values[1]);
+                timeFromSac = parseDuration((String) values[2]);
+            } else {
+                dirFromSac = null;
+                distFromSac = -1;
+                timeFromSac = -1;
+            }
+
         } else {
-            updateHomeDir(fetchUrl, values);
+            if (values[0] != null) {
+                updateHomeDir(values);
+            } else {
+                dirFromHome = null;
+                distFromHome = -1;
+                timeFromHome = -1;
+            }
         }
 
         calculateEmissions();
@@ -123,7 +136,7 @@ public abstract class Vehicle implements TaskLoadedCallback {
         calculateNetCost();
     }
 
-    public void updateHomeDir(FetchUrl fetchUrl, Object... values) {
+    public void updateHomeDir(Object... values) {
         dirFromHome = (PolylineOptions) values[0];
         distFromHome = parseDistance((String) values[1]);
         timeFromHome = parseDuration((String) values[2]);
@@ -208,7 +221,7 @@ public abstract class Vehicle implements TaskLoadedCallback {
         if (netEmissions == 0)
             return "Carbon emissions: NONE!";
         if (netEmissions > 1000)
-            info += String.format("Carbon emissions: %.3fk grams of C02", netEmissions / 1000);
+            info += String.format("Carbon emissions: %fk grams of C02", netEmissions / 1000);
         else
             info += String.format("Carbon emissions: %.3f grams of C02", netEmissions);
         return info;

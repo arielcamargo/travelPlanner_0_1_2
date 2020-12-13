@@ -53,6 +53,9 @@ public class PointsParser extends AsyncTask<String, Integer, List<List<HashMap<S
         } catch (Exception e) {
             Log.d(DIR_HELPER, e.toString());
             e.printStackTrace();
+            distance = "-1";
+            duration = "-1";
+            taskCallback.onTaskDone(fetchUrl, null, distance, duration);
         }
         return routes;
     }
