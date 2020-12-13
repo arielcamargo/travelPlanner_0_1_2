@@ -10,7 +10,7 @@ public class Car extends Vehicle {
 
         type = "car";
 
-        numOfTypes = 4;
+        numOfSubtypes = 4;
         subTypeId = new String[]{"normal", "ride share", "hybrid", "electric"};
 
         avgMpg = 32;

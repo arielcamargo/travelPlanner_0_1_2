@@ -193,6 +193,7 @@
                 tools:ignore="FragmentTagUsage" />
 
             <TableRow
+                android:id="@+id/mapRow"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_horizontal">
@@ -227,7 +228,11 @@
                 android:id="@+id/displayMoreInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/display_more_info_description" />
+                android:fontFamily="@font/lato"
+                android:text="@string/display_more_info_description"
+                android:textAlignment="center"
+                android:textColor="@color/colorBlack"
+                android:textSize="24sp" />
 
             <ImageView
                 android:id="@+id/displayDivider4"

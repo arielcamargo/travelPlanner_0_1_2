@@ -1,5 +1,7 @@
 package com.example.travelplanner_0_1_1.vehicles;
 
+import com.example.travelplanner_0_1_1.R;
+
 public class RT extends Vehicle
 {
     /*double timeBest;
@@ -103,11 +105,15 @@ public class RT extends Vehicle
     public RT(){
         super();
 
+        backgroundId = R.drawable.transit_image;
+        descriptionId = R.string.about_this_app;
+        quickDescriptionId = R.string.app_string_info;
+
         dirSelection = 3;
 
         type = "transit";
 
-        numOfTypes = 2;
+        numOfSubtypes = 2;
         subTypeId = new String[]{"Bus", "light rail"};
 
         numOfCosts = 1;

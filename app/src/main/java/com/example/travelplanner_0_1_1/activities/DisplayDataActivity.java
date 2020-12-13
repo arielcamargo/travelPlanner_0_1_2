@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -14,6 +15,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import android.widget.Spinner;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.os.Bundle;
 
@@ -43,10 +45,13 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
     private int subType = 1;
 
     //text views for displaying all the information
-    private TextView vehicleInfo, vehicleCostInfo, vehicleCostInfoBreakdown, vehicleEmissionsInfo, vehicleDistanceInfo, getVehicleEmissionsInfo;
+    private TextView vehicleInfo, vehicleCostInfo, vehicleCostInfoBreakdown, vehicleEmissionsInfo, vehicleDistanceInfo;
 
     //map fragment for showing the distance
     private Fragment mapFragment;
+
+    private TableRow mapRow;
+
     //button for toggling between distance from home to Sac State
     private Button distanceFromHome, distanceFromSacState;
 
@@ -105,6 +110,8 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
 
         mapFragment = getSupportFragmentManager().findFragmentById(R.id.mapFragment);
 
+        mapRow = findViewById(R.id.mapRow);
+
         distanceFromHome = findViewById(R.id.distanceFromHome);
         distanceFromHome.setOnClickListener(this);
         distanceFromSacState = findViewById(R.id.distanceFromSac);
@@ -125,7 +132,7 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
 
         displayVehicleTitle.setAdapter(adapter);
         displayVehicleTitle.setOnItemSelectedListener(this);
-        displayVehicleTitle.setSelection(indexOf(type));
+        displayVehicleTitle.setSelection(getIndex(type));
 
         //edits all the components based on what vehicle type the user clicked on
         displayData(type);
@@ -139,7 +146,7 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
     ft.commit();
     */
 
-    private int indexOf(String type) {
+    private int getIndex(String type) {
         int i;
         for (i = 0; i < 5; i++) {
             if (vehicleDisplayOrder[i].equalsIgnoreCase(type))
@@ -151,6 +158,7 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onClick(View view) {
         Intent intent;
+        int curr = getIndex(displayVehicleTitle.getSelectedItem().toString().toLowerCase());
         switch (view.getId()) {
             case R.id.vehicleType1:
                 subType = 1;
@@ -172,15 +180,14 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
                 //update map
                 distanceFromHome.setEnabled(false);
                 distanceFromSacState.setEnabled(true);
-                initCar(R.drawable.car_image);
+                updateMap(vehicles[curr].getDirFromHome(), vehicles[curr].getDistFromHome());
 
                 break;
             case R.id.distanceFromSac:
                 //update map but show directions from Sac State
                 distanceFromHome.setEnabled(true);
                 distanceFromSacState.setEnabled(false);
-                initCar(R.drawable.car_image);
-
+                updateMap(vehicles[curr].getDirFromSac(), vehicles[curr].getDistFromSac());
                 break;
             case R.id.displayToComparison:
                 intent = new Intent(this, ComparisonActivity.class);
@@ -209,27 +216,7 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
 
     //method for swapping to whichever mode of transportation necessary
     public void displayData(String vehicleType) {
-        type = vehicleType;
-        switch (vehicleType) {
-            case "car":
-                initCar(R.drawable.car_image);
-                break;
-            case "motorcycle":
-                initMotorcycle(R.drawable.motorcycle_image);
-                break;
-            case "transit":
-                initTransit(R.drawable.transit_image);
-                break;
-            case "bike":
-                initBike(R.drawable.bike_image);
-                break;
-            case "walk":
-                initWalk(R.drawable.walking_image);
-                break;
-            case "jump bike":
-                initJumpBike(R.drawable.jump_bike);
-                break;
-        }
+        setDisplay(getIndex(vehicleType));
     }
 
     @Override
@@ -242,139 +229,92 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
     public void onNothingSelected(AdapterView<?> parent) {
     }
 
-    private void updateMap(PolylineOptions polylineOptions){
-        Bundle result = new Bundle();
-        result.putDouble("lat", homeAddress.latitude);
-        result.putDouble("lng", homeAddress.longitude);
-        result.putParcelable("directions", polylineOptions);
-        getSupportFragmentManager().setFragmentResult("update_directions", result);
-    }
+    private void updateMap(PolylineOptions polylineOptions, Double distance) {
+        if (homeAddress != null && distance != -1) {
+            Bundle result = new Bundle();
+            result.putDouble("lat", homeAddress.latitude);
+            result.putDouble("lng", homeAddress.longitude);
+            result.putParcelable("directions", polylineOptions);
+            getSupportFragmentManager().setFragmentResult("update_directions", result);
 
-    private void initCar(int imgId) {
-        displayBackgroundImage.setImageResource(imgId);
-        vehicleInfo.setText("This is text about Car");
-        vehicleCostInfo.setText(vehicles[0].printNetCost());
-
-        vehicleCostInfoBreakdown.setText(vehicles[0].printCostBreakdown());
-
-        vehicleDistanceInfo.setText(vehicles[0].printDistance());
-        vehicleEmissionsInfo.setText(vehicles[0].printEmissions());
-
-        //for updating the map
-        if(!distanceFromHome.isEnabled())
-            updateMap(vehicles[0].getDirFromHome());
-        else
-            updateMap(vehicles[0].getDirFromSac());
-        updateRadioGroup();
-    }
-
-    private void initMotorcycle(int imgId) {
-        displayBackgroundImage.setImageResource(imgId);
-        vehicleInfo.setText("This is text about Motorcycle");
-
-        vehicleCostInfo.setText(vehicles[4].printNetCost());
-
-        vehicleCostInfoBreakdown.setText(vehicles[4].printCostBreakdown());
-        vehicleDistanceInfo.setText(vehicles[4].printDistance());
-        vehicleEmissionsInfo.setText(vehicles[4].printEmissions());
-
-        updateRadioGroup();
-    }
-
-    private void initTransit(int imgId) {
-        displayBackgroundImage.setImageResource(imgId);
-        vehicleInfo.setText("This is text about Transit");
-
-        vehicleCostInfo.setText(vehicles[3].printNetCost());
-
-        vehicleCostInfoBreakdown.setText(vehicles[3].printCostBreakdown());
-        vehicleDistanceInfo.setText(vehicles[3].printDistance());
-        vehicleEmissionsInfo.setText(vehicles[3].printEmissions());
-        updateRadioGroup();
-    }
-
-    private void initBike(int imgId) {
-        displayBackgroundImage.setImageResource(imgId);
-        vehicleInfo.setText("This is text about Bike");
-
-        vehicleCostInfo.setText(vehicles[2].printNetCost());
-
-        vehicleCostInfoBreakdown.setText(vehicles[2].printCostBreakdown());
-        vehicleDistanceInfo.setText(vehicles[2].printDistance());
-        vehicleEmissionsInfo.setText(vehicles[2].printEmissions());
-        updateRadioGroup();
-
-    }
-
-    private void initWalk(int imgId) {
-
-        displayBackgroundImage.setImageResource(imgId);
-        vehicleInfo.setText("This is text about Walking");
-
-        vehicleCostInfo.setText(vehicles[5].printNetCost());
-
-        vehicleCostInfoBreakdown.setText(vehicles[5].printCostBreakdown());
-
-        vehicleDistanceInfo.setText(vehicles[5].printDistance());
-        vehicleEmissionsInfo.setText(vehicles[5].printEmissions());
-        updateRadioGroup();
-    }
-
-    private void initJumpBike(int imgId) {
-        displayBackgroundImage.setImageResource(imgId);
-
-        vehicleCostInfo.setText(vehicles[1].printNetCost());
-
-        vehicleCostInfoBreakdown.setText(vehicles[1].printCostBreakdown());
-        vehicleDistanceInfo.setText(vehicles[1].printDistance());
-        vehicleEmissionsInfo.setText(vehicles[1].printEmissions());
-        updateRadioGroup();
-    }
-
-    private void updateRadioGroup() {
-        if (type.equals("walk")) {
-            //can add other types to condition up above if no group added
-            displayLayout.removeView(subTypeGroup);
-            displayLayout.removeView(displayDivider2);
-
-        } else {
-            if (subTypeGroup.getParent() == null) {
-                //if radio group missing
-                displayLayout.addView(subTypeGroup, 2);
-                displayLayout.addView(displayDivider2, 3);
+            if (mapRow.getParent() == null) {
+                ViewGroup.LayoutParams params = mapFragment.getView().getLayoutParams();
+                params.height = getResources().getDimensionPixelSize(R.dimen.map_display_height);
+                mapFragment.getView().setLayoutParams(params);
+                //sets it to appropriate index in layout
+                displayLayout.addView(mapRow, (subTypeGroup.getParent() == null ? 9 : 11));
             }
 
-            if (type.equals("car")) {
+        } else {
+            ViewGroup.LayoutParams params = mapFragment.getView().getLayoutParams();
+            params.height = 0;
+            mapFragment.getView().setLayoutParams(params);
 
-                if (vehicleType4.getParent() == null) {
-                    subTypeGroup.addView(vehicleType3);
-                    subTypeGroup.addView(vehicleType4);
+            displayLayout.removeView(mapRow);
+        }
+    }
+
+    private void setDisplay(int type) {
+
+        displayBackgroundImage.setImageResource(vehicles[type].getBackgroundId());
+
+        vehicleInfo.setText(getString(vehicles[type].getDescriptionId()));
+        vehicleCostInfo.setText(vehicles[type].printNetCost());
+
+        vehicleCostInfoBreakdown.setText(vehicles[type].printCostBreakdown());
+
+        vehicleDistanceInfo.setText(vehicles[type].printDistance());
+        vehicleEmissionsInfo.setText(vehicles[type].printEmissions());
+
+        //for updating the map
+        if (!distanceFromHome.isEnabled())
+            updateMap(vehicles[type].getDirFromHome(), vehicles[type].getDistFromHome());
+        else
+            updateMap(vehicles[type].getDirFromSac(), vehicles[type].getDistFromSac());
+        updateRadioGroup(type);
+    }
+
+    private void updateRadioGroup(int type) {
+        int numOfSubtypes = vehicles[type].getNumOfSubtypes();
+        switch (numOfSubtypes) {
+            case 0:
+            default:
+                if (subTypeGroup.getParent() != null) {
+                    displayLayout.removeView(subTypeGroup);
+                    displayLayout.removeView(displayDivider2);
                 }
-                vehicleType1.setText("normal");
-                vehicleType2.setText("ride share");
-                vehicleType3.setText("hybrid");
-                vehicleType4.setText("electric");
-            } else {
+                break;
+            case 2:
+                if (subTypeGroup.getParent() == null) {
+                    displayLayout.addView(subTypeGroup, 2);
+                    displayLayout.addView(displayDivider2, 3);
+                }
                 if (vehicleType4.getParent() != null) {
                     subTypeGroup.removeView(vehicleType3);
                     subTypeGroup.removeView(vehicleType4);
                 }
-                switch (type) {
-                    case "motorcycle":
-                    case "bike":
-                        vehicleType1.setText("normal");
-                        vehicleType2.setText("electric");
-                        break;
-                    case "transit":
-                        vehicleType1.setText("bus");
-                        vehicleType2.setText("light rail");
-                        break;
-                    case "jump bike":
-                        vehicleType1.setText("bike");
-                        vehicleType2.setText("scooter");
-                        break;
+                vehicleType1.setText(vehicles[type].getSubTypeId(0));
+                vehicleType2.setText(vehicles[type].getSubTypeId(1));
+                break;
+            case 4:
+                if (subTypeGroup.getParent() == null) {
+                    displayLayout.addView(subTypeGroup, 2);
+                    displayLayout.addView(displayDivider2, 3);
                 }
-            }
+                if (vehicleType4.getParent() == null) {
+                    subTypeGroup.addView(vehicleType3);
+                    subTypeGroup.addView(vehicleType4);
+                }
+                vehicleType1.setText(vehicles[type].getSubTypeId(0));
+                vehicleType2.setText(vehicles[type].getSubTypeId(1));
+                vehicleType3.setText(vehicles[type].getSubTypeId(2));
+                vehicleType4.setText(vehicles[type].getSubTypeId(3));
+
+
+                break;
+
         }
+
+
     }
 }

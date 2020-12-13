@@ -1,5 +1,7 @@
 package com.example.travelplanner_0_1_1.vehicles;
 
+import com.example.travelplanner_0_1_1.R;
+
 public class JumpBikes extends Vehicle
 {
     /*int time;
@@ -62,11 +64,15 @@ public class JumpBikes extends Vehicle
     public JumpBikes(){
         super();
 
+        backgroundId = R.drawable.jump_bike;
+        descriptionId = R.string.about_this_app;
+        quickDescriptionId = R.string.app_string_info;
+
         type = "Jump bike";
 
         dirSelection = 2;
 
-        numOfTypes = 1;
+        numOfSubtypes = 1;
         subTypeId = new String[]{"bike", "scooter"};
 
         numOfCosts = 1;

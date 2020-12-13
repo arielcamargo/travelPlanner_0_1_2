@@ -35,7 +35,7 @@ public abstract class Vehicle implements TaskLoadedCallback {
 
     protected int subType = 1;
     //max number of subtypes possible values [1, 4]
-    protected int numOfTypes;
+    protected int numOfSubtypes;
     protected String[] subTypeId;
 
     protected int timeFromSac = -1;
@@ -67,6 +67,10 @@ public abstract class Vehicle implements TaskLoadedCallback {
     private PolylineOptions dirFromSac;
     private PolylineOptions dirFromHome;
 
+    protected int backgroundId = R.drawable.car_image;
+    protected int descriptionId = R.string.app_string_info;
+    protected int quickDescriptionId = R.string.app_name;
+
     public Vehicle() {
     }
 
@@ -80,11 +84,13 @@ public abstract class Vehicle implements TaskLoadedCallback {
     }
 
     public void setDirections(LatLng home, Context context) {
-        fetchUrlFromHome = new FetchUrl(this);
-        fetchUrlFromHome.execute(getUrl(SAC_STATE_LOC, home, DIRECTION_OPTIONS[dirSelection], context), DIRECTION_OPTIONS[dirSelection], "from Sac");
+        if (home != null) {
+            fetchUrlFromHome = new FetchUrl(this);
+            fetchUrlFromHome.execute(getUrl(SAC_STATE_LOC, home, DIRECTION_OPTIONS[dirSelection], context), DIRECTION_OPTIONS[dirSelection], "from Sac");
 
-        fetchUrlFromSac = new FetchUrl(this);
-        fetchUrlFromSac.execute(getUrl(home, SAC_STATE_LOC, DIRECTION_OPTIONS[dirSelection], context), DIRECTION_OPTIONS[dirSelection], "from home");
+            fetchUrlFromSac = new FetchUrl(this);
+            fetchUrlFromSac.execute(getUrl(home, SAC_STATE_LOC, DIRECTION_OPTIONS[dirSelection], context), DIRECTION_OPTIONS[dirSelection], "from home");
+        }
     }
 
     //used to create the url to be used to get the directions
@@ -149,7 +155,7 @@ public abstract class Vehicle implements TaskLoadedCallback {
 
     public void setSubType(int subType) {
         //error checking to prevent input greater than max
-        this.subType = Math.max(subType, numOfTypes);
+        this.subType = Math.max(subType, numOfSubtypes);
         updateSubType();
     }
 
@@ -174,8 +180,8 @@ public abstract class Vehicle implements TaskLoadedCallback {
         }
     }
 
-    public String printNetCost(){
-        if(netCost == 0)
+    public String printNetCost() {
+        if (netCost == 0)
             return "Annual net Cost: $0!";
         return String.format("Annual net cost: $%.2f", netCost);
 
@@ -197,26 +203,30 @@ public abstract class Vehicle implements TaskLoadedCallback {
         return info;
     }
 
-    public String printEmissions(){
+    public String printEmissions() {
         String info = "";
-        if(netEmissions == 0)
+        if (netEmissions == 0)
             return "Carbon emissions: NONE!";
-        if(netEmissions > 1000)
-        info += String.format("Carbon emissions: %.3fk grams of C02", netEmissions/1000);
+        if (netEmissions > 1000)
+            info += String.format("Carbon emissions: %.3fk grams of C02", netEmissions / 1000);
         else
             info += String.format("Carbon emissions: %.3f grams of C02", netEmissions);
         return info;
     }
 
-    public String printDistance(){
+    public String printDistance() {
         String info = "";
-        if(distFromSac == -1){
+        if (distFromSac == -1) {
             return "no possible routes found";
         }
         info = String.format("Distance from home: %.2f mi\n", distFromHome);
         info += String.format("Distance from Sac State : %.2f mi", distFromSac);
 
         return info;
+    }
+
+    public String getTitle() {
+        return type.substring(0, 1).toUpperCase() + type.substring(1);
     }
 
     public String getType() {
@@ -227,12 +237,12 @@ public abstract class Vehicle implements TaskLoadedCallback {
         return subType;
     }
 
-    public int getNumOfTypes() {
-        return numOfTypes;
+    public int getNumOfSubtypes() {
+        return numOfSubtypes;
     }
 
-    public String[] getSubTypeId() {
-        return subTypeId;
+    public String getSubTypeId(int i) {
+        return subTypeId[i];
     }
 
     public int getTimeFromSac() {
@@ -293,5 +303,17 @@ public abstract class Vehicle implements TaskLoadedCallback {
 
     public PolylineOptions getDirFromHome() {
         return dirFromHome;
+    }
+
+    public int getBackgroundId() {
+        return backgroundId;
+    }
+
+    public int getDescriptionId() {
+        return descriptionId;
+    }
+
+    public int getQuickDescriptionId() {
+        return quickDescriptionId;
     }
 }

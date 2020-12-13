@@ -65,7 +65,7 @@
     <string name="display_map_prompt">STARTING POSITION:</string>
     <string name="from_home">From home</string>
     <string name="from_sac_state">From Sac State</string>
-    <string name="display_more_info_description">more info about car</string>
+    <string name="display_more_info_description">Additional Info:</string>
     <string name="compare_this">compare this</string>
     <string name="add_to_my_plan">add to my plan</string>
     <string name="show_next_option">Show next option</string>

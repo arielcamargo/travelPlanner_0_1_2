@@ -38,6 +38,7 @@ public class InputActivity extends AppCompatActivity implements View.OnClickList
     private String address;
     private LatLng addressLatLng;
 
+    //used for getting its calculations
     private Car car;
 
     @Override
@@ -81,11 +82,11 @@ public class InputActivity extends AppCompatActivity implements View.OnClickList
 
         car = new Car();
         Vehicle.vehicles[0] = car;
-        Vehicle.vehicles[1] = new JumpBikes();
-        Vehicle.vehicles[2] = new Bike();
+        Vehicle.vehicles[1] = new Bike();
+        Vehicle.vehicles[2] = new JumpBikes();
         Vehicle.vehicles[3] = new RT();
-        Vehicle.vehicles[4] = new Motorcycle();
-        Vehicle.vehicles[5] = new Walk();
+        Vehicle.vehicles[4] = new Walk();
+        Vehicle.vehicles[5] = new Motorcycle();
     }
 
     @Override

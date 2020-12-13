@@ -1,15 +1,21 @@
 package com.example.travelplanner_0_1_1.vehicles;
 
+import com.example.travelplanner_0_1_1.R;
+
 public class Motorcycle extends Vehicle
 {
     public Motorcycle(){
         super();
 
+        backgroundId = R.drawable.motorcycle_image;
+        descriptionId = R.string.about_this_app;
+        quickDescriptionId = R.string.app_string_info;
+
         dirSelection = 0;
 
         type = "Motorcycle";
 
-        numOfTypes = 2;
+        numOfSubtypes = 2;
         subTypeId = new String[]{"normal", "electric"};
 
         avgMpg = 60;

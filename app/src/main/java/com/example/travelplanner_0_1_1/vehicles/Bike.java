@@ -1,5 +1,7 @@
 package com.example.travelplanner_0_1_1.vehicles;
 
+import com.example.travelplanner_0_1_1.R;
+
 public class Bike  extends Vehicle{
     /*double time;
     int insurance = 275;
@@ -78,9 +80,13 @@ public class Bike  extends Vehicle{
 
         dirSelection = 2;
 
+        backgroundId = R.drawable.bike_image;
+        descriptionId = R.string.about_this_app;
+        quickDescriptionId = R.string.app_string_info;
+
         type = "bike";
 
-        numOfTypes = 2;
+        numOfSubtypes = 2;
         subTypeId = new String[]{"normal", "electric"};
 
         numOfCosts = 2;

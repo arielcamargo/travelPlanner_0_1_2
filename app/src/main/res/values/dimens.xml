@@ -1,4 +1,5 @@
 <resources>
     <dimen name="vehicle_btn_margin">16dp</dimen>
     <dimen name="vehicle_btn_length">175dp</dimen>
+    <dimen name="map_display_height">280dp</dimen>
 </resources>
