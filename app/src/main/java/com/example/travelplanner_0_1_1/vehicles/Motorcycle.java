@@ -9,12 +9,12 @@ public class Motorcycle extends Vehicle
 
         type = "Motorcycle";
 
-        subTypes = 2;
+        numOfTypes = 2;
         subTypeId = new String[]{"normal", "electric"};
 
         avgMpg = 60;
 
-        costTypes = 4;
+        numOfCosts = 4;
         costs = new double[]{gasCost, 900, 1000, 44};
         costId = new String[]{"gas", "insurance", "maintenance", "parking pass"};
 

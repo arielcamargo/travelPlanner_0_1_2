@@ -1,7 +1,5 @@
 package com.example.travelplanner_0_1_1.vehicles;
 
-import java.text.DecimalFormat;
-
 public class Walk extends Vehicle
 {
     /*int time;
@@ -64,7 +62,7 @@ public class Walk extends Vehicle
 
         type = "walk";
 
-        costTypes = 0;
+        numOfCosts = 0;
 
         avgEmissions = 0;
     }

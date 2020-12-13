@@ -1,6 +1,5 @@
 package com.example.travelplanner_0_1_1.vehicles;
 
-import java.text.DecimalFormat;
 public class RT extends Vehicle
 {
     /*double timeBest;
@@ -108,10 +107,10 @@ public class RT extends Vehicle
 
         type = "transit";
 
-        subTypes = 2;
+        numOfTypes = 2;
         subTypeId = new String[]{"Bus", "light rail"};
 
-        costTypes = 1;
+        numOfCosts = 1;
         costs = new double[]{100};
         costId = new String[]{"monthly pass"};
 

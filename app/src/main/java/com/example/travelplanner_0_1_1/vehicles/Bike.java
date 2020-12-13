@@ -1,7 +1,5 @@
 package com.example.travelplanner_0_1_1.vehicles;
 
-import java.text.DecimalFormat;
-
 public class Bike  extends Vehicle{
     /*double time;
     int insurance = 275;
@@ -82,10 +80,10 @@ public class Bike  extends Vehicle{
 
         type = "bike";
 
-        subTypes = 2;
+        numOfTypes = 2;
         subTypeId = new String[]{"normal", "electric"};
 
-        costTypes = 2;
+        numOfCosts = 2;
         costs = new double[]{275, 175};
         costId = new String[]{"maintenance", "insurance"};
     }

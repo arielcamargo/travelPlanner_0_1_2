@@ -63,6 +63,8 @@ public class AddressFragment extends Fragment implements OnMapReadyCallback, Fra
         //set up the listeners to listen for when actions want to be sent from Input fragment to this fragment
         getParentFragmentManager().setFragmentResultListener("homeAddress", this, this);
         getParentFragmentManager().setFragmentResultListener("clearMap", this, this);
+        getParentFragmentManager().setFragmentResultListener("update_directions", this, this);
+
     }
 
     //method that creates the map
@@ -120,7 +122,7 @@ public class AddressFragment extends Fragment implements OnMapReadyCallback, Fra
                                     }
                                 }, MarkerAnimation.ANIMATION_DURATION);
                     }
-                } else {
+                } else if (requestKey.equals("clearMap")) {
                     //if the request is to clear the search field
                     if (homeMarker != null) {
                         homeMarker.remove();
@@ -128,6 +130,21 @@ public class AddressFragment extends Fragment implements OnMapReadyCallback, Fra
                     }
                     if (directions != null)
                         directions.remove();
+                } else {
+                    //similar to homeAddress except no animations since camera doesn't move
+                    final LatLng homePos = new LatLng(result.getDouble("lat"), result.getDouble("lng"));
+                    final PolylineOptions polylineOptions = result.getParcelable("directions");
+
+                    if (homeMarker == null) {
+                        homeMarker = googleMap.addMarker(new MarkerOptions().position(homePos).title(result.getString("addressLoc")));
+                        updateCamera(googleMap, homePos);
+                    } else {
+                        //if there is marker
+                        if (directions != null) {
+                            directions.remove(); //clear previous directions
+                        }
+                    }
+                    directions = googleMap.addPolyline(polylineOptions);
                 }
             }
         });

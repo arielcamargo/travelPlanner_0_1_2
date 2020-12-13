@@ -35,7 +35,7 @@ public abstract class Vehicle implements TaskLoadedCallback {
 
     protected int subType = 1;
     //max number of subtypes possible values [1, 4]
-    protected int subTypes;
+    protected int numOfTypes;
     protected String[] subTypeId;
 
     protected int timeFromSac = -1;
@@ -45,7 +45,7 @@ public abstract class Vehicle implements TaskLoadedCallback {
     protected double gasCost = 0;
 
     //size of costs array
-    protected int costTypes = 0;
+    protected int numOfCosts = 0;
     // array for the different costs
     protected double[] costs;
     //how many different costs included ex: insurance = cost[0], maintenance = cost[1], etc...
@@ -149,8 +149,13 @@ public abstract class Vehicle implements TaskLoadedCallback {
 
     public void setSubType(int subType) {
         //error checking to prevent input greater than max
-        this.subType = Math.max(subType, subTypes);
+        this.subType = Math.max(subType, numOfTypes);
         updateSubType();
+    }
+
+    //not abstract but may be overridden by child class to calculate additional costs
+    public void calculateCosts() {
+
     }
 
     //how the subtypes will be calculated
@@ -164,16 +169,24 @@ public abstract class Vehicle implements TaskLoadedCallback {
     //we can have this made here since its adding up all the fields
     public void calculateNetCost() {
         netCost = 0;
-        for (int i = 0; i < costTypes; i++) {
+        for (int i = 0; i < numOfCosts; i++) {
             netCost += costs[i];
         }
     }
 
-    public String costBreakdown() {
-        String info = "Cost breakdown:\n";
-        if (costTypes > 0) {
-            for (int i = 0; i < costTypes; i++) {
-                if (i + 1 == costTypes)
+    public String printNetCost(){
+        if(netCost == 0)
+            return "Annual net Cost: $0!";
+        return String.format("Annual net cost: $%.2f", netCost);
+
+    }
+
+    public String printCostBreakdown() {
+        String info = "";
+        if (numOfCosts > 0) {
+            info = "Cost breakdown:\n";
+            for (int i = 0; i < numOfCosts; i++) {
+                if (i + 1 == numOfCosts)
                     info += String.format("%s: \t$%.2f per year", costId[i], costs[i]);
                 else
                     info += String.format("%s: \t$%.2f per year\n", costId[i], costs[i]);
@@ -184,8 +197,26 @@ public abstract class Vehicle implements TaskLoadedCallback {
         return info;
     }
 
-    public void calculateCosts() {
+    public String printEmissions(){
+        String info = "";
+        if(netEmissions == 0)
+            return "Carbon emissions: NONE!";
+        if(netEmissions > 1000)
+        info += String.format("Carbon emissions: %.3fk grams of C02", netEmissions/1000);
+        else
+            info += String.format("Carbon emissions: %.3f grams of C02", netEmissions);
+        return info;
+    }
 
+    public String printDistance(){
+        String info = "";
+        if(distFromSac == -1){
+            return "no possible routes found";
+        }
+        info = String.format("Distance from home: %.2f mi\n", distFromHome);
+        info += String.format("Distance from Sac State : %.2f mi", distFromSac);
+
+        return info;
     }
 
     public String getType() {
@@ -196,8 +227,8 @@ public abstract class Vehicle implements TaskLoadedCallback {
         return subType;
     }
 
-    public int getSubTypes() {
-        return subTypes;
+    public int getNumOfTypes() {
+        return numOfTypes;
     }
 
     public String[] getSubTypeId() {
@@ -212,8 +243,8 @@ public abstract class Vehicle implements TaskLoadedCallback {
         return timeFromHome;
     }
 
-    public int getCostTypes() {
-        return costTypes;
+    public int getNumOfCosts() {
+        return numOfCosts;
     }
 
     public double getAvgMpg() {

@@ -210,6 +210,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorWhite"
+                    android:enabled="false"
                     android:fontFamily="@font/lato"
                     android:text="@string/from_home" />
 

@@ -18,14 +18,9 @@ import android.widget.TextView;
 import android.os.Bundle;
 
 import com.example.travelplanner_0_1_1.R;
-import com.example.travelplanner_0_1_1.vehicles.Bike;
-import com.example.travelplanner_0_1_1.vehicles.JumpBikes;
-import com.example.travelplanner_0_1_1.vehicles.Motorcycle;
-import com.example.travelplanner_0_1_1.vehicles.RT;
 import com.example.travelplanner_0_1_1.vehicles.Vehicle;
-import com.example.travelplanner_0_1_1.vehicles.Walk;
-
-import java.text.DecimalFormat;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 public class DisplayDataActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
@@ -66,12 +61,15 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
 
     private Vehicle[] vehicles;
 
+    private LatLng homeAddress;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_data);
 
         type = getIntent().getStringExtra("type");
+        homeAddress = getIntent().getParcelableExtra("LatLng");
         vehicleDisplayOrder = getIntent().getStringArrayExtra("vehicleDisplayOrder");
 
         vehicles = Vehicle.vehicles;
@@ -132,6 +130,7 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
         //edits all the components based on what vehicle type the user clicked on
         displayData(type);
 
+
     }
 
     /*
@@ -173,11 +172,15 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
                 //update map
                 distanceFromHome.setEnabled(false);
                 distanceFromSacState.setEnabled(true);
+                initCar(R.drawable.car_image);
+
                 break;
             case R.id.distanceFromSac:
                 //update map but show directions from Sac State
                 distanceFromHome.setEnabled(true);
                 distanceFromSacState.setEnabled(false);
+                initCar(R.drawable.car_image);
+
                 break;
             case R.id.displayToComparison:
                 intent = new Intent(this, ComparisonActivity.class);
@@ -209,35 +212,22 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
         type = vehicleType;
         switch (vehicleType) {
             case "car":
-                switch (subType) {
-                    case (1):
-                        initCar();
-                        break;
-                    case (2):
-                        initMotorcycle();
-                        break;
-                    case (3):
-                        initBike();
-                        break;
-                    case (4):
-                        initJumpBike();
-                        break;
-                }
+                initCar(R.drawable.car_image);
                 break;
             case "motorcycle":
-                initMotorcycle();
+                initMotorcycle(R.drawable.motorcycle_image);
                 break;
             case "transit":
-                initTransit();
+                initTransit(R.drawable.transit_image);
                 break;
             case "bike":
-                initBike();
+                initBike(R.drawable.bike_image);
                 break;
             case "walk":
-                initWalk();
+                initWalk(R.drawable.walking_image);
                 break;
             case "jump bike":
-                initJumpBike();
+                initJumpBike(R.drawable.jump_bike);
                 break;
         }
     }
@@ -252,92 +242,92 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
     public void onNothingSelected(AdapterView<?> parent) {
     }
 
-    private void initCar() {
-        displayBackgroundImage.setImageResource(R.drawable.car_image);
+    private void updateMap(PolylineOptions polylineOptions){
+        Bundle result = new Bundle();
+        result.putDouble("lat", homeAddress.latitude);
+        result.putDouble("lng", homeAddress.longitude);
+        result.putParcelable("directions", polylineOptions);
+        getSupportFragmentManager().setFragmentResult("update_directions", result);
+    }
 
-        String cost = String.format("Annual net cost: %.2f", vehicles[0].getNetCost());
-        vehicleCostInfo.setText(cost);
+    private void initCar(int imgId) {
+        displayBackgroundImage.setImageResource(imgId);
+        vehicleInfo.setText("This is text about Car");
+        vehicleCostInfo.setText(vehicles[0].printNetCost());
 
-        vehicleCostInfoBreakdown.setText(vehicles[0].costBreakdown());
-        String distance = "distance: " + vehicles[0].getDistFromHome() + " mi";
-        String emissions = "carbon emissions: " + vehicles[0].getNetEmissions() + " grams of CO2";
+        vehicleCostInfoBreakdown.setText(vehicles[0].printCostBreakdown());
 
-        vehicleDistanceInfo.setText(distance);
-        vehicleEmissionsInfo.setText(emissions);
+        vehicleDistanceInfo.setText(vehicles[0].printDistance());
+        vehicleEmissionsInfo.setText(vehicles[0].printEmissions());
+
+        //for updating the map
+        if(!distanceFromHome.isEnabled())
+            updateMap(vehicles[0].getDirFromHome());
+        else
+            updateMap(vehicles[0].getDirFromSac());
+        updateRadioGroup();
+    }
+
+    private void initMotorcycle(int imgId) {
+        displayBackgroundImage.setImageResource(imgId);
+        vehicleInfo.setText("This is text about Motorcycle");
+
+        vehicleCostInfo.setText(vehicles[4].printNetCost());
+
+        vehicleCostInfoBreakdown.setText(vehicles[4].printCostBreakdown());
+        vehicleDistanceInfo.setText(vehicles[4].printDistance());
+        vehicleEmissionsInfo.setText(vehicles[4].printEmissions());
 
         updateRadioGroup();
     }
 
-    private void initMotorcycle() {
-        displayBackgroundImage.setImageResource(R.drawable.motorcycle_image);
+    private void initTransit(int imgId) {
+        displayBackgroundImage.setImageResource(imgId);
+        vehicleInfo.setText("This is text about Transit");
 
-        String cost = String.format("Annual net cost: %.2f", vehicles[4].getNetCost());
-        vehicleCostInfo.setText(cost);
+        vehicleCostInfo.setText(vehicles[3].printNetCost());
 
-        vehicleCostInfoBreakdown.setText(vehicles[4].costBreakdown());
-        String distance = "distance: " + vehicles[4].getDistFromHome() + " mi";
-        String emissions = "carbon emissions: " + vehicles[4].getNetEmissions() + " grams of CO2";
-        vehicleDistanceInfo.setText(distance);
-        vehicleEmissionsInfo.setText(emissions);
-
+        vehicleCostInfoBreakdown.setText(vehicles[3].printCostBreakdown());
+        vehicleDistanceInfo.setText(vehicles[3].printDistance());
+        vehicleEmissionsInfo.setText(vehicles[3].printEmissions());
         updateRadioGroup();
     }
 
-    private void initTransit() {
-        displayBackgroundImage.setImageResource(R.drawable.transit_image);
+    private void initBike(int imgId) {
+        displayBackgroundImage.setImageResource(imgId);
+        vehicleInfo.setText("This is text about Bike");
 
-        String cost = String.format("Annual net cost: %.2f", vehicles[3].getNetCost());
-        vehicleCostInfo.setText(cost);
+        vehicleCostInfo.setText(vehicles[2].printNetCost());
 
-        vehicleCostInfoBreakdown.setText(vehicles[3].costBreakdown());
-        String distance = "distance: " + vehicles[3].getDistFromHome() + " mi";
-        String emissions = "carbon emissions: " + vehicles[3].getNetEmissions() + " grams of CO2";
-        vehicleDistanceInfo.setText(distance);
-        vehicleEmissionsInfo.setText(emissions);
-        updateRadioGroup();
-    }
-
-    private void initBike() {
-        displayBackgroundImage.setImageResource(R.drawable.bike_image);
-
-        String cost = String.format("Annual net cost: %.2f", vehicles[2].getNetCost());
-        vehicleCostInfo.setText(cost);
-
-        vehicleCostInfoBreakdown.setText(vehicles[2].costBreakdown());
-        String distance = "distance: " + vehicles[2].getDistFromHome() + " mi";
-        String emissions = "carbon emissions: " + vehicles[2].getNetEmissions() + " grams of CO2";
-        vehicleDistanceInfo.setText(distance);
-        vehicleEmissionsInfo.setText(emissions);
+        vehicleCostInfoBreakdown.setText(vehicles[2].printCostBreakdown());
+        vehicleDistanceInfo.setText(vehicles[2].printDistance());
+        vehicleEmissionsInfo.setText(vehicles[2].printEmissions());
         updateRadioGroup();
 
     }
 
-    private void initWalk() {
+    private void initWalk(int imgId) {
 
-        displayBackgroundImage.setImageResource(R.drawable.walking_image);
+        displayBackgroundImage.setImageResource(imgId);
+        vehicleInfo.setText("This is text about Walking");
 
-        String cost = String.format("Annual net cost: %.2f", vehicles[5].getNetCost());
-        vehicleCostInfo.setText(cost);
+        vehicleCostInfo.setText(vehicles[5].printNetCost());
 
-        vehicleCostInfoBreakdown.setText(vehicles[5].costBreakdown());
-        String distance = "distance: " + vehicles[5].getDistFromHome() + " mi";
-        String emissions = "carbon emissions: " + vehicles[5].getNetEmissions() + " grams of CO2";
-        vehicleDistanceInfo.setText(distance);
-        vehicleEmissionsInfo.setText(emissions);
+        vehicleCostInfoBreakdown.setText(vehicles[5].printCostBreakdown());
+
+        vehicleDistanceInfo.setText(vehicles[5].printDistance());
+        vehicleEmissionsInfo.setText(vehicles[5].printEmissions());
         updateRadioGroup();
     }
 
-    private void initJumpBike() {
-        displayBackgroundImage.setImageResource(R.drawable.jump_bike);
+    private void initJumpBike(int imgId) {
+        displayBackgroundImage.setImageResource(imgId);
 
-        String cost = String.format("Annual net cost: %.2f", vehicles[1].getNetCost());
-        vehicleCostInfo.setText(cost);
+        vehicleCostInfo.setText(vehicles[1].printNetCost());
 
-        vehicleCostInfoBreakdown.setText(vehicles[1].costBreakdown());
-        String distance = "distance: " + vehicles[1].getDistFromHome() + " mi";
-        String emissions = "carbon emissions: " + vehicles[1].getNetEmissions() + " grams of CO2";
-        vehicleDistanceInfo.setText(distance);
-        vehicleEmissionsInfo.setText(emissions);
+        vehicleCostInfoBreakdown.setText(vehicles[1].printCostBreakdown());
+        vehicleDistanceInfo.setText(vehicles[1].printDistance());
+        vehicleEmissionsInfo.setText(vehicles[1].printEmissions());
         updateRadioGroup();
     }
 

@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.travelplanner_0_1_1.R;
 import com.example.travelplanner_0_1_1.fragments.VehicleButtonFragment;
 import com.example.travelplanner_0_1_1.vehicles.Vehicle;
+import com.google.android.gms.maps.model.LatLng;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -25,10 +26,14 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private Vehicle[] vehicles;
     private final String[] vehicleDisplayOrder = new String[6];
 
+    private LatLng homeAddress;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        homeAddress = getIntent().getParcelableExtra("LatLng");
 
         vehicles = Vehicle.vehicles;
 
@@ -124,6 +129,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                     intent.putExtra("type", vehicleDisplayOrder[5]);
 
                 intent.putExtra("vehicleDisplayOrder", vehicleDisplayOrder);
+                intent.putExtra("LatLng", homeAddress);
 
                 display0.getVehicleSelect().setEnabled(true);
                 display1.getVehicleSelect().setEnabled(true);

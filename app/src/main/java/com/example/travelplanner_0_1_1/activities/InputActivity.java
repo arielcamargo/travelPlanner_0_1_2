@@ -97,9 +97,9 @@ public class InputActivity extends AppCompatActivity implements View.OnClickList
                 for(int i = 1; i <6; i++){
                     //update directions for other vehicle modes
                     Vehicle.vehicles[i].setDirections(addressLatLng, this);
-
                 }
 
+                intent.putExtra("LatLng", addressLatLng);
                 startActivity(intent);
                 break;
             case R.id.places_autocomplete_clear_button:

@@ -1,7 +1,5 @@
 package com.example.travelplanner_0_1_1.vehicles;
 
-import android.os.Parcel;
-
 //for the car, motorcycle, and Rt
 public class Car extends Vehicle {
 
@@ -12,12 +10,12 @@ public class Car extends Vehicle {
 
         type = "car";
 
-        subTypes = 4;
+        numOfTypes = 4;
         subTypeId = new String[]{"normal", "ride share", "hybrid", "electric"};
 
         avgMpg = 32;
 
-        costTypes = 4;
+        numOfCosts = 4;
         costs = new double[]{gasCost, 1462, 368, 178};
         costId = new String[]{"gas", "insurance", "maintenance", "parking pass"};
 

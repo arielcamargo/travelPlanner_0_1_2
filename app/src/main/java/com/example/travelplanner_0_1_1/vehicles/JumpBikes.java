@@ -1,7 +1,5 @@
 package com.example.travelplanner_0_1_1.vehicles;
 
-import java.text.DecimalFormat;
-
 public class JumpBikes extends Vehicle
 {
     /*int time;
@@ -68,10 +66,10 @@ public class JumpBikes extends Vehicle
 
         dirSelection = 2;
 
-        subTypes = 1;
+        numOfTypes = 1;
         subTypeId = new String[]{"bike", "scooter"};
 
-        costTypes = 1;
+        numOfCosts = 1;
         costs = new double[]{rent};
         costId = new String[]{"rental"};
     }
