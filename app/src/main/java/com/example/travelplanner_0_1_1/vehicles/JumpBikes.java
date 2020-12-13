@@ -60,6 +60,7 @@ public class JumpBikes extends Vehicle
         money = distance / MPH * 0.32 * 10 * 54 + 1 * 540;
     }*/
     double rent;
+    double avgSpeed = 14;
 
     public JumpBikes(){
         super();
@@ -82,7 +83,7 @@ public class JumpBikes extends Vehicle
 
     @Override
     public void calculateCosts(){
-        rent = (1 + (timeFromHome + timeFromSac) * 0.32) * 540;
+        rent = (1 + (timeFromHome + timeFromSac) * 0.32 / avgSpeed) * 340;
         costs[0] = rent;
     }
 

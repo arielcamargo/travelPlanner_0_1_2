@@ -89,6 +89,7 @@
                     android:layout_weight="1"
                     android:buttonTint="@color/colorWhite"
                     android:text="cost"
+                    android:checked="true"
                     android:textColor="@color/colorWhite" />
 
                 <RadioButton

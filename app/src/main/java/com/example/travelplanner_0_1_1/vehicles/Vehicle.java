@@ -7,6 +7,7 @@ import com.example.travelplanner_0_1_1.directionhelpers.FetchUrl;
 import com.example.travelplanner_0_1_1.directionhelpers.TaskLoadedCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.PolylineOptions;
+import java.text.DecimalFormat;
 
 //this class contains all the common attributes of all the vehicle types
 //protected attributes should not be accessed from outside of vehicles package
@@ -194,21 +195,24 @@ public abstract class Vehicle implements TaskLoadedCallback {
     }
 
     public String printNetCost() {
+        DecimalFormat tf = new DecimalFormat("##,###.00");
         if (netCost == 0)
             return "Annual net Cost: $0!";
-        return String.format("Annual net cost: $%.2f", netCost);
+        return String.format("Annual net cost: $%s", tf.format(netCost));
 
     }
 
     public String printCostBreakdown() {
         String info = "";
+
         if (numOfCosts > 0) {
             info = "Cost breakdown:\n";
+            DecimalFormat tf = new DecimalFormat("##,###.00");
             for (int i = 0; i < numOfCosts; i++) {
                 if (i + 1 == numOfCosts)
-                    info += String.format("%s: \t$%.2f per year", costId[i], costs[i]);
+                    info += String.format("%s: \t$%s per year", costId[i], tf.format(costs[i]));
                 else
-                    info += String.format("%s: \t$%.2f per year\n", costId[i], costs[i]);
+                    info += String.format("%s: \t$%s per year\n", costId[i], tf.format(costs[i]));
             }
         } else {
             info += "no costs!";
@@ -221,9 +225,10 @@ public abstract class Vehicle implements TaskLoadedCallback {
         if (netEmissions == 0)
             return "Carbon emissions: NONE!";
         if (netEmissions > 1000)
-            info += String.format("Carbon emissions: %fk grams of C02", netEmissions / 1000);
+
+            info += String.format("Carbon emissions: %.2fk grams of C02", netEmissions / 1000);
         else
-            info += String.format("Carbon emissions: %.3f grams of C02", netEmissions);
+            info += String.format("Carbon emissions: %.2f grams of C02", netEmissions);
         return info;
     }
 
