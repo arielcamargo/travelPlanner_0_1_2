@@ -1,97 +1,103 @@
 package com.example.travelplanner_0_1_1.activities;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RadioButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.travelplanner_0_1_1.R;
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.BarGraphSeries;
+import com.jjoe64.graphview.series.DataPoint;
 
 public class ComparisonActivity extends AppCompatActivity implements View.OnClickListener {
-    //TODO: Get distance into ComparisonActivity.java,
-    // the current commented out code below and the inits don't work atm.
+    //TODO: Get distance into ComparisonActivity.java
+
+
+    //TODO: Need to figure out how to import data
 
     //private double distance = getIntent().getDoubleExtra("miles", 0.0);
 
-    //Car variables
-    private double carTotalPrice= -1;
-    private double carTotalCO2= -1;
-    private double carDistance= -1;
+    private RadioButton compareByCost, compareByDistance, compareByEmissions;
 
-    //Motorcycle variables
-    private double motorcycleTotalPrice= -1;
-    private double motorcycleTotalCO2= -1;
-    private double motorCycleDistance= -1;
+    private int spacingLength = 2;
 
-    //Bike variables
-    private double bikeTotalPrice= -1;
-    private double bikeTotalCO2= -1;
-    private double bikeDistance= -1;
-
-    //RT Variables
-    private double rtTotalPrice= -1;
-    private double rtTotalCO2= -1;
-    private double rtDistance= -1;
-
-    //Walk variables
-    private double walkTotalPrice= -1;
-    private double walkTotalCO2= -1;
-    private double walkDistance= -1;
+    GraphView graphview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comparison);
-        /*initCar();
-        //Log.e("MyTag", Double.toString(carTotalPrice));
-        initMotorcycle();
-        initBike();
-        initRT();
-        initWalk();*/
+        compareByCost = findViewById(R.id.compareByCost);
+        compareByCost.setOnClickListener(this);
+        compareByDistance = findViewById(R.id.compareByDistance);
+        compareByDistance.setOnClickListener(this);
+        compareByEmissions = findViewById(R.id.compareByEmissions);
+        compareByEmissions.setOnClickListener(this);
+
+        graphview = (GraphView) findViewById(R.id.comparisonGraph);
+        updateBarGraph("JumpBike", "Bike", 6, 6);
     }
 
     @Override
-    public void onClick(View v) {
-
+    public void onClick(View view)
+    {
+        switch (view.getId())
+        {
+            case R.id.compareByCost:
+                updateBarGraph("JumpBike", "Bike", 6, 6);
+                break;
+            case R.id.compareByDistance:
+                updateBarGraph("Car", "Bike", 1, 2);
+                break;
+            case R.id.compareByEmissions:
+                updateBarGraph("RT", "Bike", 10, 5);
+                break;
+        }
     }
 
-    /*private void initCar()
+    public void updateBarGraph(String leftString, String rightString, double value1, double value2)
     {
-        Car car = new Car(distance);
-        carTotalPrice = car.getMoney();
-        carTotalCO2 = car.getTotalC02();
-        carDistance = car.getDistance();
+        graphview = (GraphView) findViewById(R.id.comparisonGraph);
+        graphview.removeAllSeries();
+        BarGraphSeries<DataPoint> baseGraph = new BarGraphSeries<DataPoint>(new DataPoint[]
+                {
+                        new DataPoint(0,0),
+                }
+        );
+        graphview.addSeries(baseGraph);
+
+        BarGraphSeries<DataPoint> firstGraph = new BarGraphSeries<DataPoint>(new DataPoint[]
+                {
+                        new DataPoint(1,value1)
+                }
+        );
+        firstGraph.setColor(Color.RED);
+        firstGraph.setSpacing(spacingLength);
+        firstGraph.setAnimated(true);
+        firstGraph.setTitle(leftString);
+        graphview.addSeries(firstGraph);
+
+        BarGraphSeries<DataPoint> secondGraph = new BarGraphSeries<DataPoint>(new DataPoint[]
+                {
+                        new DataPoint(2,value2)
+                }
+        );
+        secondGraph.setColor(Color.GREEN);
+        secondGraph.setSpacing(spacingLength);
+        secondGraph.setAnimated(true);
+        secondGraph.setTitle(rightString);
+        graphview.addSeries(secondGraph);
+
+        BarGraphSeries<DataPoint> baseGraph2 = new BarGraphSeries<DataPoint>(new DataPoint[]
+                {
+                        new DataPoint(4,0),
+                }
+        );
+        graphview.addSeries(baseGraph2);
     }
 
-    private void initMotorcycle()
-    {
-        Motorcycle motorcycle = new Motorcycle(distance);
-        motorcycleTotalPrice = motorcycle.getMoney();
-        motorcycleTotalCO2 = motorcycle.getTotalC02();
-        motorCycleDistance = motorcycle.getDistance();
-    }
 
-    private void initBike()
-    {
-        Bike bike = new Bike(distance);
-        bikeTotalPrice = bike.getMoney();
-        bikeTotalCO2 = bike.getTotalC02();
-        bikeDistance = bike.getDistance();
-    }
-
-    private void initRT()
-    {
-        RT rt = new RT(distance);
-        rtTotalPrice = rt.getMoney();
-        rtTotalCO2 = rt.getTotalCO2();
-        rtDistance = rt.getDistance();
-    }
-
-    private void initWalk()
-    {
-        Walk walk = new Walk(distance);
-        walkTotalPrice = walk.getMoney();
-        walkTotalCO2 = walk.getTotalC02();
-        walkDistance = walk.getDistance();
-    }*/
 }
