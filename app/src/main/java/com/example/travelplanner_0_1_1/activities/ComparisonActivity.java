@@ -8,6 +8,7 @@ import android.widget.RadioButton;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.travelplanner_0_1_1.R;
+import com.example.travelplanner_0_1_1.vehicles.Vehicle;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
@@ -25,6 +26,8 @@ public class ComparisonActivity extends AppCompatActivity implements View.OnClic
     private int spacingLength = 2;
 
     GraphView graphview;
+    private Vehicle[] vehicles;
+    private String[] vehicleDisplayOrder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,9 @@ public class ComparisonActivity extends AppCompatActivity implements View.OnClic
         compareByEmissions = findViewById(R.id.compareByEmissions);
         compareByEmissions.setOnClickListener(this);
 
+        vehicles = Vehicle.vehicles;
+        vehicleDisplayOrder = getIntent().getStringArrayExtra("vehicleDisplayOrder");
+
         graphview = (GraphView) findViewById(R.id.comparisonGraph);
         updateBarGraph("JumpBike", "Bike", 6, 6);
     }
@@ -47,7 +53,7 @@ public class ComparisonActivity extends AppCompatActivity implements View.OnClic
         switch (view.getId())
         {
             case R.id.compareByCost:
-                updateBarGraph("JumpBike", "Bike", 6, 6);
+                updateBarGraph("JumpBike", "Bike", 10, 200);
                 break;
             case R.id.compareByDistance:
                 updateBarGraph("Car", "Bike", 1, 2);
@@ -62,12 +68,12 @@ public class ComparisonActivity extends AppCompatActivity implements View.OnClic
     {
         graphview = (GraphView) findViewById(R.id.comparisonGraph);
         graphview.removeAllSeries();
-        BarGraphSeries<DataPoint> baseGraph = new BarGraphSeries<DataPoint>(new DataPoint[]
+        /*BarGraphSeries<DataPoint> baseGraph = new BarGraphSeries<DataPoint>(new DataPoint[]
                 {
                         new DataPoint(0,0),
                 }
         );
-        graphview.addSeries(baseGraph);
+        graphview.addSeries(baseGraph);*/
 
         BarGraphSeries<DataPoint> firstGraph = new BarGraphSeries<DataPoint>(new DataPoint[]
                 {
@@ -91,12 +97,12 @@ public class ComparisonActivity extends AppCompatActivity implements View.OnClic
         secondGraph.setTitle(rightString);
         graphview.addSeries(secondGraph);
 
-        BarGraphSeries<DataPoint> baseGraph2 = new BarGraphSeries<DataPoint>(new DataPoint[]
-                {
-                        new DataPoint(4,0),
-                }
-        );
-        graphview.addSeries(baseGraph2);
+        graphview.getViewport().setXAxisBoundsManual(true);
+        graphview.getViewport().setYAxisBoundsManual(true);
+        graphview.getViewport().setMinY(0.0);
+        graphview.getViewport().setMaxY((double)(value1 + value2));
+        graphview.getViewport().setMinX(0.5);
+        graphview.getViewport().setMaxX(2.5);
     }
 
 
