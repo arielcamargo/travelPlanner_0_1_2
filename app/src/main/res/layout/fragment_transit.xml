@@ -6,7 +6,7 @@
     tools:context=".fragments.transportation.TransitFragment">
     
     
-    <ImageView
+   <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scaleType="fitXY"
@@ -50,7 +50,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="~Reduces Air Pollution "
+        android:text="@string/reduces_air_pollution"
         android:layout_marginTop="250dp"
         android:textColor="#f0e1b0"
         android:textSize="15sp"
@@ -78,29 +78,29 @@
         android:layout_height="50dp"
         android:layout_marginTop="200dp"
         android:layout_marginLeft="220dp"
-        android:text="~Limited Capacity"
+        android:text="@string/limited_capacity"
         android:textColor="#f0e1b0"
         android:gravity="center_vertical"
         android:textSize="15sp"
-        />
+        android:layout_marginStart="220dp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginTop="250dp"
         android:layout_marginLeft="220dp"
-        android:text="~Possible Time Constraints (e.g delays, schedule conflicts)"
+        android:text="@string/possible_time_constraints_e_g_delays_schedule_conflicts"
         android:textColor="#f0e1b0"
         android:gravity="center_vertical"
         android:textSize="15sp"
-        />
+        android:layout_marginStart="220dp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="215dp"
         android:layout_marginTop="373dp"
         android:background="#043927"
-        android:text=" Additional Information"
+        android:text="@string/additional_information"
         android:textStyle="bold"
         android:textColor="#f0e1b0"
         android:textSize="20sp"
@@ -111,54 +111,54 @@
         android:layout_height="20dp"
         android:layout_marginTop="405dp"
         android:layout_marginLeft="10dp"
-        android:text="Bus Services:"
+        android:text="@string/bus_services"
         android:gravity="center_vertical"
         android:textColor="#f0e1b0"
         android:textSize="15sp"
-        />
+        android:layout_marginStart="10dp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="25dp"
         android:layout_marginTop="430dp"
         android:layout_marginLeft="20dp"
-        android:text="~Estimated to save over 1.4 billion gallons of gas"
+        android:text="@string/estimated_to_save_over_1_4_billion_gallons_of_gas"
         android:gravity="center_vertical"
         android:textColor="#f0e1b0"
         android:textSize="15sp"
-        />
+        android:layout_marginStart="20dp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="455dp"
         android:layout_marginLeft="20dp"
-        android:text="~Estimated to decrease carbon dioxide emissions by 1.5 million tons each year"
+        android:text="@string/estimated_to_decrease_carbon_dioxide_emissions_by_1_5_million_tons_each_year"
         android:gravity="center_vertical"
         android:textColor="#f0e1b0"
         android:textSize="15sp"
-        />
+        android:layout_marginStart="20dp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:layout_marginTop="505dp"
         android:layout_marginLeft="10dp"
-        android:text="CSUS Shuttle Services:"
+        android:text="@string/csus_shuttle_services"
         android:gravity="center_vertical"
         android:textColor="#f0e1b0"
         android:textSize="15sp"
-        />
+        android:layout_marginStart="10dp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="530dp"
         android:layout_marginLeft="20dp"
-        android:text="A convenient way to get around campus. Available for any student or employee with their OneCard present."
+        android:text="@string/a_convenient_way_to_get_around_campus_available_for_any_student_or_employee_with_their_onecard_present"
         android:gravity="center_vertical"
         android:textColor="#f0e1b0"
         android:textSize="15sp"
-        />
+        android:layout_marginStart="20dp" />
 
 </FrameLayout>
