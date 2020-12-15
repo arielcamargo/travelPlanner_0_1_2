@@ -69,6 +69,29 @@
     <string name="compare_this">compare this</string>
     <string name="add_to_my_plan">add to my plan</string>
     <string name="show_next_option">Show next option</string>
+    
+        <string name="pros">Pros:</string>
+    <string name="cons">Cons:</string>
+    <string name="reduces_traffic_congestion">~Reduces Traffic Congestion</string>
+    <string name="electric_cars_are_more_environmentally_friendly_as_it_produces_no_carbon_emissions_ev_charging_stations_are_available_on_campus">Electric cars are more environmentally friendly as it produces no carbon emissions. EV Charging Stations are available on campus.</string>
+    <string name="electric_vehicles_ev">Electric Vehicles (EV):</string>
+    <string name="carpooling_allows_you_to_share_the_costs_with_a_friend_csus_offers_carpooling_permits_and_prime_parking_spaces">Carpooling allows you to share the costs with a friend. CSUS offers carpooling permits and prime parking spaces.</string>
+    <string name="carpooling">Carpooling:</string>
+    <string name="the_toxic_remains_of_its_battery_plastics_are_placed_into_landfills">~The toxic remains of its battery/plastics are placed into landfills.</string>
+    <string name="carbon_emissions_emitted">~Carbon Emissions Emitted</string>
+    <string name="traffic_congestion">~Traffic Congestion</string>
+    <string name="flexibility_used_at_one_s_convenience">~Flexibility: Used at One’s Convenience</string>
+    <string name="availability">~Availability</string>
+    <string name="option_to_carpool">~Option to Carpool</string>
+    <string name="reduces_air_pollution">~Reduces Air Pollution</string>
+    <string name="limited_capacity">~Limited Capacity</string>
+    <string name="possible_time_constraints_e_g_delays_schedule_conflicts">~Possible Time Constraints (e.g delays, schedule conflicts)</string>
+    <string name="additional_information">Additional Information</string>
+    <string name="bus_services">Bus Services:</string>
+    <string name="estimated_to_save_over_1_4_billion_gallons_of_gas">~Estimated to save over 1.4 billion gallons of gas</string>
+    <string name="estimated_to_decrease_carbon_dioxide_emissions_by_1_5_million_tons_each_year">~Estimated to decrease carbon dioxide emissions by 1.5 million tons each year</string>
+    <string name="csus_shuttle_services">CSUS Shuttle Services:</string>
+    <string name="a_convenient_way_to_get_around_campus_available_for_any_student_or_employee_with_their_onecard_present">A convenient way to get around campus. Available for any student or employee with their OneCard present.</string>
 
     <string-array name="vehicle_array_subtypes">
         <item>car</item>
