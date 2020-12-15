@@ -94,6 +94,15 @@ public abstract class Vehicle implements TaskLoadedCallback {
         }
     }
 
+    public void clearDirections(){
+        timeFromSac = -1;
+        timeFromHome = -1;
+        distFromSac = -1;
+        distFromHome = -1;
+        dirFromSac = null;
+        dirFromHome = null;
+    }
+
     //used to create the url to be used to get the directions
     //TODO: https://developers.google.com/maps/documentation/directions/overview#TravelModes
     //research above for the other modes of transportation and options for things like traffic

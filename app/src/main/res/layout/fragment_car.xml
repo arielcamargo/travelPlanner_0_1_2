@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.transportation.CarFragment">
+    tools:context=".fragments.vehiclefragments.CarFragment">
     
         <ImageView
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="603dp"
-        android:scaleType="fitXY"
+        android:scaleType="centerCrop"
         android:src="@drawable/csuscars" />
 
     <TextView

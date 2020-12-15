@@ -162,19 +162,19 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
         switch (view.getId()) {
             case R.id.vehicleType1:
                 subType = 1;
-                displayData(type);
+                updateText(curr, subType);
                 break;
             case R.id.vehicleType2:
                 subType = 2;
-                displayData(type);
+                updateText(curr, subType);
                 break;
             case R.id.vehicleType3:
                 subType = 3;
-                displayData(type);
+                updateText(curr, subType);
                 break;
             case R.id.vehicleType4:
                 subType = 4;
-                displayData(type);
+                updateText(curr, subType);
                 break;
             case R.id.distanceFromHome:
                 //update map
@@ -188,6 +188,7 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
                 distanceFromHome.setEnabled(true);
                 distanceFromSacState.setEnabled(false);
                 updateMap(vehicles[curr].getDirFromSac(), vehicles[curr].getDistFromSac());
+
                 break;
             case R.id.displayToComparison:
                 intent = new Intent(this, ComparisonActivity.class);
@@ -207,6 +208,7 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
                         displayData(vehicleDisplayOrder[nextPos]);
                         displayVehicleTitle.setSelection(nextPos);
                         displayScrollView.scrollTo(0, 0);
+                        type = vehicleDisplayOrder[nextPos];
                     }
                 });
                 showNextDisplay.setEnabled(true);
@@ -221,8 +223,8 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        String title = displayVehicleTitle.getSelectedItem().toString().toLowerCase();
-        displayData(title);
+        type = displayVehicleTitle.getSelectedItem().toString().toLowerCase();
+        displayData(type);
     }
 
     @Override
@@ -255,8 +257,20 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void setDisplay(int type) {
-
         displayBackgroundImage.setImageResource(vehicles[type].getBackgroundId());
+
+        updateText(type, 1);
+
+        //for updating the map
+        if (!distanceFromHome.isEnabled())
+            updateMap(vehicles[type].getDirFromHome(), vehicles[type].getDistFromHome());
+        else
+            updateMap(vehicles[type].getDirFromSac(), vehicles[type].getDistFromSac());
+        updateRadioGroup(type);
+    }
+
+    private void updateText(int type, int subType) {
+        vehicles[type].setSubType(subType);
 
         vehicleInfo.setText(getString(vehicles[type].getDescriptionId()));
         vehicleCostInfo.setText(vehicles[type].printNetCost());
@@ -265,13 +279,6 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
 
         vehicleDistanceInfo.setText(vehicles[type].printDistance());
         vehicleEmissionsInfo.setText(vehicles[type].printEmissions());
-
-        //for updating the map
-        if (!distanceFromHome.isEnabled())
-            updateMap(vehicles[type].getDirFromHome(), vehicles[type].getDistFromHome());
-        else
-            updateMap(vehicles[type].getDirFromSac(), vehicles[type].getDistFromSac());
-        updateRadioGroup(type);
     }
 
     private void updateRadioGroup(int type) {
@@ -295,6 +302,7 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
                 }
                 vehicleType1.setText(vehicles[type].getSubTypeId(0));
                 vehicleType2.setText(vehicles[type].getSubTypeId(1));
+
                 break;
             case 4:
                 if (subTypeGroup.getParent() == null) {
@@ -310,11 +318,7 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
                 vehicleType3.setText(vehicles[type].getSubTypeId(2));
                 vehicleType4.setText(vehicles[type].getSubTypeId(3));
 
-
                 break;
-
         }
-
-
     }
 }
