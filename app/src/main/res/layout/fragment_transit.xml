@@ -4,11 +4,161 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.transportation.TransitFragment">
+    
+    
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/sacrt" />
 
-    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="590dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/shuttleservices"
+
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="200dp"
+        android:layout_marginTop="170dp"
+        android:layout_marginRight="211dp"
+        android:background="#043927"
+        android:gravity="center_horizontal"
+        android:text="@string/pros"
+        android:textAlignment="center"
+        android:textColor="#f0e1b0"
+        android:textSize="25sp"
+        android:textStyle="bold|italic"
+        android:layout_marginEnd="211dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/reduces_traffic_congestion"
+        android:layout_marginTop="200dp"
+        android:gravity="center_vertical"
+        android:textColor="#f0e1b0"
+        android:textSize="15sp"
+        android:layout_marginRight="210dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginEnd="210dp"
+        android:layout_marginStart="5dp" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="~Reduces Air Pollution "
+        android:layout_marginTop="250dp"
+        android:textColor="#f0e1b0"
+        android:textSize="15sp"
+        android:layout_marginRight="210dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginEnd="210dp"
+        android:layout_marginStart="5dp" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="170dp"
+        android:layout_marginLeft="203dp"
+        android:background="#043927"
+        android:text="@string/cons"
+        android:textStyle="bold|italic"
+        android:textColor="#f0e1b0"
+        android:gravity="center_horizontal"
+        android:textSize="25sp"
+        android:layout_marginStart="203dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="220dp"
+        android:text="~Limited Capacity"
+        android:textColor="#f0e1b0"
+        android:gravity="center_vertical"
+        android:textSize="15sp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginLeft="220dp"
+        android:text="~Possible Time Constraints (e.g delays, schedule conflicts)"
+        android:textColor="#f0e1b0"
+        android:gravity="center_vertical"
+        android:textSize="15sp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="215dp"
+        android:layout_marginTop="373dp"
+        android:background="#043927"
+        android:text=" Additional Information"
+        android:textStyle="bold"
+        android:textColor="#f0e1b0"
+        android:textSize="20sp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginTop="405dp"
+        android:layout_marginLeft="10dp"
+        android:text="Bus Services:"
+        android:gravity="center_vertical"
+        android:textColor="#f0e1b0"
+        android:textSize="15sp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_marginTop="430dp"
+        android:layout_marginLeft="20dp"
+        android:text="~Estimated to save over 1.4 billion gallons of gas"
+        android:gravity="center_vertical"
+        android:textColor="#f0e1b0"
+        android:textSize="15sp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="455dp"
+        android:layout_marginLeft="20dp"
+        android:text="~Estimated to decrease carbon dioxide emissions by 1.5 million tons each year"
+        android:gravity="center_vertical"
+        android:textColor="#f0e1b0"
+        android:textSize="15sp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginTop="505dp"
+        android:layout_marginLeft="10dp"
+        android:text="CSUS Shuttle Services:"
+        android:gravity="center_vertical"
+        android:textColor="#f0e1b0"
+        android:textSize="15sp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="530dp"
+        android:layout_marginLeft="20dp"
+        android:text="A convenient way to get around campus. Available for any student or employee with their OneCard present."
+        android:gravity="center_vertical"
+        android:textColor="#f0e1b0"
+        android:textSize="15sp"
+        />
 
 </FrameLayout>
