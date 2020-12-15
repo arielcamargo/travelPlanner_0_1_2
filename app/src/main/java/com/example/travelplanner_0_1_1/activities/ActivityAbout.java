@@ -11,7 +11,6 @@ import com.example.travelplanner_0_1_1.R;
 
 public class ActivityAbout extends AppCompatActivity implements View.OnClickListener {
 
-    //test
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
