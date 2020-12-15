@@ -4,13 +4,173 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.transportation.CarFragment">
+    
+        <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="182dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/csus_parking" />
 
-    <!-- TODO: Update blank fragment layout -->
-
-    <Button
-        android:id="@+id/carFragmentButton"
-        android:layout_width="wrap_content"
+    <ImageView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="get parking permit" />
+        android:layout_marginTop="603dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/csuscars" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="188dp"
+        android:layout_marginRight="205dp"
+        android:background="#043927"
+        android:gravity="center_horizontal"
+        android:text="@string/pros"
+        android:textAlignment="center"
+        android:textColor="#f0e1b0"
+        android:textSize="25sp"
+        android:textStyle="bold|italic"
+        android:layout_marginEnd="205dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="@string/option_to_carpool"
+        android:layout_marginTop="220dp"
+        android:gravity="center_vertical"
+        android:textColor="#f0e1b0"
+        android:textSize="15sp"
+        android:layout_marginRight="205dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="205dp" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="@string/availability"
+        android:layout_marginTop="260dp"
+        android:gravity="center_vertical"
+        android:textColor="#f0e1b0"
+        android:textSize="15sp"
+        android:layout_marginRight="205dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="205dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/flexibility_used_at_one_s_convenience"
+        android:layout_marginTop="300dp"
+        android:gravity="center_vertical"
+        android:textColor="#f0e1b0"
+        android:textSize="15sp"
+        android:layout_marginRight="205dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="205dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="188dp"
+        android:layout_marginLeft="210dp"
+        android:background="#043927"
+        android:text="@string/cons"
+        android:textStyle="bold|italic"
+        android:textColor="#f0e1b0"
+        android:gravity="center_horizontal"
+        android:textSize="25sp"
+        android:layout_marginStart="210dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginLeft="220dp"
+        android:text="@string/traffic_congestion"
+        android:textColor="#f0e1b0"
+        android:gravity="center_vertical"
+        android:textSize="15sp"
+        android:layout_marginStart="220dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="260dp"
+        android:layout_marginLeft="220dp"
+        android:text="@string/carbon_emissions_emitted"
+        android:textColor="#f0e1b0"
+        android:gravity="center_vertical"
+        android:textSize="15sp"
+        android:layout_marginStart="220dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginLeft="220dp"
+        android:text="@string/the_toxic_remains_of_its_battery_plastics_are_placed_into_landfills"
+        android:textColor="#f0e1b0"
+        android:gravity="center_vertical"
+        android:textSize="15sp"
+        android:layout_marginStart="220dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="205dp"
+        android:layout_marginTop="393dp"
+        android:background="#043927"
+        android:text="@string/additional_information"
+        android:textStyle="bold"
+        android:textColor="#f0e1b0"
+        android:textSize="20sp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginTop="425dp"
+        android:layout_marginLeft="10dp"
+        android:text="@string/carpooling"
+        android:gravity="center_vertical"
+        android:textColor="#f0e1b0"
+        android:textSize="15sp"
+        android:layout_marginStart="10dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="445dp"
+        android:layout_marginLeft="20dp"
+        android:text="@string/carpooling_allows_you_to_share_the_costs_with_a_friend_csus_offers_carpooling_permits_and_prime_parking_spaces"
+        android:gravity="center_vertical"
+        android:textColor="#f0e1b0"
+        android:textSize="15sp"
+        android:layout_marginStart="20dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginTop="496dp"
+        android:layout_marginLeft="10dp"
+        android:text="@string/electric_vehicles_ev"
+        android:gravity="center_vertical"
+        android:textColor="#f0e1b0"
+        android:textSize="15sp"
+        android:layout_marginStart="10dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="520dp"
+        android:layout_marginLeft="20dp"
+        android:text="@string/electric_cars_are_more_environmentally_friendly_as_it_produces_no_carbon_emissions_ev_charging_stations_are_available_on_campus"
+        android:gravity="center_vertical"
+        android:textColor="#f0e1b0"
+        android:textSize="15sp"
+        android:layout_marginStart="20dp" />
 
 </FrameLayout>
