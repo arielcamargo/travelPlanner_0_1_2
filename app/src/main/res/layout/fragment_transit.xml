@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="590dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/shuttleservices"
+        android:src="@drawable/shuttleservices" />
 
     <TextView
         android:layout_width="match_parent"
