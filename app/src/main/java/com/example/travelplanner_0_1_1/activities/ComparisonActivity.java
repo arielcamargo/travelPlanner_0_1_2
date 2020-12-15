@@ -14,6 +14,7 @@ import com.example.travelplanner_0_1_1.R;
 import com.example.travelplanner_0_1_1.vehicles.Vehicle;
 import com.google.android.gms.maps.model.LatLng;
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.helper.StaticLabelsFormatter;
 import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
 
@@ -149,6 +150,9 @@ public class ComparisonActivity extends AppCompatActivity implements View.OnClic
         graphview.getViewport().setMaxY((double)(value1 + value2));
         graphview.getViewport().setMinX(0.5);
         graphview.getViewport().setMaxX(2.5);
+        StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(graphview);
+        staticLabelsFormatter.setHorizontalLabels(new String[]{vehicle1, vehicle2, ""});
+        graphview.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
 
     }
 
@@ -257,6 +261,22 @@ public class ComparisonActivity extends AppCompatActivity implements View.OnClic
         else
         {
             return emissions;
+        }
+    }
+
+    private String stringType()
+    {
+        if(graphState == 1)
+        {
+            return "In Dollars";
+        }
+        else if(graphState == 2)
+        {
+            return "In Miles";
+        }
+        else
+        {
+            return "CO2 in grams";
         }
     }
 }
