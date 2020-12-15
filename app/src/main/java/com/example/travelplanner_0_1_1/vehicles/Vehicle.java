@@ -39,8 +39,8 @@ public abstract class Vehicle implements TaskLoadedCallback {
     protected int numOfSubtypes;
     protected String[] subTypeId;
 
-    protected int timeFromSac = -1;
-    protected int timeFromHome = -1;
+    protected double timeFromSac = -1;
+    protected double timeFromHome = -1;
 
     protected double avgMpg = 0;
     protected double gasCost = 0;
@@ -183,9 +183,7 @@ public abstract class Vehicle implements TaskLoadedCallback {
     }
 
     //not abstract but may be overridden by child class to calculate additional costs
-    public void calculateCosts() {
-
-    }
+    public abstract void calculateCosts();
 
     //how the subtypes will be calculated
     public abstract void updateSubType();
@@ -252,6 +250,17 @@ public abstract class Vehicle implements TaskLoadedCallback {
         return info;
     }
 
+    public String printDuration(){
+        String info = "";
+        if (timeFromHome == -1) {
+            return "unknown duration";
+        }
+        info = String.format("Estimated ETA from home: %.0f mins\n", timeFromHome);
+        info += String.format("Estimated ETA from Sac State : %.0f mins", timeFromHome);
+
+        return info;
+    }
+
     public String getTitle() {
         return type.substring(0, 1).toUpperCase() + type.substring(1);
     }
@@ -272,11 +281,11 @@ public abstract class Vehicle implements TaskLoadedCallback {
         return subTypeId[i];
     }
 
-    public int getTimeFromSac() {
+    public double getTimeFromSac() {
         return timeFromSac;
     }
 
-    public int getTimeFromHome() {
+    public double getTimeFromHome() {
         return timeFromHome;
     }
 

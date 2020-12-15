@@ -45,7 +45,7 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
     private int subType = 1;
 
     //text views for displaying all the information
-    private TextView vehicleInfo, vehicleCostInfo, vehicleCostInfoBreakdown, vehicleEmissionsInfo, vehicleDistanceInfo;
+    private TextView vehicleInfo, vehicleCostInfo, vehicleCostInfoBreakdown, vehicleEmissionsInfo, vehicleDistanceInfo, vehicleTravelTimeInfo;
 
     //map fragment for showing the distance
     private Fragment mapFragment;
@@ -107,6 +107,7 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
         vehicleCostInfoBreakdown = findViewById(R.id.vehicleCostInfoBreakdown);
         vehicleEmissionsInfo = findViewById(R.id.vehicleEmissionsInfo);
         vehicleDistanceInfo = findViewById(R.id.vehicleDistanceInfo);
+        vehicleTravelTimeInfo = findViewById(R.id.vehicleTravelTimeInfo);
 
         mapFragment = getSupportFragmentManager().findFragmentById(R.id.mapFragment);
 
@@ -277,8 +278,11 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
 
         vehicleCostInfoBreakdown.setText(vehicles[type].printCostBreakdown());
 
-        vehicleDistanceInfo.setText(vehicles[type].printDistance());
         vehicleEmissionsInfo.setText(vehicles[type].printEmissions());
+
+        vehicleDistanceInfo.setText(vehicles[type].printDistance());
+
+        vehicleTravelTimeInfo.setText(vehicles[type].printDuration());
     }
 
     private void updateRadioGroup(int type) {

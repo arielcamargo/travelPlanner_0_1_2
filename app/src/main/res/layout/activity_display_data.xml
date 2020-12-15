@@ -176,6 +176,19 @@
                 android:textColor="@color/colorWhite"
                 android:textSize="18sp" />
 
+            <TextView
+                android:id="@+id/vehicleTravelTimeInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/sacStateGreen"
+                android:fontFamily="@font/lato"
+                android:padding="1dp"
+                android:paddingStart="5dp"
+                android:paddingEnd="0dp"
+                android:text="@string/vehicle_distance_description"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp" />
+
             <ImageView
                 android:id="@+id/displayDivider3"
                 android:layout_width="match_parent"
@@ -247,7 +260,7 @@
                 android:id="@+id/vehicleFragmentHolder"
                 android:name="com.example.travelplanner_0_1_1.fragments.vehiclefragments.CarFragment"
                 android:layout_width="match_parent"
-                android:layout_height="293dp"
+                android:layout_height="wrap_content"
                 tools:ignore="FragmentTagUsage" />
 
             <ImageView

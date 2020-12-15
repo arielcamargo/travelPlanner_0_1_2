@@ -20,6 +20,7 @@ public class VehicleButtonFragment extends Fragment {
     private TextView title;
     private TextView info;
     private Button vehicleSelect;
+    private int id = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
