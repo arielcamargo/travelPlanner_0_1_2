@@ -3,17 +3,21 @@ package com.example.travelplanner_0_1_1.activities;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.RadioButton;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.travelplanner_0_1_1.R;
 import com.example.travelplanner_0_1_1.vehicles.Vehicle;
+import com.google.android.gms.maps.model.LatLng;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
 
-public class ComparisonActivity extends AppCompatActivity implements View.OnClickListener {
+public class ComparisonActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     //TODO: Get distance into ComparisonActivity.java
 
 
@@ -22,12 +26,22 @@ public class ComparisonActivity extends AppCompatActivity implements View.OnClic
     //private double distance = getIntent().getDoubleExtra("miles", 0.0);
 
     private RadioButton compareByCost, compareByDistance, compareByEmissions;
+    private Spinner comparisonOption, comparisonOption2;
+
+    private TextView comparisonTitle;
 
     private int spacingLength = 2;
+    private int graphState = 1;
+
+    private LatLng homeAddress;
+    private String type;
 
     GraphView graphview;
     private Vehicle[] vehicles;
     private String[] vehicleDisplayOrder;
+
+    private String vehicle1, vehicle2;
+    private double vehicle1Cost, vehicle2Cost, vehicle1Distance, vehicle2Distance, vehicle1Emissions, vehicle2Emissions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +54,38 @@ public class ComparisonActivity extends AppCompatActivity implements View.OnClic
         compareByEmissions = findViewById(R.id.compareByEmissions);
         compareByEmissions.setOnClickListener(this);
 
-        vehicles = Vehicle.vehicles;
+        type = getIntent().getStringExtra("type");
+        homeAddress = getIntent().getParcelableExtra("LatLng");
         vehicleDisplayOrder = getIntent().getStringArrayExtra("vehicleDisplayOrder");
+        vehicles = Vehicle.vehicles;
+
+        comparisonOption = (Spinner) findViewById(R.id.comparisonOption);
+        comparisonOption.setOnItemSelectedListener(this);
+
+        comparisonOption2 = (Spinner) findViewById(R.id.comparisonOption2);
+        comparisonOption2.setOnItemSelectedListener(this);
+
+        comparisonTitle = findViewById(R.id.comparisonTitle);
+
+        int i = 0;
+
+        //comparisonTitle.setText(Double.toString(vehicles[i].getNetCost()));
+
+        //First Data Initialization, default option is car/car for the Spinners
+        //so this sets that situation up.
+        vehicle1 = "car";
+        vehicle2 = vehicle1;
+
+
+        vehicle1Cost = vehicles[i].getNetCost();
+        vehicle2Cost = vehicle1Cost;
+        vehicle1Distance = vehicles[i].getDistFromSac();
+        vehicle2Distance = vehicle1Distance;
+        vehicle1Emissions = vehicles[i].getNetEmissions();
+        vehicle2Emissions = vehicle1Emissions;
 
         graphview = (GraphView) findViewById(R.id.comparisonGraph);
-        updateBarGraph("JumpBike", "Bike", 6, 6);
+        updateBarGraph(vehicle1, vehicle2, vehicle1Cost, vehicle2Cost);
     }
 
     @Override
@@ -53,13 +94,16 @@ public class ComparisonActivity extends AppCompatActivity implements View.OnClic
         switch (view.getId())
         {
             case R.id.compareByCost:
-                updateBarGraph("JumpBike", "Bike", 10, 200);
+                updateBarGraph(vehicle1, vehicle2, vehicle1Cost, vehicle2Cost);
+                graphState = 1;
                 break;
             case R.id.compareByDistance:
-                updateBarGraph("Car", "Bike", 1, 2);
+                updateBarGraph(vehicle1, vehicle2, vehicle1Distance, vehicle2Distance);
+                graphState = 2;
                 break;
             case R.id.compareByEmissions:
-                updateBarGraph("RT", "Bike", 10, 5);
+                updateBarGraph(vehicle1, vehicle2, vehicle1Emissions, vehicle2Emissions);
+                graphState = 3;
                 break;
         }
     }
@@ -83,7 +127,8 @@ public class ComparisonActivity extends AppCompatActivity implements View.OnClic
         firstGraph.setColor(Color.RED);
         firstGraph.setSpacing(spacingLength);
         firstGraph.setAnimated(true);
-        firstGraph.setTitle(leftString);
+        firstGraph.setDrawValuesOnTop(true);
+        firstGraph.setValuesOnTopColor(Color.BLUE);
         graphview.addSeries(firstGraph);
 
         BarGraphSeries<DataPoint> secondGraph = new BarGraphSeries<DataPoint>(new DataPoint[]
@@ -94,7 +139,8 @@ public class ComparisonActivity extends AppCompatActivity implements View.OnClic
         secondGraph.setColor(Color.GREEN);
         secondGraph.setSpacing(spacingLength);
         secondGraph.setAnimated(true);
-        secondGraph.setTitle(rightString);
+        secondGraph.setDrawValuesOnTop(true);
+        secondGraph.setValuesOnTopColor(Color.BLUE);
         graphview.addSeries(secondGraph);
 
         graphview.getViewport().setXAxisBoundsManual(true);
@@ -103,7 +149,114 @@ public class ComparisonActivity extends AppCompatActivity implements View.OnClic
         graphview.getViewport().setMaxY((double)(value1 + value2));
         graphview.getViewport().setMinX(0.5);
         graphview.getViewport().setMaxX(2.5);
+
     }
 
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+    {
+        String item = parent.getItemAtPosition(position).toString();
+        //comparisonTitle.setText(item);
+        int vehiclePos = -1;
+        //vehicles = Vehicle.vehicles;
+        switch(item)
+        {
+            case "car":
+            {
+                vehiclePos = 0;
+                //comparisonTitle.setText(item);
+                break;
+            }
+            case "bike":
+            {
+                vehiclePos = 1;
+                //comparisonTitle.setText(item);
+                break;
+            }
+            case "jump bike":
+            {
+                vehiclePos = 2;
+                //comparisonTitle.setText(item);
+                break;
+            }
+            case "transit":
+            {
+                vehiclePos = 3;
+                //comparisonTitle.setText(item);
+                break;
+            }
+            case "walk":
+            {
+                vehiclePos = 4;
+                //comparisonTitle.setText(item);
+                break;
+            }
+            case "motorcycle":
+            {
+                vehiclePos = 5;
+                //comparisonTitle.setText(item);
+                break;
+            }
+
+        }
+        if(vehiclePos != -1)
+        {
+            switch(parent.getId())
+            {
+                case R.id.comparisonOption:
+                {
+                    //comparisonTitle.setText(item);
+                    vehicle1 = item;
+                    vehicle1Cost = vehicles[vehiclePos].getNetCost();
+                    vehicle1Distance = vehicles[vehiclePos].getDistFromSac();
+                    vehicle1Emissions = vehicles[vehiclePos].getNetEmissions();
+                    double vehicle1Change = applyChangedVehicle(vehicle1Cost, vehicle1Distance, vehicle1Emissions);
+                    double vehicle2Number = applyChangedVehicle(vehicle2Cost, vehicle2Distance, vehicle2Emissions);
+                    updateBarGraph(vehicle1, vehicle2, vehicle1Change, vehicle2Number);
+                    break;
+                }
+                case R.id.comparisonOption2:
+                {
+                    //comparisonTitle.setText("test2");
+                    vehicle2 = item;
+                    vehicle2Cost = vehicles[vehiclePos].getNetCost();
+                    vehicle2Distance = vehicles[vehiclePos].getDistFromSac();
+                    vehicle2Emissions = vehicles[vehiclePos].getNetEmissions();
+                    double vehicle1Number = applyChangedVehicle(vehicle1Cost, vehicle1Distance, vehicle1Emissions);
+                    double vehicle2Change = applyChangedVehicle(vehicle2Cost, vehicle2Distance, vehicle2Emissions);
+                    updateBarGraph(vehicle1, vehicle2, vehicle1Number, vehicle2Change);
+                    break;
+                }
+            }
+        }
+        else
+        {
+            comparisonTitle.setText("invalid vehicle");
+        }
+        vehiclePos = -1;
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+
+    private double applyChangedVehicle(double cost, double distance, double emissions)
+    {
+        if(graphState == 1)
+        {
+            return cost;
+        }
+        else if(graphState == 2)
+        {
+            return distance;
+        }
+        else
+        {
+            return emissions;
+        }
+    }
 }
