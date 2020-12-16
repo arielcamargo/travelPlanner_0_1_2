@@ -11,7 +11,7 @@
 
         <ImageView
             android:layout_width="180dp"
-            android:layout_height="150dp"
+            android:layout_height="120dp"
             android:foreground="@color/shade"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/bike_title_image" />
@@ -22,7 +22,7 @@
 
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="150dp"
+            android:layout_height="match_parent"
             android:foreground="@color/shade"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/walking_title_image" />
