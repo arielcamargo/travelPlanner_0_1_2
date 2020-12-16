@@ -104,7 +104,10 @@ public class InputActivity extends AppCompatActivity implements View.OnClickList
             case R.id.places_autocomplete_clear_button:
                 //when the user clicks the X button, clear the data
                 getHomeAddress.setText(null);
+
                 goToNext.setText(R.string.skip);
+                goToNext.setTextColor(getColor(R.color.colorWhite));
+                goToNext.setBackgroundTintList(getResources().getColorStateList(R.color.redMaple));
                 address = "";
                 addressLatLng = null;
                 getSupportFragmentManager().setFragmentResult("clearMap", new Bundle());
@@ -134,6 +137,9 @@ public class InputActivity extends AppCompatActivity implements View.OnClickList
         }, this);
 
         goToNext.setText(R.string.go);
+        goToNext.setTextColor(getColor(R.color.colorBlack));
+        goToNext.setBackgroundTintList(getResources().getColorStateList(R.color.spruceGreen));
+
     }
 
     @Override

@@ -1,9 +1,11 @@
 package com.example.travelplanner_0_1_1.activities;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -24,7 +26,6 @@ public class ComparisonActivity extends AppCompatActivity implements View.OnClic
 
     //TODO: Need to figure out how to import data
 
-    //private double distance = getIntent().getDoubleExtra("miles", 0.0);
 
     private RadioButton compareByCost, compareByDistance, compareByEmissions;
     private Spinner comparisonOption, comparisonOption2;
@@ -37,12 +38,14 @@ public class ComparisonActivity extends AppCompatActivity implements View.OnClic
     private LatLng homeAddress;
     private String type;
 
-    GraphView graphview;
+    private GraphView graphview;
     private Vehicle[] vehicles;
     private String[] vehicleDisplayOrder;
 
     private String vehicle1, vehicle2;
     private double vehicle1Cost, vehicle2Cost, vehicle1Distance, vehicle2Distance, vehicle1Emissions, vehicle2Emissions;
+
+    private Button comparisonToSurvey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +70,9 @@ public class ComparisonActivity extends AppCompatActivity implements View.OnClic
         comparisonOption2.setOnItemSelectedListener(this);
 
         comparisonTitle = findViewById(R.id.comparisonTitle);
+
+        comparisonToSurvey = findViewById(R.id.comparisonToSurvey);
+        comparisonToSurvey.setOnClickListener(this);
 
         int i = 0;
 
@@ -105,6 +111,10 @@ public class ComparisonActivity extends AppCompatActivity implements View.OnClic
             case R.id.compareByEmissions:
                 updateBarGraph(vehicle1, vehicle2, vehicle1Emissions, vehicle2Emissions);
                 graphState = 3;
+                break;
+            case R.id.comparisonToSurvey:
+                Intent intent = new Intent(this, SurveyActivity.class);
+                startActivity(intent);
                 break;
         }
     }

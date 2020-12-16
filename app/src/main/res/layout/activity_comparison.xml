@@ -119,10 +119,12 @@
                 android:layout_marginBottom="16dp"/>
 
             <Button
-                android:id="@+id/comparisonToPlanner"
+                android:id="@+id/comparisonToSurvey"
                 android:layout_width="266dp"
                 android:layout_height="wrap_content"
-                android:text="Create travel plan" />
+                android:fontFamily="@font/trajan_pro_bold"
+                android:text="@string/display_to_survey"
+                android:textColor="@color/colorBlack" />
 
         </LinearLayout>
     </ScrollView>
