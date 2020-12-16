@@ -26,7 +26,7 @@
             android:layout_marginTop="160dp"
             android:background="@color/colorWhite"
             android:scaleType="centerCrop"
-            android:src="@drawable/nickname_logo"
+            android:src="@drawable/sac_state_logo"
             android:contentDescription="@string/sac_state_logo" />
 
         <ImageView

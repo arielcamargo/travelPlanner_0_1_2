@@ -9,14 +9,14 @@
         android:layout_width="match_parent"
         android:layout_height="182dp"
         android:scaleType="fitXY"
-        android:src="@drawable/csus_parking" />
+        android:src="@drawable/car_image_one" />
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="603dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/csuscars" />
+        android:src="@drawable/car_image_two" />
 
     <TextView
         android:layout_width="match_parent"

@@ -7,7 +7,7 @@ public class Walk extends Vehicle {
         super();
         dirSelection = 1;
 
-        backgroundId = R.drawable.walking_image;
+        backgroundId = R.drawable.walking_title_image;
         descriptionId = R.string.about_this_app;
         quickDescriptionId = R.string.app_string_info;
 

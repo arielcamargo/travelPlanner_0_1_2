@@ -12,7 +12,7 @@
         android:layout_height="186dp"
         android:layout_marginBottom="480dp"
         android:scaleType="fitXY"
-        android:src="@drawable/motorcycle" />
+        android:src="@drawable/motorcycle_image_two" />
 
     <TextView
         android:id="@+id/textView14"

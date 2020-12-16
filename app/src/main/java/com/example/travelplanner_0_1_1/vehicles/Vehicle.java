@@ -68,7 +68,7 @@ public abstract class Vehicle implements TaskLoadedCallback {
     private PolylineOptions dirFromSac;
     private PolylineOptions dirFromHome;
 
-    protected int backgroundId = R.drawable.car_image;
+    protected int backgroundId = R.drawable.car_title_image;
     protected int descriptionId = R.string.app_string_info;
     protected int quickDescriptionId = R.string.app_name;
 

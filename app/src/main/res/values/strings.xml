@@ -69,8 +69,8 @@
     <string name="compare_this">compare this</string>
     <string name="add_to_my_plan">add to my plan</string>
     <string name="show_next_option">Show next option</string>
-    
-        <string name="pros">Pros:</string>
+
+    <string name="pros">Pros:</string>
     <string name="cons">Cons:</string>
     <string name="reduces_traffic_congestion">~Reduces Traffic Congestion</string>
     <string name="electric_cars_are_more_environmentally_friendly_as_it_produces_no_carbon_emissions_ev_charging_stations_are_available_on_campus">Electric cars are more environmentally friendly as it produces no carbon emissions. EV Charging Stations are available on campus.</string>
