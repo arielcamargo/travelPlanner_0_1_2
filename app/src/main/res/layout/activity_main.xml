@@ -5,13 +5,11 @@
     android:layout_height="match_parent"
     tools:context=".activities.MainActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:contentDescription="@string/app_name"
-        android:scaleType="centerCrop"
-        android:src="@drawable/guy_west_bridge" />
+    <include
+        layout="@layout/main_background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="7dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,19 +21,19 @@
             android:id="@+id/logoView"
             android:layout_width="290dp"
             android:layout_height="72dp"
-            android:layout_marginTop="160dp"
+            android:layout_marginTop="175dp"
             android:background="@color/colorWhite"
+            android:contentDescription="@string/sac_state_logo"
             android:scaleType="centerCrop"
-            android:src="@drawable/sac_state_logo"
-            android:contentDescription="@string/sac_state_logo" />
+            android:src="@drawable/sac_state_logo" />
 
         <ImageView
-            android:id="@+id/gradient"
             android:layout_width="match_parent"
             android:layout_height="6dp"
+            android:layout_marginTop="10dp"
+            android:contentDescription="@string/gradient"
             android:scaleType="fitXY"
-            android:src="@drawable/gradient"
-            android:contentDescription="@string/gradient"/>
+            android:src="@drawable/gradient" />
 
         <TextView
             android:id="@+id/appName"
@@ -50,20 +48,19 @@
             android:textSize="42sp" />
 
         <ImageView
-            android:id="@+id/gradient2"
             android:layout_width="match_parent"
-            android:layout_height="4dp"
+            android:layout_height="6dp"
+            android:contentDescription="@string/gradient"
             android:rotationY="180"
             android:scaleType="fitXY"
-            android:src="@drawable/gradient"
-            android:contentDescription="@string/gradient" />
+            android:src="@drawable/gradient" />
 
         <ScrollView
             android:id="@+id/infoScrollView"
-            android:layout_width="357dp"
+            android:layout_width="320dp"
             android:layout_height="225dp"
             android:layout_marginTop="16dp"
-            android:background="@color/sacStateGold"
+            android:background="@color/evergreenAsh"
             android:fadeScrollbars="true"
             android:fadingEdge="vertical"
             android:isScrollContainer="true"
@@ -88,14 +85,10 @@
                     android:layout_height="match_parent"
                     android:clickable="true"
                     android:focusable="true"
-                    android:fontFamily="@font/lato_italic"
-                    android:padding="2sp"
-                    android:paddingStart="4sp"
-                    android:paddingTop="2sp"
-                    android:paddingEnd="10dp"
+                    android:fontFamily="@font/lato"
                     android:paddingBottom="2sp"
                     android:text="@string/user_agreement_text"
-                    android:textAlignment="textStart"
+                    android:textAlignment="center"
                     android:textColor="@color/colorWhite"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -103,9 +96,9 @@
 
         <CheckBox
             android:id="@+id/userAgreement"
-            android:layout_width="357dp"
+            android:layout_width="320dp"
             android:layout_height="35dp"
-            android:background="@color/sacStateGreen"
+            android:background="@color/redwoodGroveGreen"
             android:buttonTint="@color/colorWhite"
             android:fontFamily="@font/lato"
             android:text="@string/user_agreement"
@@ -120,7 +113,7 @@
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/colorWhite"
             android:enabled="false"
-            android:fontFamily="@font/lato_bold"
+            android:fontFamily="@font/trajan_pro_bold"
             android:text="@string/go"
             android:textAlignment="center"
             android:textSize="32sp" />
