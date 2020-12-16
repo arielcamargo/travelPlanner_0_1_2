@@ -113,7 +113,7 @@ public class AddressFragment extends Fragment implements OnMapReadyCallback, Fra
                         }
                         //animates the marker to move from its previous spot to new spot
                         homeMarker.setTitle(result.getString("addressLoc"));
-                        MarkerAnimation.animateMarkerToGB(homeMarker, homePos, new LatLngInterpolator.Linear());
+                        MarkerAnimation.animateMarker(homeMarker, homePos, new LatLngInterpolator.Linear());
 
                         new Handler(Looper.getMainLooper()).postDelayed(
                                 new Runnable() {

@@ -4,20 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/redwoodGroveGreen"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".activities.InputActivity">
 
-
-    <TextView
-        android:id="@+id/addressPrompt"
-        android:layout_width="366dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/address_prompt"
-        android:textColor="@color/colorBlack"
-        android:textSize="18sp"
-        android:textStyle="italic" />
 
     <fragment
         android:id="@+id/get_home_address"
@@ -30,42 +21,25 @@
         android:id="@+id/display_address"
         android:name="com.example.travelplanner_0_1_1.fragments.AddressFragment"
         android:layout_width="match_parent"
-        android:layout_height="280dp"
+        android:layout_height="320dp"
         android:background="@color/sacStateGreen"
         tools:layout="@layout/fragment_address" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
-        android:layout_width="370dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="16dp"
-        android:layout_weight="60"
-        app:errorEnabled="true"
-        app:helperText="Estimate your annual travel budget for Sac State"
-        app:helperTextTextColor="@color/colorBlack">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/inputBudget"
-            android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:hint="@string/getBudget"
-            android:inputType="numberDecimal"
-            android:maxLines="1" />
-
-        <Button
-            android:id="@+id/budgetHelper"
-            android:layout_width="244dp"
-            android:layout_height="87dp"
-            android:layout_weight="1"
-            android:text="@string/estimate_my_budget" />
-
-    </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:id="@+id/addressPrompt"
+        android:layout_width="366dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/address_prompt"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"
+        android:textStyle="italic" />
 
     <Button
         android:id="@+id/goToNext"
         android:layout_width="174dp"
         android:layout_height="72dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginTop="16dp"
         android:backgroundTint="@color/opaquesacStateGreen"
         android:text="@string/skip"
         android:textColor="@color/colorWhite"

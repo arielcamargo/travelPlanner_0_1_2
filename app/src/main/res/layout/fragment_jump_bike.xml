@@ -5,18 +5,18 @@
     android:layout_height="match_parent"
     tools:context=".fragments.vehiclefragments.JumpBikeFragment">
 
-   <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="181dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/sacjmpbike" />
+ <ImageView
+     android:layout_width="match_parent"
+     android:layout_height="199dp"
+     android:scaleType="centerCrop"
+     android:src="@drawable/jump_bike_image_one" />
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="167dp"
-        android:layout_marginTop="560dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/jmpbike" />
+ <ImageView
+     android:layout_width="match_parent"
+     android:layout_height="167dp"
+     android:layout_marginTop="560dp"
+     android:scaleType="centerCrop"
+     android:src="@drawable/jump_bike_image_two" />
 
     <TextView
         android:layout_width="match_parent"

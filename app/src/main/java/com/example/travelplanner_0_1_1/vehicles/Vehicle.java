@@ -59,9 +59,6 @@ public abstract class Vehicle implements TaskLoadedCallback {
     protected double avgEmissions;
     protected double netEmissions;
 
-    protected String[] pros;
-    protected String[] cons;
-
     private FetchUrl fetchUrlFromSac;
     private FetchUrl fetchUrlFromHome;
 
@@ -72,25 +69,23 @@ public abstract class Vehicle implements TaskLoadedCallback {
     protected int descriptionId = R.string.app_string_info;
     protected int quickDescriptionId = R.string.app_name;
 
-    public Vehicle() {
-    }
-
-
     public void setDirections(LatLng home, TaskLoadedCallback taskLoadedCallback, Context context) {
-        fetchUrlFromHome = new FetchUrl(taskLoadedCallback);
+        fetchUrlFromHome = new FetchUrl(taskLoadedCallback, "from home");
         fetchUrlFromHome.execute(getUrl(SAC_STATE_LOC, home, DIRECTION_OPTIONS[dirSelection], context), DIRECTION_OPTIONS[dirSelection], "from Sac");
 
-        fetchUrlFromSac = new FetchUrl(this);
+        fetchUrlFromSac = new FetchUrl(this, "from sac");
         fetchUrlFromSac.execute(getUrl(home, SAC_STATE_LOC, DIRECTION_OPTIONS[dirSelection], context), DIRECTION_OPTIONS[dirSelection], "from home");
     }
 
     public void setDirections(LatLng home, Context context) {
         if (home != null) {
-            fetchUrlFromHome = new FetchUrl(this);
+            fetchUrlFromHome = new FetchUrl(this, "from home");
             fetchUrlFromHome.execute(getUrl(SAC_STATE_LOC, home, DIRECTION_OPTIONS[dirSelection], context), DIRECTION_OPTIONS[dirSelection], "from Sac");
 
-            fetchUrlFromSac = new FetchUrl(this);
+            fetchUrlFromSac = new FetchUrl(this, "from home");
             fetchUrlFromSac.execute(getUrl(home, SAC_STATE_LOC, DIRECTION_OPTIONS[dirSelection], context), DIRECTION_OPTIONS[dirSelection], "from home");
+        } else{
+            clearDirections();
         }
     }
 
@@ -118,8 +113,8 @@ public abstract class Vehicle implements TaskLoadedCallback {
 
     //when the setDirections are completed
     @Override
-    public void onTaskDone(FetchUrl fetchUrl, Object... values) {
-        if (fetchUrl == fetchUrlFromSac) {
+    public void onTaskDone(String key, Object... values) {
+        if (key.equals("from home")) {
             if (values[0] != null) {
                 dirFromSac = (PolylineOptions) values[0];
                 distFromSac = parseDistance((String) values[1]);
@@ -139,11 +134,7 @@ public abstract class Vehicle implements TaskLoadedCallback {
                 timeFromHome = -1;
             }
         }
-
-        calculateEmissions();
-        calculateGas();
         calculateCosts();
-        calculateNetCost();
     }
 
     public void updateHomeDir(Object... values) {
@@ -182,6 +173,8 @@ public abstract class Vehicle implements TaskLoadedCallback {
         updateSubType();
     }
 
+    //Abstract methods to implement in sub classes
+
     //not abstract but may be overridden by child class to calculate additional costs
     public abstract void calculateCosts();
 
@@ -200,6 +193,8 @@ public abstract class Vehicle implements TaskLoadedCallback {
             netCost += costs[i];
         }
     }
+
+    //Display methods for displaying the data
 
     public String printNetCost() {
         DecimalFormat tf = new DecimalFormat("##,###.00");
@@ -260,6 +255,8 @@ public abstract class Vehicle implements TaskLoadedCallback {
 
         return info;
     }
+
+    //getter and setter methods
 
     public String getTitle() {
         return type.substring(0, 1).toUpperCase() + type.substring(1);
@@ -323,14 +320,6 @@ public abstract class Vehicle implements TaskLoadedCallback {
 
     public double getNetEmissions() {
         return netEmissions;
-    }
-
-    public String[] getPros() {
-        return pros;
-    }
-
-    public String[] getCons() {
-        return cons;
     }
 
     public PolylineOptions getDirFromSac() {

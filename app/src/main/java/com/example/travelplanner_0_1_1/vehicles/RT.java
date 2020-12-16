@@ -26,7 +26,9 @@ public class RT extends Vehicle {
 
     @Override
     public void calculateCosts() {
-
+        calculateEmissions();
+        calculateGas();
+        calculateNetCost();
     }
 
     @Override

@@ -201,7 +201,7 @@
                 android:id="@+id/mapFragment"
                 android:name="com.example.travelplanner_0_1_1.fragments.AddressFragment"
                 android:layout_width="match_parent"
-                android:layout_height="280dp"
+                android:layout_height="300dp"
                 android:layout_gravity="center_horizontal"
                 tools:ignore="FragmentTagUsage" />
 

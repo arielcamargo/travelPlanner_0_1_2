@@ -49,12 +49,6 @@ public class InputActivity extends AppCompatActivity implements View.OnClickList
         goToNext = findViewById(R.id.goToNext);
         goToNext.setOnClickListener(this);
 
-        TextView userBudget = findViewById(R.id.inputBudget);
-        userBudget.setOnClickListener(this);
-
-        Button budgetHelper = findViewById(R.id.budgetHelper);
-        budgetHelper.setOnClickListener(this);
-
         String api_key = getString(R.string.google_maps_key);
         if (!Places.isInitialized())
             Places.initialize(getApplicationContext(), api_key);
@@ -110,11 +104,6 @@ public class InputActivity extends AppCompatActivity implements View.OnClickList
                 address = "";
                 addressLatLng = null;
                 getSupportFragmentManager().setFragmentResult("clearMap", new Bundle());
-            case R.id.budgetHelper:
-                //todo: create popup that will show the user some guidelines on how to estimate their
-                // budget
-
-                break;
         }
     }
 
@@ -126,7 +115,7 @@ public class InputActivity extends AppCompatActivity implements View.OnClickList
 
         car.setDirections(addressLatLng, new TaskLoadedCallback() {
             @Override
-            public void onTaskDone(FetchUrl fetchUrl, Object... values) {
+            public void onTaskDone(String key, Object... values) {
                 car.updateHomeDir(values);
 
                 Bundle result = new Bundle();

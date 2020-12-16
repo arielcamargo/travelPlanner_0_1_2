@@ -29,7 +29,9 @@ public class Motorcycle extends Vehicle {
 
     @Override
     public void calculateCosts() {
-
+        calculateEmissions();
+        calculateGas();
+        calculateNetCost();
     }
 
     @Override

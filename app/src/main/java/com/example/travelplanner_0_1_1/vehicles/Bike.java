@@ -25,7 +25,7 @@ public class Bike extends Vehicle {
 
     @Override
     public void calculateCosts() {
-
+        calculateNetCost();
     }
 
     @Override

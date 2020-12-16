@@ -15,9 +15,7 @@ public class DataParser {
 
     public List<List<HashMap<String, String>>> parse(JSONObject jObject) {
         List<List<HashMap<String, String>>> routes = new ArrayList<>();
-        JSONArray jRoutes;
-        JSONArray jLegs;
-        JSONArray jSteps;
+        JSONArray jRoutes, jLegs, jSteps;
         try {
             jRoutes = jObject.getJSONArray("routes");
             // Traverse all routes

@@ -39,7 +39,7 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="address_prompt">Enter in your home address below, we won\'t share that info with
+    <string name="address_prompt">Please enter in your home address above, we won\'t share that info with
         anyone. You may put a general location if you don\'t want to put your actual address but
         that will reduce the accuracy of our recommendations for you</string>
     <string name="vehicle_btn_bckgrnd_des">image of whichever type this button will send user to</string>
@@ -73,7 +73,7 @@
     <string name="pros">Pros:</string>
     <string name="cons">Cons:</string>
     <string name="reduces_traffic_congestion">~Reduces Traffic Congestion</string>
-    <string name="electric_cars_are_more_environmentally_friendly_as_it_produces_no_carbon_emissions_ev_charging_stations_are_available_on_campus">Electric cars are more environmentally friendly as it produces no carbon emissions. EV Charging Stations are available on campus.</string>
+    <string name="electric_cars">Electric cars are more environmentally friendly as it produces no carbon emissions. EV Charging Stations are available on campus.</string>
     <string name="electric_vehicles_ev">Electric Vehicles (EV):</string>
     <string name="carpooling_allows_you_to_share_the_costs_with_a_friend_csus_offers_carpooling_permits_and_prime_parking_spaces">Carpooling allows you to share the costs with a friend. CSUS offers carpooling permits and prime parking spaces.</string>
     <string name="carpooling">Carpooling:</string>

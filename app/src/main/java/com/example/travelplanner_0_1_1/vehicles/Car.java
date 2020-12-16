@@ -25,7 +25,9 @@ public class Car extends Vehicle {
 
     @Override
     public void calculateCosts() {
-
+        calculateEmissions();
+        calculateGas();
+        calculateNetCost();
     }
 
     // no need to call this here, will be called when setSubType is called
@@ -37,7 +39,7 @@ public class Car extends Vehicle {
                 // update variables and calculations for each mode
                 break;
             case 2:
-                //rideshare
+                //rides hare, uber
                 break;
             case 3:
                 // hybrid

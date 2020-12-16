@@ -11,13 +11,6 @@
         android:scaleType="fitXY"
         android:src="@drawable/car_image_one" />
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="603dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/car_image_two" />
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="200dp"
@@ -167,10 +160,17 @@
         android:layout_height="55dp"
         android:layout_marginTop="520dp"
         android:layout_marginLeft="20dp"
-        android:text="@string/electric_cars_are_more_environmentally_friendly_as_it_produces_no_carbon_emissions_ev_charging_stations_are_available_on_campus"
+        android:text="@string/electric_cars"
         android:gravity="center_vertical"
         android:textColor="#f0e1b0"
         android:textSize="15sp"
         android:layout_marginStart="20dp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="603dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/car_image_two" />
 
 </FrameLayout>

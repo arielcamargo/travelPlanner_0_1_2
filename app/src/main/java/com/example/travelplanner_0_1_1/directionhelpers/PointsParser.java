@@ -19,12 +19,12 @@ public class PointsParser extends AsyncTask<String, Integer, List<List<HashMap<S
 
     private final TaskLoadedCallback taskCallback;
     private final String directionMode;
-    private final FetchUrl fetchUrl;
+    private final String key;
     private String distance, duration;
 
 
-    public PointsParser(FetchUrl fetchUrl, TaskLoadedCallback taskCallback, String directionMode) {
-        this.fetchUrl = fetchUrl;
+    public PointsParser(String key, TaskLoadedCallback taskCallback, String directionMode) {
+        this.key = key;
         this.taskCallback = taskCallback;
         this.directionMode = directionMode;
     }
@@ -55,7 +55,7 @@ public class PointsParser extends AsyncTask<String, Integer, List<List<HashMap<S
             e.printStackTrace();
             distance = "-1";
             duration = "-1";
-            taskCallback.onTaskDone(fetchUrl, null, distance, duration);
+            taskCallback.onTaskDone(key, null, distance, duration);
         }
         return routes;
     }
@@ -83,18 +83,28 @@ public class PointsParser extends AsyncTask<String, Integer, List<List<HashMap<S
                 // Adding all the points in the route to LineOptions
                 lineOptions.addAll(points);
                 if (directionMode.equalsIgnoreCase("walking")) {
+                    lineOptions.width(15);
+                    //blue-ish color
+                    lineOptions.color(0xff0732ab);
+                } else if(directionMode.equalsIgnoreCase("driving")){
                     lineOptions.width(10);
-                    lineOptions.color(Color.MAGENTA);
-                } else {
-                    lineOptions.width(20);
-                    lineOptions.color(Color.BLUE);
+                    //dark red color
+                    lineOptions.color(0xff800d01);
+                } else if(directionMode.equalsIgnoreCase("bicycling")){
+                    lineOptions.width(15);
+                    //dark green color
+                    lineOptions.color(0xff07a314);
+                } else{
+                    lineOptions.width(10);
+                    //magenta color
+                    lineOptions.color(0xff9d22f5);
                 }
                 Log.d(DIR_HELPER, "onPostExecute line options decoded");
             }
 
             // Drawing polyline in the Google Map for the i-th route
             if (lineOptions != null) {
-                taskCallback.onTaskDone(fetchUrl, lineOptions, distance, duration);
+                taskCallback.onTaskDone(key, lineOptions, distance, duration);
 
             } else {
                 Log.d(DIR_HELPER, "without Polylines drawn");

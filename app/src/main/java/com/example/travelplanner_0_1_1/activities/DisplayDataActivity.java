@@ -245,7 +245,7 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
                 params.height = getResources().getDimensionPixelSize(R.dimen.map_display_height);
                 mapFragment.getView().setLayoutParams(params);
                 //sets it to appropriate index in layout
-                displayLayout.addView(mapRow, (subTypeGroup.getParent() == null ? 9 : 11));
+                displayLayout.addView(mapRow, (subTypeGroup.getParent() == null ? 10 : 12));
             }
 
         } else {
@@ -262,12 +262,13 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
 
         updateText(type, 1);
 
+        updateRadioGroup(type);
+
         //for updating the map
         if (!distanceFromHome.isEnabled())
             updateMap(vehicles[type].getDirFromHome(), vehicles[type].getDistFromHome());
         else
             updateMap(vehicles[type].getDirFromSac(), vehicles[type].getDistFromSac());
-        updateRadioGroup(type);
     }
 
     private void updateText(int type, int subType) {

@@ -14,10 +14,11 @@ public class FetchUrl extends AsyncTask<String, Void, String> {
 
     private final TaskLoadedCallback taskLoadedCallback;
     private String directionMode = "driving";
-    private String key = "from home";
+    private String key;
 
-    public FetchUrl(TaskLoadedCallback taskLoadedCallback) {
+    public FetchUrl(TaskLoadedCallback taskLoadedCallback, String key) {
         this.taskLoadedCallback = taskLoadedCallback;
+        this.key = key;
     }
 
     @Override
@@ -40,7 +41,7 @@ public class FetchUrl extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
 
-        PointsParser parserTask = new PointsParser(this, taskLoadedCallback, directionMode);
+        PointsParser parserTask = new PointsParser(key, taskLoadedCallback, directionMode);
         // Invokes the thread for parsing the JSON data
         parserTask.execute(s);
 
