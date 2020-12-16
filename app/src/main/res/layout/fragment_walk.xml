@@ -5,10 +5,103 @@
     android:layout_height="match_parent"
     tools:context=".fragments.transportation.WalkFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ImageView
+        android:id="@+id/imageView4"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-50dp"
+        android:layout_marginBottom="520dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/walking_college" />
 
+    <TextView
+        android:id="@+id/textView30"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="170dp"
+        android:layout_marginEnd="211dp"
+        android:layout_marginRight="211dp"
+        android:background="#043927"
+        android:gravity="center_horizontal"
+        android:text="Pros"
+        android:textAlignment="center"
+        android:textColor="#f0e1b0"
+        android:textSize="25sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/textView31"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="210dp"
+        android:layout_marginRight="210dp"
+        android:gravity="center_vertical"
+        android:text="- No Traffic Congestion"
+        android:textColor="#f0e1b0"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/textView32"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginEnd="210dp"
+        android:layout_marginRight="210dp"
+        android:text="- Reduces Air Pollution "
+        android:textColor="#f0e1b0"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/textView33"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="290dp"
+        android:layout_marginEnd="210dp"
+        android:layout_marginRight="210dp"
+        android:text="- Health Benefits Due to Physical Movement "
+        android:textColor="#f0e1b0"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/textView34"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginStart="203dp"
+        android:layout_marginLeft="203dp"
+        android:layout_marginTop="170dp"
+        android:background="#043927"
+        android:gravity="center_horizontal"
+        android:text="Cons"
+        android:textColor="#f0e1b0"
+        android:textSize="25sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/textView35"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="220dp"
+        android:layout_marginTop="200dp"
+        android:gravity="center_vertical"
+        android:text="- Can Be Time Consuming"
+        android:textColor="#f0e1b0"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/textView36"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginLeft="220dp"
+        android:layout_marginTop="245dp"
+        android:gravity="center_vertical"
+        android:text="- Weather Interference (Such As Rain)"
+        android:textColor="#f0e1b0"
+        android:textSize="15sp" />
 </FrameLayout>
