@@ -291,7 +291,7 @@
             android:id="@+id/displayToComparison"
             android:layout_width="wrap_content"
             android:layout_height="70dp"
-            android:backgroundTint="@color/colorWhite"
+            android:backgroundTint="@color/hornetYellow"
             android:text="@string/compare_this"
             tools:ignore="ButtonStyle" />
 
@@ -299,7 +299,7 @@
             android:id="@+id/displayToSurvey"
             android:layout_width="wrap_content"
             android:layout_height="70dp"
-            android:backgroundTint="@color/colorWhite"
+            android:backgroundTint="@color/redMaple"
             android:text="@string/display_to_survey"
             tools:ignore="ButtonStyle" />
 
@@ -308,7 +308,7 @@
             android:layout_width="138dp"
             android:layout_height="70dp"
             android:background="@drawable/next_button"
-            android:backgroundTint="@color/colorWhite"
+            android:backgroundTint="@color/evergreenAsh"
             android:padding="10dp"
             android:text="@string/show_next_option"
             tools:ignore="ButtonStyle" />
