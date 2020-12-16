@@ -1,7 +1,6 @@
 package com.example.travelplanner_0_1_1.activities;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -96,7 +95,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 intent = new Intent(this, ComparisonActivity.class);
                 break;
             case R.id.menuToPlanner:
-                intent = new Intent(this, PlannerActivity.class);
+                intent = new Intent(this, SurveyActivity.class);
                 break;
             case R.id.vehicleButtonSelect:
             default:

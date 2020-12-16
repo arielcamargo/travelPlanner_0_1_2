@@ -8,12 +8,12 @@ import android.view.View;
 
 import com.example.travelplanner_0_1_1.R;
 
-public class PlannerActivity extends Activity implements View.OnClickListener {
+public class SurveyActivity extends Activity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_planner);
+        setContentView(R.layout.activity_survey);
     }
 
     public void browser(View view) {

@@ -193,7 +193,7 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
                 startActivity(intent);
                 break;
             case R.id.displayToSurvey:
-                intent = new Intent(this, PlannerActivity.class);
+                intent = new Intent(this, SurveyActivity.class);
                 startActivity(intent);
                 break;
             case R.id.showNextDisplay:
