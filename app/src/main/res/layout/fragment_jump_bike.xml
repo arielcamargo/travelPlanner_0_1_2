@@ -5,10 +5,141 @@
     android:layout_height="match_parent"
     tools:context=".fragments.vehiclefragments.JumpBikeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+   <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="181dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/sacjmpbike" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="167dp"
+        android:layout_marginTop="560dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/jmpbike" />
+
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="180dp"
+        android:layout_marginTop="295dp"
+        android:layout_marginRight="205dp"
+        android:background="#043927"
+        android:gravity="center_horizontal"
+        android:text="@string/pros"
+        android:textAlignment="center"
+        android:textColor="#f0e1b0"
+        android:textSize="25sp"
+        android:textStyle="bold|italic"
+        android:layout_marginEnd="205dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="@string/option_to_reserve"
+        android:layout_marginTop="320dp"
+        android:gravity="center_vertical"
+        android:textColor="#f0e1b0"
+        android:textSize="15sp"
+        android:layout_marginRight="205dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="205dp" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="@string/maintenance_not_required"
+        android:layout_marginTop="360dp"
+        android:gravity="center_vertical"
+        android:textColor="#f0e1b0"
+        android:textSize="15sp"
+        android:layout_marginRight="205dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="205dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/able_to_locate_closest_available"
+        android:layout_marginTop="400dp"
+        android:gravity="center_vertical"
+        android:textColor="#f0e1b0"
+        android:textSize="15sp"
+        android:layout_marginRight="205dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="205dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_marginTop="295dp"
+        android:layout_marginLeft="210dp"
+        android:background="#043927"
+        android:text="@string/cons"
+        android:textStyle="bold|italic"
+        android:textColor="#f0e1b0"
+        android:gravity="center_horizontal"
+        android:textSize="25sp"
+        android:layout_marginStart="210dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="320dp"
+        android:layout_marginLeft="220dp"
+        android:text="@string/limited_availability"
+        android:textColor="#f0e1b0"
+        android:gravity="center_vertical"
+        android:textSize="15sp"
+        android:layout_marginStart="220dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="360dp"
+        android:layout_marginLeft="220dp"
+        android:text="@string/service_area_boundaries"
+        android:textColor="#f0e1b0"
+        android:gravity="center_vertical"
+        android:textSize="15sp"
+        android:layout_marginStart="220dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="400dp"
+        android:layout_marginLeft="220dp"
+        android:text="@string/weather_interference"
+        android:textColor="#f0e1b0"
+        android:gravity="center_vertical"
+        android:textSize="15sp"
+        android:layout_marginStart="220dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="190dp"
+        android:background="#043927"
+        android:text="@string/if_you_replace_a_car_with_a_bike_each_time_you_go_to_work_you_will_save_approximately_3000_pounds_of_greenhouse_gas_emissions_each_year"
+        android:textStyle="bold|italic"
+        android:textColor="#f0e1b0"
+        android:textSize="15sp"
+        android:gravity="center"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="480dp"
+        android:background="#043927"
+        android:text="@string/jump_bikes_are_available_all_around_sac_state_s_campus"
+        android:textStyle="bold|italic"
+        android:textColor="#f0e1b0"
+        android:textSize="15sp"
+        android:gravity="center"
+        />
 
 </FrameLayout>
