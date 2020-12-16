@@ -93,6 +93,15 @@
     <string name="csus_shuttle_services">CSUS Shuttle Services:</string>
     <string name="a_convenient_way_to_get_around_campus_available_for_any_student_or_employee_with_their_onecard_present">A convenient way to get around campus. Available for any student or employee with their OneCard present.</string>
 
+      <string name="jump_bikes_are_available_all_around_sac_state_s_campus">Jump Bikes are available all around Sac State\'s Campus!</string>
+    <string name="if_you_replace_a_car_with_a_bike_each_time_you_go_to_work_you_will_save_approximately_3000_pounds_of_greenhouse_gas_emissions_each_year">“If you replace a car with a bike each time you go to work, you will save approximately 3000 pounds of greenhouse gas emissions each year.”</string>
+    <string name="weather_interference">~Weather Interference</string>
+    <string name="service_area_boundaries">~Service Area Boundaries</string>
+    <string name="limited_availability">~Limited Availability</string>
+    <string name="able_to_locate_closest_available">~Able to Locate Closest Available</string>
+    <string name="maintenance_not_required">~Maintenance Not Required</string>
+    <string name="option_to_reserve">~Option to reserve</string>
+    
     <string-array name="vehicle_array_subtypes">
         <item>car</item>
         <item>electric car</item>
