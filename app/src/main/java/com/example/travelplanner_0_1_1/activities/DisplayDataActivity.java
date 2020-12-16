@@ -59,7 +59,7 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
     private Fragment vehicleFragmentHolder;
 
     //navigation buttons, show nextDisplay will show next vehicle type to display
-    private Button displayToComparison, displayToPlanner, showNextDisplay;
+    private Button displayToComparison, displayToSurvey, showNextDisplay;
 
     private String[] vehicleDisplayOrder;
     private String type;
@@ -78,9 +78,6 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
         vehicleDisplayOrder = getIntent().getStringArrayExtra("vehicleDisplayOrder");
 
         vehicles = Vehicle.vehicles;
-
-        //Car car = new Car(getIntent().getDoubleExtra("miles", 0.0));
-        //car.setMoney();
 
         displayLayout = findViewById(R.id.displayLayout);
 
@@ -122,8 +119,8 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
 
         displayToComparison = findViewById(R.id.displayToComparison);
         displayToComparison.setOnClickListener(this);
-        displayToPlanner = findViewById(R.id.displayToPlanner);
-        displayToPlanner.setOnClickListener(this);
+        displayToSurvey = findViewById(R.id.displayToSurvey);
+        displayToSurvey.setOnClickListener(this);
         showNextDisplay = findViewById(R.id.showNextDisplay);
         showNextDisplay.setOnClickListener(this);
 
@@ -195,7 +192,7 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
                 intent = new Intent(this, ComparisonActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.displayToPlanner:
+            case R.id.displayToSurvey:
                 intent = new Intent(this, PlannerActivity.class);
                 startActivity(intent);
                 break;

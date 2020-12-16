@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.example.travelplanner_0_1_1.R;
@@ -20,6 +21,7 @@ public class VehicleButtonFragment extends Fragment {
     private TextView title;
     private TextView info;
     private Button vehicleSelect;
+    private CardView cardView;
     private int id = 0;
 
     @Override
@@ -40,6 +42,8 @@ public class VehicleButtonFragment extends Fragment {
         title = view.findViewById(R.id.vehicleButtonTitle);
         info = view.findViewById(R.id.vehicleButtonInfo);
         vehicleSelect = view.findViewById(R.id.vehicleButtonSelect);
+
+        cardView = view.findViewById(R.id.cardView);
     }
 
     public void setBackgroundImg(int id){
@@ -64,5 +68,9 @@ public class VehicleButtonFragment extends Fragment {
 
     public String getTitleText(){
         return title.getText().toString().toLowerCase();
+    }
+
+    public CardView getCardView(){
+        return cardView;
     }
 }

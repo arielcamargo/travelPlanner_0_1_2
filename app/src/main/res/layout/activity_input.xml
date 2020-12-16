@@ -30,19 +30,20 @@
         android:layout_width="366dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/lato"
         android:text="@string/address_prompt"
-        android:textColor="@color/colorBlack"
-        android:textSize="18sp"
-        android:textStyle="italic" />
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/goToNext"
         android:layout_width="174dp"
         android:layout_height="72dp"
         android:layout_marginTop="16dp"
-        android:backgroundTint="@color/opaquesacStateGreen"
+        android:backgroundTint="@color/colorWhite"
+        android:fontFamily="@font/trajan_pro_bold"
         android:text="@string/skip"
-        android:textColor="@color/colorWhite"
+        android:textColor="@color/colorBlack"
         android:textSize="24sp" />
 
 </LinearLayout>

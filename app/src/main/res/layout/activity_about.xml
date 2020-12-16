@@ -25,9 +25,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
-        android:background="#FFFFFF"
+        android:background="@drawable/round_frame"
         android:fontFamily="@font/lato"
-        android:padding="10dp"
+        android:padding="8dp"
         android:text="@string/app_string_info"
         android:textAlignment="center"
         android:textColor="@color/colorBlack"
@@ -37,9 +37,10 @@
         android:id="@+id/goToInput"
         android:layout_width="168dp"
         android:layout_height="65dp"
-        android:backgroundTint="@color/colorWhite"
-        android:fontFamily="@font/lato"
+        android:backgroundTint="@color/evergreenAsh"
+        android:fontFamily="@font/trajan_pro_bold"
         android:text="@string/ok"
+        android:textColor="@color/colorWhite"
         android:textSize="24sp" />
 
 </LinearLayout>

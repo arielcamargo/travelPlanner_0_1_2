@@ -1,6 +1,7 @@
 package com.example.travelplanner_0_1_1.activities;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -56,9 +57,12 @@ public class InputActivity extends AppCompatActivity implements View.OnClickList
         //Sets up the AutocompleteSupportFragment
         getHomeAddress = (AutocompleteSupportFragment) getSupportFragmentManager().findFragmentById(R.id.get_home_address);
 
+        getHomeAddress.getView().setBackgroundColor(Color.WHITE);
+
         //bounds it to specific area
         assert getHomeAddress != null;
         getHomeAddress.setCountries("US");
+
         double BIAS_RANGE = 0.125;
         getHomeAddress.setLocationBias(
                 RectangularBounds.newInstance(

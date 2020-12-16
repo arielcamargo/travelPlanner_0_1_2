@@ -296,11 +296,11 @@
             tools:ignore="ButtonStyle" />
 
         <Button
-            android:id="@+id/displayToPlanner"
+            android:id="@+id/displayToSurvey"
             android:layout_width="wrap_content"
             android:layout_height="70dp"
             android:backgroundTint="@color/colorWhite"
-            android:text="@string/add_to_my_plan"
+            android:text="@string/display_to_survey"
             tools:ignore="ButtonStyle" />
 
         <Button

@@ -1,6 +1,7 @@
 package com.example.travelplanner_0_1_1.activities;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -59,11 +60,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     public void sortVehicles(Vehicle[] vehicles) {
         //if no distances were given
         if (vehicles[0].getDistFromHome() == -1) {
-            swap(vehicles,0, 1);
+            swap(vehicles, 0, 1);
             swap(vehicles, 1, 2);
-            swap(vehicles,2, 3);
-            swap(vehicles,3, 4);
-            swap(vehicles,4, 5);
+            swap(vehicles, 2, 3);
+            swap(vehicles, 3, 4);
+            swap(vehicles, 4, 5);
         } else {
             //todo: sort vehicles
 
@@ -78,6 +79,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     private void createButtons(VehicleButtonFragment[] fragmentOrder) {
         for (int i = 0; i < 6; i++) {
+            if (i != 0)
+                fragmentOrder[i].getCardView().setForeground(null);
             fragmentOrder[i].setBackgroundImg(vehicles[i].getBackgroundId());
             fragmentOrder[i].setTitle(vehicles[i].getTitle());
             fragmentOrder[i].setInfo("Click this to get info on " + vehicles[i].getType());
