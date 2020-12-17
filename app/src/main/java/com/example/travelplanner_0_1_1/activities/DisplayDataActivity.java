@@ -132,6 +132,10 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
         displayVehicleTitle.setOnItemSelectedListener(this);
         displayVehicleTitle.setSelection(Vehicle.getIndex(type));
 
+        for(int i = 0; i < vehicles.length;i++){
+            vehicles[i].setSubType(1);
+        }
+
         //edits all the components based on what vehicle type the user clicked on
         displayData(type);
 
@@ -204,6 +208,7 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
 
     //method for swapping to whichever mode of transportation necessary
     public void displayData(String vehicleType) {
+        vehicles[Vehicle.getIndex((vehicleType))].setSubType(1);
         setDisplay(Vehicle.getIndex(vehicleType));
 
         Class fragmentClass;

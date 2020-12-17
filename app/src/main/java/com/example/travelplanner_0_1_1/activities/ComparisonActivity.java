@@ -84,7 +84,13 @@ public class ComparisonActivity extends AppCompatActivity implements View.OnClic
             if (vehicles[i].getDistFromHome() == -1)
                 noDir++;
         }
-        compareByDistance.setEnabled(noDir < 1);
+        if(noDir > 1){
+            compareByDistance.setEnabled(false);
+            compareByDistance.setVisibility(View.INVISIBLE);
+        } else{
+            compareByDistance.setEnabled(true);
+            compareByDistance.setVisibility(View.VISIBLE);
+        }
 
 
         vehicle1 = "car";
@@ -173,6 +179,12 @@ public class ComparisonActivity extends AppCompatActivity implements View.OnClic
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String item = parent.getItemAtPosition(position).toString();
+
+        String itemType;
+        switch (item.toLowerCase()){
+            case "electric bike":
+                break;
+        }
         //comparisonTitle.setText(item);
         int vehiclePos = Vehicle.getIndex(item);
 

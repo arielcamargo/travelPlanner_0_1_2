@@ -224,7 +224,7 @@ public abstract class Vehicle implements TaskLoadedCallback {
         DecimalFormat tf = new DecimalFormat("##,###.00");
         if (netCost == 0)
             return "Annual net Cost: $0!";
-        return String.format("Annual net cost: $%s", tf.format(netCost));
+        return String.format("Annual net cost: $%.2f", netCost);
 
     }
 
@@ -236,9 +236,9 @@ public abstract class Vehicle implements TaskLoadedCallback {
             DecimalFormat tf = new DecimalFormat("##,###.00");
             for (int i = 0; i < numOfCosts; i++) {
                 if (i + 1 == numOfCosts)
-                    info += String.format("%s: \u0009$%s per year", costId[i], tf.format(costs[i]));
+                    info += String.format("%s: \u0009$%.2f per year", costId[i], costs[i]);
                 else
-                    info += String.format("%s: \u0009$%s per year\n", costId[i], tf.format(costs[i]));
+                    info += String.format("%s: \u0009$%.2f per year\n", costId[i], costs[i]);
             }
         } else {
             info += "no costs!";
@@ -270,7 +270,7 @@ public abstract class Vehicle implements TaskLoadedCallback {
     }
 
     public String printDuration(){
-        String info = "";
+        String info;
         if (timeFromHome == -1) {
             return "unknown duration";
         }
@@ -300,34 +300,6 @@ public abstract class Vehicle implements TaskLoadedCallback {
 
     public String getSubTypeId(int i) {
         return subTypeId[i];
-    }
-
-    public double getTimeFromSac() {
-        return timeFromSac;
-    }
-
-    public double getTimeFromHome() {
-        return timeFromHome;
-    }
-
-    public int getNumOfCosts() {
-        return numOfCosts;
-    }
-
-    public double getAvgMpg() {
-        return avgMpg;
-    }
-
-    public double getGasCost() {
-        return gasCost;
-    }
-
-    public double getCosts(int i) {
-        return costs[i];
-    }
-
-    public String[] getCostId() {
-        return costId;
     }
 
     public double getNetCost() {
