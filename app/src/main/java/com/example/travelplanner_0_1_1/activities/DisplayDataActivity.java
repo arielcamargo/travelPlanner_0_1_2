@@ -320,6 +320,7 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
 
                 break;
         }
+        subTypeGroup.check(vehicleType1.getId());
     }
 
     private void updateMap(PolylineOptions polylineOptions, Double distance) {
