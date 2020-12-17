@@ -36,6 +36,7 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
     private ScrollView displayScrollView;
 
     //radio buttons for certain types, some can be set invisible for when there's less than 4 kinds
+    private TextView radioButtonPrompt;
     private RadioGroup subTypeGroup;
     private RadioButton vehicleType1, vehicleType2, vehicleType3, vehicleType4;
 
@@ -88,6 +89,7 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
         displayVehicleTitle = findViewById(R.id.displayTitleVehicle);
         displayScrollView = findViewById(R.id.displayScrollView);
 
+        radioButtonPrompt = findViewById(R.id.radioButtonPrompt);
         subTypeGroup = findViewById(R.id.subTypeGroup);
 
         vehicleType1 = findViewById(R.id.vehicleType1);
@@ -242,7 +244,7 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
                 params.height = getResources().getDimensionPixelSize(R.dimen.map_display_height);
                 mapFragment.getView().setLayoutParams(params);
                 //sets it to appropriate index in layout
-                displayLayout.addView(mapRow, (subTypeGroup.getParent() == null ? 10 : 12));
+                displayLayout.addView(mapRow, (subTypeGroup.getParent() == null ? 11 : 14));
             }
 
         } else {
@@ -289,14 +291,16 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
             case 0:
             default:
                 if (subTypeGroup.getParent() != null) {
+                    displayLayout.removeView(radioButtonPrompt);
                     displayLayout.removeView(subTypeGroup);
                     displayLayout.removeView(displayDivider2);
                 }
                 break;
             case 2:
                 if (subTypeGroup.getParent() == null) {
-                    displayLayout.addView(subTypeGroup, 2);
-                    displayLayout.addView(displayDivider2, 3);
+                    displayLayout.addView(radioButtonPrompt, 2);
+                    displayLayout.addView(subTypeGroup, 3);
+                    displayLayout.addView(displayDivider2, 4);
                 }
                 if (vehicleType4.getParent() != null) {
                     subTypeGroup.removeView(vehicleType3);
@@ -308,8 +312,9 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
                 break;
             case 4:
                 if (subTypeGroup.getParent() == null) {
-                    displayLayout.addView(subTypeGroup, 2);
-                    displayLayout.addView(displayDivider2, 3);
+                    displayLayout.addView(radioButtonPrompt, 2);
+                    displayLayout.addView(subTypeGroup, 3);
+                    displayLayout.addView(displayDivider2, 4);
                 }
                 if (vehicleType4.getParent() == null) {
                     subTypeGroup.addView(vehicleType3);

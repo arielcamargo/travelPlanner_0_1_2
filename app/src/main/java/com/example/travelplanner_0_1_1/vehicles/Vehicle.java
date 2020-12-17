@@ -19,7 +19,7 @@ public abstract class Vehicle implements TaskLoadedCallback {
     // more learning and testing. https://developer.android.com/reference/android/os/Parcelable
     public static final Vehicle[] vehicles = new Vehicle[6];
 
-    public static final LatLng SAC_STATE_LOC = new LatLng(38.5575016, -121.4276552);
+    public static final LatLng SAC_STATE_LOC = new LatLng(38.5645615, -121.4261736);
 
     //dir selection is which type of direction options want to be used when fetchURL is executed
     protected int dirSelection = 0;
@@ -212,9 +212,9 @@ public abstract class Vehicle implements TaskLoadedCallback {
             DecimalFormat tf = new DecimalFormat("##,###.00");
             for (int i = 0; i < numOfCosts; i++) {
                 if (i + 1 == numOfCosts)
-                    info += String.format("%s: \t$%s per year", costId[i], tf.format(costs[i]));
+                    info += String.format("%s: \u0009$%s per year", costId[i], tf.format(costs[i]));
                 else
-                    info += String.format("%s: \t$%s per year\n", costId[i], tf.format(costs[i]));
+                    info += String.format("%s: \u0009$%s per year\n", costId[i], tf.format(costs[i]));
             }
         } else {
             info += "no costs!";
@@ -228,9 +228,9 @@ public abstract class Vehicle implements TaskLoadedCallback {
             return "Carbon emissions: NONE!";
         if (netEmissions > 1000)
 
-            info += String.format("Carbon emissions: %.2fk grams of C02", netEmissions / 1000);
+            info += String.format("Carbon emissions: %.2fk grams", netEmissions / 1000);
         else
-            info += String.format("Carbon emissions: %.2f grams of C02", netEmissions);
+            info += String.format("Carbon emissions: %.2f grams", netEmissions);
         return info;
     }
 
@@ -239,8 +239,8 @@ public abstract class Vehicle implements TaskLoadedCallback {
         if (distFromSac == -1) {
             return "no possible routes found";
         }
-        info = String.format("Distance from home: %.2f mi\n", distFromHome);
-        info += String.format("Distance from Sac State : %.2f mi", distFromSac);
+        info = String.format("Distance going to Sac State: %.2f mi\n", distFromHome);
+        info += String.format("Distance going home: %.2f mi", distFromSac);
 
         return info;
     }
@@ -250,8 +250,8 @@ public abstract class Vehicle implements TaskLoadedCallback {
         if (timeFromHome == -1) {
             return "unknown duration";
         }
-        info = String.format("Estimated ETA from home: %.0f mins\n", timeFromHome);
-        info += String.format("Estimated ETA from Sac State : %.0f mins", timeFromHome);
+        info = String.format("ETA going to Sac State: %.0f mins\n", timeFromHome);
+        info += String.format("ETA going Home: %.0f mins", timeFromHome);
 
         return info;
     }

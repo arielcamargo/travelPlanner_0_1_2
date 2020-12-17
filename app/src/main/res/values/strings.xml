@@ -102,6 +102,9 @@
     <string name="maintenance_not_required">~Maintenance Not Required</string>
     <string name="option_to_reserve">~Option to reserve</string>
     <string name="take_the_survey">Take the Survey</string>
+    <string name="time">time</string>
+    <string name="radio_button_prompt">Select the following to see the different types:</string>
+    <string name="scroll_bottom_prompt">Click \"Next\" to see the next mode of transportation.\nClick \"Compare\" to compare the different modes of transportation.\nClick \"Finish\"if you think you have decided what you want to use to travel with</string>
 
     <string-array name="vehicle_array_subtypes">
         <item>car</item>

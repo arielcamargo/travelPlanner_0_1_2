@@ -31,6 +31,8 @@ import com.google.android.libraries.places.widget.listener.PlaceSelectionListene
 
 import java.util.Arrays;
 
+import static com.example.travelplanner_0_1_1.vehicles.Vehicle.SAC_STATE_LOC;
+
 public class InputActivity extends AppCompatActivity implements View.OnClickListener, PlaceSelectionListener {
 
     private Button goToNext;
@@ -66,8 +68,8 @@ public class InputActivity extends AppCompatActivity implements View.OnClickList
         double BIAS_RANGE = 0.125;
         getHomeAddress.setLocationBias(
                 RectangularBounds.newInstance(
-                        new LatLng(AddressFragment.SAC_STATE_LOC.latitude - BIAS_RANGE, AddressFragment.SAC_STATE_LOC.longitude - BIAS_RANGE),
-                        new LatLng(AddressFragment.SAC_STATE_LOC.latitude + BIAS_RANGE, AddressFragment.SAC_STATE_LOC.longitude + BIAS_RANGE)
+                        new LatLng(SAC_STATE_LOC.latitude - BIAS_RANGE, SAC_STATE_LOC.longitude - BIAS_RANGE),
+                        new LatLng(SAC_STATE_LOC.latitude + BIAS_RANGE, SAC_STATE_LOC.longitude + BIAS_RANGE)
                 )
         );
 

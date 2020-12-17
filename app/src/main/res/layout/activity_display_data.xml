@@ -21,6 +21,7 @@
             android:id="@+id/displayLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,6 +32,7 @@
                     android:id="@+id/displayBackgroundImage"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
+                    android:contentDescription="@string/background"
                     android:scaleType="centerCrop"
                     android:src="@drawable/car_title_image"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -38,8 +40,7 @@
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0"
-                    android:contentDescription="@string/background" />
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <Spinner
                     android:id="@+id/displayTitleVehicle"
@@ -59,9 +60,21 @@
                 android:id="@+id/displayDivider1"
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
+                android:contentDescription="@string/gradient"
                 android:scaleType="fitXY"
-                android:src="@drawable/gradient"
-                android:contentDescription="@string/gradient"/>
+                android:src="@drawable/gradient" />
+
+            <TextView
+                android:id="@+id/radioButtonPrompt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/redwoodGroveGreen"
+                android:fontFamily="@font/lato"
+                android:padding="2dp"
+                android:text="@string/radio_button_prompt"
+                android:textAlignment="center"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp" />
 
             <RadioGroup
                 android:id="@+id/subTypeGroup"
@@ -76,8 +89,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/hornetYellow"
-                    android:text="@string/vehicle_type_1_txt"
                     android:checked="true"
+                    android:text="@string/vehicle_type_1_txt"
                     android:textColor="@color/colorWhite" />
 
                 <RadioButton
@@ -109,10 +122,10 @@
                 android:id="@+id/displayDivider2"
                 android:layout_width="match_parent"
                 android:layout_height="4dp"
+                android:contentDescription="@string/gradient"
                 android:rotationY="180"
                 android:scaleType="fitXY"
-                android:src="@drawable/gradient"
-                android:contentDescription="@string/gradient"/>
+                android:src="@drawable/gradient" />
 
             <TextView
                 android:id="@+id/vehicleInfo"
@@ -120,46 +133,58 @@
                 android:layout_height="wrap_content"
                 android:background="@color/colorWhite"
                 android:fontFamily="@font/lato"
-                android:padding="5dp"
+                android:padding="7dp"
                 android:text="@string/vehicle_info_description"
                 android:textColor="@color/colorBlack"
                 android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/vehicleCostInfo"
-                android:layout_width="match_parent"
+                android:layout_width="375dp"
                 android:layout_height="wrap_content"
-                android:background="@color/hornetYellow"
-                android:fontFamily="@font/lato"
+                android:layout_marginTop="10dp"
+                android:background="@color/redMaple"
+                android:fontFamily="@font/trajan_pro_bold"
                 android:padding="1dp"
                 android:paddingStart="5dp"
                 android:paddingEnd="0dp"
                 android:text="@string/vehicle_cost_description"
-                android:textColor="@color/colorBlack"
-                android:textSize="18sp" />
+                android:textAlignment="center"
+                android:textColor="@color/colorWhite"
+                android:textSize="22sp" />
 
             <TextView
                 android:id="@+id/vehicleCostInfoBreakdown"
-                android:layout_width="match_parent"
+                android:layout_width="375dp"
                 android:layout_height="wrap_content"
-                android:background="@color/sacStateGreen"
+                android:layout_marginBottom="20dp"
+                android:background="#D5000000"
                 android:fontFamily="@font/lato_italic"
-                android:padding="1dp"
-                android:paddingStart="5dp"
-                android:paddingEnd="0dp"
+                android:padding="10dp"
                 android:text="@string/vehicle_cost_info_description"
                 android:textColor="@color/colorWhite" />
+
+            <ImageView
+                android:id="@+id/displayDivider3"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:contentDescription="@string/gradient"
+                android:scaleType="fitXY"
+                android:src="@drawable/gradient" />
 
             <TextView
                 android:id="@+id/vehicleEmissionsInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/sacStateGreen"
-                android:fontFamily="@font/lato"
-                android:padding="1dp"
-                android:paddingStart="5dp"
+                android:background="@color/redwoodGroveGreen"
+                android:fontFamily="@font/trajan_pro_bold"
+                android:padding="5dp"
+                android:paddingStart="10dp"
+                android:paddingTop="2dp"
                 android:paddingEnd="0dp"
+                android:paddingBottom="2dp"
                 android:text="@string/vehicle_emissions_description"
+                android:textAlignment="center"
                 android:textColor="@color/colorWhite"
                 android:textSize="18sp" />
 
@@ -167,35 +192,40 @@
                 android:id="@+id/vehicleDistanceInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/sacStateGreen"
+                android:background="@color/whiteBirch"
                 android:fontFamily="@font/lato"
-                android:padding="1dp"
-                android:paddingStart="5dp"
+                android:padding="5dp"
+                android:paddingStart="10dp"
+                android:paddingTop="0dp"
                 android:paddingEnd="0dp"
+                android:paddingBottom="10dp"
                 android:text="@string/vehicle_distance_description"
-                android:textColor="@color/colorWhite"
+                android:textColor="@color/colorBlack"
                 android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/vehicleTravelTimeInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/sacStateGreen"
+                android:background="@color/webColor6"
                 android:fontFamily="@font/lato"
-                android:padding="1dp"
-                android:paddingStart="5dp"
+                android:padding="5dp"
+                android:paddingStart="10dp"
+                android:paddingTop="0dp"
                 android:paddingEnd="0dp"
-                android:text="@string/vehicle_distance_description"
-                android:textColor="@color/colorWhite"
+                android:paddingBottom="10dp"
+                android:text="@string/time"
+                android:textColor="@color/colorBlack"
                 android:textSize="18sp" />
 
             <ImageView
-                android:id="@+id/displayDivider3"
+                android:id="@+id/displayDivider7"
                 android:layout_width="match_parent"
                 android:layout_height="4dp"
+                android:contentDescription="@string/gradient"
+                android:rotationY="180"
                 android:scaleType="fitXY"
-                android:src="@drawable/gradient"
-                android:contentDescription="@string/gradient"/>
+                android:src="@drawable/gradient" />
 
             <fragment
                 android:id="@+id/mapFragment"
@@ -209,6 +239,7 @@
                 android:id="@+id/mapRow"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@color/redwoodGroveGreen"
                 android:gravity="center_horizontal">
 
                 <TextView
@@ -217,7 +248,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lato"
                     android:text="@string/display_map_prompt"
-                    android:textColor="@color/colorBlack" />
+                    android:textColor="@color/colorWhite" />
 
                 <Button
                     android:id="@+id/distanceFromHome"
@@ -237,25 +268,6 @@
                     android:text="@string/from_sac_state" />
             </TableRow>
 
-            <TextView
-                android:id="@+id/displayMoreInfo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/lato"
-                android:text="@string/display_more_info_description"
-                android:textAlignment="center"
-                android:textColor="@color/colorBlack"
-                android:textSize="24sp" />
-
-            <ImageView
-                android:id="@+id/displayDivider4"
-                android:layout_width="match_parent"
-                android:layout_height="4dp"
-                android:rotationY="180"
-                android:scaleType="fitXY"
-                android:src="@drawable/gradient"
-                android:contentDescription="@string/gradient"/>
-
             <fragment
                 android:id="@+id/vehicleFragmentHolder"
                 android:name="com.example.travelplanner_0_1_1.fragments.vehiclefragments.CarFragment"
@@ -267,9 +279,24 @@
                 android:id="@+id/displayDivider5"
                 android:layout_width="match_parent"
                 android:layout_height="4dp"
+                android:contentDescription="@string/gradient"
                 android:scaleType="fitXY"
-                android:src="@drawable/gradient"
-                android:contentDescription="@string/gradient"/>
+                android:src="@drawable/gradient" />
+
+            <TextView
+                android:id="@+id/scrollBottomPrompt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/whiteBirch"
+                android:fontFamily="@font/lato"
+                android:padding="1dp"
+                android:paddingStart="10dp"
+                android:paddingTop="0dp"
+                android:paddingEnd="0dp"
+                android:paddingBottom="25dp"
+                android:text="@string/scroll_bottom_prompt"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
 
             <Space
                 android:layout_width="match_parent"
@@ -291,7 +318,7 @@
             android:id="@+id/displayToComparison"
             android:layout_width="wrap_content"
             android:layout_height="70dp"
-            android:backgroundTint="@color/hornetYellow"
+            android:backgroundTint="@color/colorWhite"
             android:text="@string/compare_this"
             tools:ignore="ButtonStyle" />
 

@@ -30,12 +30,13 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
+import static com.example.travelplanner_0_1_1.vehicles.Vehicle.SAC_STATE_LOC;
+
 
 public class AddressFragment extends Fragment implements OnMapReadyCallback, FragmentResultListener {
 
     /*Google maps fragment that is used for displaying the initial route from the users home to Sac State within the InputFragment.java*/
     private MapView addressMap;
-    public static final LatLng SAC_STATE_LOC = new LatLng(38.5575016, -121.4276552);
     private Marker homeMarker;
     private Polyline directions;
 
