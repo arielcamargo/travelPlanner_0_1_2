@@ -17,8 +17,8 @@ public class JumpBikes extends Vehicle {
 
         dirSelection = 2;
 
-        numOfSubtypes = 2;
-        subTypeId = new String[]{"bike", "scooter"};
+        numOfSubtypes = 0;
+        //subTypeId = new String[]{"bike", "scooter"};
 
         numOfCosts = 1;
         costs = new double[]{rent};

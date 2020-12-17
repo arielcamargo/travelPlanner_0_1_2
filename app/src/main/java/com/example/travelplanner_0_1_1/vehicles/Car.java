@@ -22,7 +22,7 @@ public class Car extends Vehicle {
         avgMpg = 32;
 
         numOfCosts = 4;
-        costs = new double[]{gasCost, 1462, 368, 178};
+        costs = new double[]{gasCost, 1462, 368, 178*2};
         costId = new String[]{"gas", "insurance", "maintenance", "parking pass"};
 
         avgEmissions = 286.68;
@@ -44,7 +44,7 @@ public class Car extends Vehicle {
                 avgMpg = 32;
 
                 numOfCosts = 4;
-                costs = new double[]{gasCost, 1462, 368, 178};
+                costs = new double[]{gasCost, 1462, 368, 178*2};
                 costId = new String[]{"gas", "insurance", "maintenance", "parking pass"};
 
                 avgEmissions = 286.68;
@@ -52,7 +52,11 @@ public class Car extends Vehicle {
                 break;
             case 2:
                 numOfCosts = 1;
-                double fairPrice =  ((0.21 * (timeFromHome + timeFromSac)) + (0.78 * (distFromHome + distFromSac)) + 4.15) * 340;
+                double fairPrice;
+                if (distFromHome == -1)
+                    fairPrice = ((0.21 * 45) + (0.78 * 40) + 4.15) * DAYS_IN_SEMESTER;
+                else
+                    fairPrice = ((0.21 * (timeFromHome + timeFromSac)) + (0.78 * (distFromHome + distFromSac)) + 4.15) * DAYS_IN_SEMESTER;
                 costs = new double[]{fairPrice};
                 costId = new String[]{"Expected fair price"};
                 avgMpg = 0;
@@ -63,17 +67,17 @@ public class Car extends Vehicle {
                 avgMpg = 50;
 
                 numOfCosts = 4;
-                costs = new double[]{gasCost, 1462, 500, 178};
+                costs = new double[]{gasCost, 1462, 500, 178*2};
                 costId = new String[]{"gas", "insurance", "maintenance", "parking pass"};
 
-                avgEmissions = 286.68;
+                avgEmissions = 197.50;
                 calculateCosts();
                 break;
             case 4:
                 avgMpg = 0;
 
                 numOfCosts = 3;
-                costs = new double[]{1462, 900, 178};
+                costs = new double[]{1462, 900, 178*2};
                 costId = new String[]{"insurance", "maintenance", "parking pass"};
 
                 avgEmissions = 0;
@@ -84,15 +88,21 @@ public class Car extends Vehicle {
 
     @Override
     public void calculateEmissions() {
-        netEmissions = (distFromHome + distFromSac) * 10 * 34 * avgEmissions;
+        if (distFromHome == -1)
+            netEmissions = (40) * 10 * 34 * avgEmissions;
+        else
+            netEmissions = (distFromHome + distFromSac) * 10 * 34 * avgEmissions;
     }
 
     @Override
     public void calculateGas() {
-        if(avgMpg != 0) {
-            gasCost = GAS_AVG / avgMpg * 34 * 10 * (distFromHome + distFromSac);
+        if (avgMpg != 0) {
+            if (distFromHome != -1)
+                gasCost = GAS_AVG / avgMpg * 34 * 10 * (distFromHome + distFromSac);
+            else
+                gasCost = GAS_AVG / avgMpg * 34 * 10 * 40;
             costs[0] = gasCost;
-        } else{
+        } else {
             gasCost = 0;
         }
     }

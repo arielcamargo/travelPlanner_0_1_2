@@ -21,7 +21,7 @@ public class Motorcycle extends Vehicle {
         avgMpg = 60;
 
         numOfCosts = 4;
-        costs = new double[]{gasCost, 900, 1000, 44};
+        costs = new double[]{gasCost, 900, 1000, 44*2};
         costId = new String[]{"gas", "insurance", "maintenance", "parking pass"};
 
         //data grabbed from https://www.bts.gov/content/estimated-national-average-vehicle-emissions-rates-vehicle-vehicle-type-using-gasoline-and
@@ -44,7 +44,7 @@ public class Motorcycle extends Vehicle {
                 // normal
                 avgEmissions = 13.58;
                 avgMpg = 60;
-                costs = new double[]{gasCost, 900, 1000, 44};
+                costs = new double[]{gasCost, 900, 1000, 44*2};
                 costId = new String[]{"gas", "insurance", "maintenance", "parking pass"};
                 break;
             case 2:
@@ -57,7 +57,7 @@ public class Motorcycle extends Vehicle {
 
                 avgEmissions = 0;
                 avgMpg = 0;
-                costs = new double[]{electricity, 900, 1000, 44};
+                costs = new double[]{electricity, 900, 1200, 44*2};
                 costId = new String[]{"electricity", "insurance", "maintenance", "parking pass"};
                 break;
         }
