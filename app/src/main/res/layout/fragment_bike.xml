@@ -1,227 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragments.transportation.BikeFragment">
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:orientation="vertical"
+    tools:context=".fragments.vehiclefragments.BikeFragment">
 
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="426dp"
-        android:layout_height="269dp"
-        android:layout_marginBottom="550dp"
-        android:contentDescription="TODO"
+        android:id="@+id/bikeImageOne"
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bike_image_one" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="4dp" />
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/proLayout"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:background="@color/redwoodGroveGreen"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:textAlignment="center">
+
+            <TextView
+                android:id="@+id/pros"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/trajan_pro_bold"
+                android:gravity="center_vertical"
+                android:text="@string/pro"
+                android:textAlignment="center"
+                android:textColor="@color/webColor6"
+                android:textSize="22sp" />
+
+
+            <TextView
+                android:id="@+id/proOne"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/lato"
+                android:gravity="center_vertical"
+                android:text="- Reduces Traffic Congestion"
+                android:textColor="@color/webColor6"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/proTwo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/lato"
+                android:text="- Reduces Air Pollution"
+                android:textColor="@color/webColor6"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/proThree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/lato"
+                android:text="- Health Benefits Due to Physical Exercise"
+                android:textColor="@color/webColor6"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="4dp"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:id="@+id/conLayout"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/redwoodGroveGreen"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/cons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/trajan_pro_bold"
+                android:gravity="center_vertical"
+                android:text="@string/con"
+                android:textAlignment="center"
+                android:textColor="@color/webColor6"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/conOne"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/lato"
+                android:gravity="center_vertical"
+                android:text="- Can Be Time Consuming"
+                android:textColor="@color/webColor6"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/conTwo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/lato"
+                android:gravity="center_vertical"
+                android:text="- Requires Maintenance"
+                android:textColor="@color/webColor6"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/conThree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/lato"
+                android:gravity="center_vertical"
+                android:text="- Weather Interference"
+                android:textColor="@color/webColor6"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+    </TableRow>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="4dp" />
+
+    <LinearLayout
+        android:id="@+id/moreInfoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="215dp"
+        android:background="@color/redwoodGroveGreen"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <!-- Just copy this text here-->
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/lato"
+            android:gravity="center_vertical"
+            android:text="text"
+            android:textColor="@color/webColor6"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="4dp" />
+
+    <ImageView
+        android:id="@+id/bikeImageTwo"
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
         android:scaleType="centerCrop"
         android:src="@drawable/bike_image_two" />
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="170dp"
-        android:layout_marginEnd="211dp"
-        android:background="#043927"
-        android:gravity="center_horizontal"
-        android:text="Pros"
-        android:textAlignment="center"
-        android:textColor="#f0e1b0"
-        android:textSize="25sp"
-        android:textStyle="bold|italic" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginEnd="210dp"
-        android:layout_marginRight="210dp"
-        android:gravity="center_vertical"
-        android:text="- Reduces Traffic Congestion"
-        android:textColor="#f0e1b0"
-        android:textSize="15sp" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="250dp"
-        android:layout_marginEnd="210dp"
-        android:layout_marginRight="210dp"
-        android:text="- Reduces Air Pollution "
-        android:textColor="#f0e1b0"
-        android:textSize="15sp" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="290dp"
-        android:layout_marginEnd="210dp"
-        android:layout_marginRight="210dp"
-        android:text="- Health Benefits Due to Physical Exercise "
-        android:textColor="#f0e1b0"
-        android:textSize="15sp" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginStart="203dp"
-        android:layout_marginLeft="203dp"
-        android:layout_marginTop="170dp"
-        android:background="#043927"
-        android:gravity="center_horizontal"
-        android:text="Cons"
-        android:textColor="#f0e1b0"
-        android:textSize="25sp"
-        android:textStyle="bold|italic" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="220dp"
-        android:layout_marginTop="200dp"
-        android:gravity="center_vertical"
-        android:text="- Can Be Time Consuming"
-        android:textColor="#f0e1b0"
-        android:textSize="15sp" />
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginLeft="220dp"
-        android:layout_marginTop="240dp"
-        android:gravity="center_vertical"
-        android:text="- Requires Maintenance"
-        android:textColor="#f0e1b0"
-        android:textSize="15sp" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginLeft="220dp"
-        android:layout_marginTop="285dp"
-        android:gravity="center_vertical"
-        android:text="- Weather Interference"
-        android:textColor="#f0e1b0"
-        android:textSize="15sp" />
-
-    <TextView
-        android:id="@+id/textView19"
-        android:layout_width="match_parent"
-        android:layout_height="215dp"
-        android:layout_marginTop="373dp"
-        android:background="#043927"
-        android:text=" Additional Information"
-        android:textColor="#f0e1b0"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/textView20"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="405dp"
-        android:gravity="center_vertical"
-        android:text="Jump Bikes: "
-        android:textColor="#f0e1b0"
-        android:textSize="15sp" />
-
-    <TextView
-        android:id="@+id/textView21"
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="430dp"
-        android:gravity="center_vertical"
-        android:text="The electric bicycle sharing system that is available "
-        android:textColor="#f0e1b0"
-        android:textSize="15sp" />
-
-    <TextView
-        android:id="@+id/textView22"
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="445dp"
-        android:gravity="center_vertical"
-        android:text="for you at your convenience."
-        android:textColor="#f0e1b0"
-        android:textSize="15sp" />
-
-    <TextView
-        android:id="@+id/textView23"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="460dp"
-        android:gravity="center_vertical"
-        android:text="Pros:"
-        android:textColor="#f0e1b0"
-        android:textSize="15sp" />
-
-    <TextView
-        android:id="@+id/textView24"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="490dp"
-        android:gravity="center_vertical"
-        android:text="     - Option to Reserve"
-        android:textColor="#f0e1b0"
-        android:textSize="15sp" />
-
-    <TextView
-        android:id="@+id/textView25"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="500dp"
-        android:gravity="center_vertical"
-        android:text="  - Maintenance Not Required"
-        android:textColor="#f0e1b0"
-        android:textSize="15sp" />
-
-    <TextView
-        android:id="@+id/textView26"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="520dp"
-        android:gravity="center_vertical"
-        android:text="Cons:"
-        android:textColor="#f0e1b0"
-        android:textSize="15sp" />
-
-    <TextView
-        android:id="@+id/textView27"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="545dp"
-        android:gravity="center_vertical"
-        android:text="     - Limited Availability"
-        android:textColor="#f0e1b0"
-        android:textSize="15sp" />
-
-    <TextView
-        android:id="@+id/textView28"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="555dp"
-        android:gravity="center_vertical"
-        android:text="  - Service Area Boundaries"
-        android:textColor="#f0e1b0"
-        android:textSize="15sp" />
-</FrameLayout>
+</LinearLayout>

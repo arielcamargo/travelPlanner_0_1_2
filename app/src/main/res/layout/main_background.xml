@@ -68,7 +68,7 @@
                 android:layout_height="97dp"
                 android:foreground="@color/shade"
                 android:scaleType="centerCrop"
-                app:srcCompat="@drawable/bike_image_one" />
+                app:srcCompat="@drawable/bike_image_two" />
         </LinearLayout>
 
     </TableRow>

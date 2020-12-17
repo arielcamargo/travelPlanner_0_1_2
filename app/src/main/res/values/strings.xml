@@ -113,6 +113,8 @@
     <string name="walk_info">A free and easy mode of transportation that causes no harm to the
         environment and improves one\'s health.</string>
     <string name="jump_bike_info">The electric bicycle sharing system you could rent anytime.</string>
+    <string name="pro">Pros</string>
+    <string name="con">Cons</string>
 
     <string-array name="vehicle_array_subtypes">
         <item>car</item>
