@@ -37,7 +37,7 @@
     <string name="about_this_app">About this App</string>
     <string name="survey_prompt">Thank you for using our app! We hope you\'ve been able to make wiser
         decisions on your travel plans to Sacramento State. Please take our survey so we may refine
-        this experience for future users</string>
+        this experience for future users.</string>
     <string name="background">background</string>
     <string name="vehicle_type_4_txt">electric</string>
     <string name="vehicle_type_3_txt">hybrid</string>
@@ -90,7 +90,7 @@
     <string name="time">time</string>
 
     <string name="bikedyk">There are multiple bike cages at Sac State that always under supervision all day.</string>
-    <string name="motorcycledyk">There\'s plenty of motorcycle parking plus convenient parking.</string>
+    <string name="motorcycledyk">There\'s plenty of motorcycle parking it has low walk distances to class.</string>
     <string name="walkdyk">Walking is great to do! There\'s a lot of footpaths to get to Sac State.</string>
 
     <string name="radio_button_prompt">Select the following to see the different types:</string>
