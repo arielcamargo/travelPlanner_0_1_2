@@ -27,7 +27,7 @@ public class JumpBikes extends Vehicle {
 
     @Override
     public void calculateCosts() {
-        rent = (1 + (timeFromHome + timeFromSac) * 0.32 / avgSpeed) * 340;
+        rent = (2 + (timeFromHome + timeFromSac) * 0.38 ) * Vehicle.DAYS_IN_SEMESTER;
         costs[0] = rent;
         calculateNetCost();
     }

@@ -31,7 +31,7 @@ public abstract class Vehicle implements TaskLoadedCallback {
     public static final double GAS_AVG = 2.42;
 
     //according to https://catalog.csus.edu/academic-calendar/#spring2021text
-    protected static final int DAYS_IN_SEMESTER = 147;
+    protected static final int DAYS_IN_SEMESTER = 147 + 10;
 
     //the type of transportation
     protected String type;
