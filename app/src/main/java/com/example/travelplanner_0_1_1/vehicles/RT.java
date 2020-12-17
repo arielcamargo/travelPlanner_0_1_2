@@ -45,8 +45,10 @@ public class RT extends Vehicle {
 
     @Override
     public void calculateEmissions() {
-        netEmissions = (distFromHome + distFromSac) * 10 * 34 * avgEmissions;
-
+        if (timeFromHome != -1)
+            netEmissions = (distFromHome + distFromSac) * 10 * 34 * avgEmissions;
+        else
+            netEmissions = 0;
 
     }
 

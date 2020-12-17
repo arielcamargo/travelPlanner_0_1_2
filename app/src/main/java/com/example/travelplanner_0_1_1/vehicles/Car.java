@@ -53,7 +53,6 @@ public class Car extends Vehicle {
             case 4:
                 // electric
                 break;
-
         }
     }
 

@@ -2,6 +2,8 @@ package com.example.travelplanner_0_1_1.vehicles;
 
 import android.content.Context;
 
+import androidx.fragment.app.Fragment;
+
 import com.example.travelplanner_0_1_1.R;
 import com.example.travelplanner_0_1_1.directionhelpers.FetchUrl;
 import com.example.travelplanner_0_1_1.directionhelpers.TaskLoadedCallback;
@@ -75,6 +77,7 @@ public abstract class Vehicle implements TaskLoadedCallback {
 
         fetchUrlFromSac = new FetchUrl(this, "from sac");
         fetchUrlFromSac.execute(getUrl(home, SAC_STATE_LOC, DIRECTION_OPTIONS[dirSelection], context), DIRECTION_OPTIONS[dirSelection], "from home");
+
     }
 
     public void setDirections(LatLng home, Context context) {
@@ -96,6 +99,7 @@ public abstract class Vehicle implements TaskLoadedCallback {
         distFromHome = -1;
         dirFromSac = null;
         dirFromHome = null;
+        calculateCosts();
     }
 
     //used to create the url to be used to get the directions

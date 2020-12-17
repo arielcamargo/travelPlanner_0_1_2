@@ -2,7 +2,9 @@ package com.example.travelplanner_0_1_1.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +22,12 @@ import android.widget.TextView;
 import android.os.Bundle;
 
 import com.example.travelplanner_0_1_1.R;
+import com.example.travelplanner_0_1_1.fragments.vehiclefragments.BikeFragment;
+import com.example.travelplanner_0_1_1.fragments.vehiclefragments.CarFragment;
+import com.example.travelplanner_0_1_1.fragments.vehiclefragments.JumpBikeFragment;
+import com.example.travelplanner_0_1_1.fragments.vehiclefragments.MotorcycleFragment;
+import com.example.travelplanner_0_1_1.fragments.vehiclefragments.TransitFragment;
+import com.example.travelplanner_0_1_1.fragments.vehiclefragments.WalkFragment;
 import com.example.travelplanner_0_1_1.vehicles.Vehicle;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -140,12 +148,6 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
 
     }
 
-    /*
-    *final FragmentTransaction ft = getFragmentManager().beginTransaction();
-    ft.replace(R.id.details, new NewFragmentToReplace(), "NewFragmentTag");
-    ft.commit();
-    */
-
     private int getIndex(String type) {
         int i;
         for (i = 0; i < 5; i++) {
@@ -219,6 +221,35 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
     //method for swapping to whichever mode of transportation necessary
     public void displayData(String vehicleType) {
         setDisplay(getIndex(vehicleType));
+
+        Fragment fragment;
+        switch (vehicleType) {
+            case "bike":
+            default:
+                fragment = (Fragment) new BikeFragment();
+                break;
+            case "car":
+                fragment = (Fragment) new CarFragment();
+                break;
+            case "jump bike":
+                fragment = (Fragment) new JumpBikeFragment();
+                break;
+            case "motorcycle":
+                fragment = (Fragment) new MotorcycleFragment();
+                break;
+            case "transit":
+                fragment = (Fragment) new TransitFragment();
+                break;
+            case "walk":
+                fragment = (Fragment) new WalkFragment();
+                break;
+
+        }
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(vehicleFragmentHolder.getId(), fragment)
+                .commit();
+
     }
 
     @Override
@@ -229,31 +260,6 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-    }
-
-    private void updateMap(PolylineOptions polylineOptions, Double distance) {
-        if (homeAddress != null && distance != -1) {
-            Bundle result = new Bundle();
-            result.putDouble("lat", homeAddress.latitude);
-            result.putDouble("lng", homeAddress.longitude);
-            result.putParcelable("directions", polylineOptions);
-            getSupportFragmentManager().setFragmentResult("update_directions", result);
-
-            if (mapRow.getParent() == null) {
-                ViewGroup.LayoutParams params = mapFragment.getView().getLayoutParams();
-                params.height = getResources().getDimensionPixelSize(R.dimen.map_display_height);
-                mapFragment.getView().setLayoutParams(params);
-                //sets it to appropriate index in layout
-                displayLayout.addView(mapRow, (subTypeGroup.getParent() == null ? 11 : 14));
-            }
-
-        } else {
-            ViewGroup.LayoutParams params = mapFragment.getView().getLayoutParams();
-            params.height = 0;
-            mapFragment.getView().setLayoutParams(params);
-
-            displayLayout.removeView(mapRow);
-        }
     }
 
     private void setDisplay(int type) {
@@ -268,6 +274,8 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
             updateMap(vehicles[type].getDirFromHome(), vehicles[type].getDistFromHome());
         else
             updateMap(vehicles[type].getDirFromSac(), vehicles[type].getDistFromSac());
+
+
     }
 
     private void updateText(int type, int subType) {
@@ -326,6 +334,35 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
                 vehicleType4.setText(vehicles[type].getSubTypeId(3));
 
                 break;
+        }
+    }
+
+    private void updateMap(PolylineOptions polylineOptions, Double distance) {
+        if (homeAddress != null && distance != -1) {
+            Bundle result = new Bundle();
+            result.putDouble("lat", homeAddress.latitude);
+            result.putDouble("lng", homeAddress.longitude);
+            result.putParcelable("directions", polylineOptions);
+            getSupportFragmentManager().setFragmentResult("update_directions", result);
+
+            if (mapRow.getParent() == null) {
+                ViewGroup.LayoutParams params = mapFragment.getView().getLayoutParams();
+                params.height = getResources().getDimensionPixelSize(R.dimen.map_display_height);
+                mapFragment.getView().setLayoutParams(params);
+                //sets it to appropriate index in layout
+                displayLayout.addView(vehicleDistanceInfo, displayLayout.indexOfChild(vehicleEmissionsInfo) + 1);
+                displayLayout.addView(vehicleTravelTimeInfo, displayLayout.indexOfChild(vehicleEmissionsInfo) + 2);
+                displayLayout.addView(mapRow, subTypeGroup.getParent() == null ? 11 : 14);
+            }
+
+        } else {
+            ViewGroup.LayoutParams params = mapFragment.getView().getLayoutParams();
+            params.height = 0;
+            mapFragment.getView().setLayoutParams(params);
+
+            displayLayout.removeView(mapRow);
+            displayLayout.removeView(vehicleDistanceInfo);
+            displayLayout.removeView(vehicleTravelTimeInfo);
         }
     }
 }

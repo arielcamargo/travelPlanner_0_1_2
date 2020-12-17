@@ -39,10 +39,14 @@ public class Motorcycle extends Vehicle {
         switch (subType) {
             case 1:
                 // normal
-                // update variables and calculations for each mode
+                avgMpg = 60;
+
+                numOfCosts = 4;
+                costs = new double[]{gasCost, 900, 1000, 44};
+                costId = new String[]{"gas", "insurance", "maintenance", "parking pass"};
                 break;
             case 2:
-                //rideshare
+                //electric
                 break;
         }
     }
