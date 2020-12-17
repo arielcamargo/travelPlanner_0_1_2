@@ -10,8 +10,8 @@ public class Bike extends Vehicle {
         dirSelection = 2;
 
         backgroundId = R.drawable.bike_title_image;
-        descriptionId = R.string.about_this_app;
-        quickDescriptionId = R.string.app_string_info;
+        infoDescriptionId = R.string.bike_info;
+        quickDescriptionId = R.string.bike_description;
 
         type = "bike";
 

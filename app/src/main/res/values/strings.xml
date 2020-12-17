@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Travel Planner</string>
     <string name="sac_state_logo">Sac State Logo</string>
-    <string name="app_string_name">Sac State Travel Planner</string>
 
     <!--You are able to have strings that span multiple lines without changing the text-->
     <string name="app_string_info">
@@ -11,14 +10,6 @@
     </string>
     <string name="go">Start</string>
     <string name="skip">Skip</string>
-    <string name="location_prompt">Please Enter your Location</string>
-    <string name="submitInput"><![CDATA[Go>>]]></string>
-    <string name="getBudget">Annual travel budget (Optional)</string>
-    <string name="title_activity_maps">Map</string>
-    <string name="temp_display_data">This activity will display the data for the mode of transportation that the user selects</string>
-    <string name="temp_planner">This Activity is where you can create a travel plan</string>
-    <string name="temp_comparison">This activity will allow the user to compare the different modes of transportation</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="car">car</string>
     <string name="user_agreement">I agree to <u><i>terms and conditions</i></u></string>
     <string name="user_agreement_text">This is where the terms and conditions will go. it may be long so the user can scroll down
@@ -30,15 +21,7 @@
     This is where the terms and conditions will go. it may be long so the user can scroll down
     This is where the terms and conditions will go. it may be long so the user can scroll down
     This is where the terms and conditions will go. it may be long so the user can scroll down </string>
-    <string name="title_activity_popup">PopupActivity</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="address_prompt">Please enter in your home address above. This is to help us find what
         modes of transportation will work best for you. You may put a general location if you don\'t
         want to put your actual address but that will reduce the accuracy of our recommendations for you</string>
@@ -48,16 +31,14 @@
     <string name="menu_info">Here are the different ways you can get to school. Click on one to get more info about it</string>
     <string name="menu_to_compare">Compare transportation</string>
     <string name="gradient">gradient</string>
-    <string name="estimate_my_budget">Help me estimate my budget</string>
     <string name="about_this_app">About this App</string>
-    <string name="take_survey">please take this survey</string>
     <string name="survey_prompt">Thank you for using our app! We hope you\'ve been able to make wiser decisions on your travel plans to Sacramento State. Please take our survey so we may refine this experience for future users</string>
     <string name="background">background</string>
     <string name="vehicle_type_4_txt">electric</string>
     <string name="vehicle_type_3_txt">hybrid</string>
     <string name="vehicle_type_2_txt">rideshare</string>
     <string name="vehicle_type_1_txt">normal</string>
-    <string name="vehicle_info_description">vehicle description, why you should use this vehicle, about 4-5 lines of text max</string>
+    <string name="vehicle_info_description">vehicle description, why you should use this vehicle, about 4–5 lines of text max</string>
     <string name="vehicle_cost_description">Cost</string>
     <string name="vehicle_cost_info_description">gas: \ninsurance:\netc: \nper person: (if rideshare)\nAverage cost(min - max): avg cost</string>
     <string name="vehicle_emissions_description">carbon emissions</string>
@@ -65,7 +46,6 @@
     <string name="display_map_prompt">STARTING POSITION:</string>
     <string name="from_home">From home</string>
     <string name="from_sac_state">From Sac State</string>
-    <string name="display_more_info_description">Additional Info:</string>
     <string name="compare_this">compare this</string>
     <string name="display_to_survey">Finish my tour</string>
     <string name="show_next_option">Show next option</string>
@@ -104,7 +84,35 @@
     <string name="take_the_survey">Take the Survey</string>
     <string name="time">time</string>
     <string name="radio_button_prompt">Select the following to see the different types:</string>
-    <string name="scroll_bottom_prompt">Click \"Next\" to see the next mode of transportation.\nClick \"Compare\" to compare the different modes of transportation.\nClick \"Finish\"if you think you have decided what you want to use to travel with</string>
+    <string name="scroll_bottom_prompt">
+        Click \"Next\" to see the next mode of transportation.
+        \nClick \"Compare\" to compare the different modes of transportation.
+        \nClick \"Finish\"if you think you have decided what you want to use to travel with
+    </string>
+
+    <string name="car_description">The standard way to commute, but not the most affordable.</string>
+    <string name="motorcycle_description">CSUS offers cost efficient permits for this compact mode of
+        transportation.</string>
+    <string name="transit_description">Public transportation services across Sacramento county.</string>
+    <string name="bike_description">CSUS has a bike shop that carries spare parts for your bike and offers
+        repair services.</string>
+    <string name="walk_description">A simple and harmless way to commute at your leisure.</string>
+    <string name="jump_bike_description">The electric bicycle sharing system you could rent anytime.</string>
+
+    <string name="car_info">The most common form of transportation. Commuting via car is one of the
+        most convenient modes of transportation for college students. Though it is also one of the
+        most harmful to the environment.</string>
+    <string name="motorcycle_info">This mode of transportation helps reduce traffic congestion and CSUS
+        campus has multiple motorcycle parking lots.</string>
+    <string name="transit_info">Sacramento Regional Transit is accessible and affordable for everyone.
+        They provide bus, light rail, shuttle and para transit services. It\'s services extend to
+        Citrus Heights, Elk Grove, Folsom and Rancho Cordova.</string>
+    <string name="bike_info">A convenient mode of transportation that doesn\'t harm the environment
+        and provides health benefits. CSUS campus has multiple bike compounds and provides bike
+        locker rentals.</string>
+    <string name="walk_info">A free and easy mode of transportation that causes no harm to the
+        environment and improves one\'s health.</string>
+    <string name="jump_bike_info">The electric bicycle sharing system you could rent anytime.</string>
 
     <string-array name="vehicle_array_subtypes">
         <item>car</item>

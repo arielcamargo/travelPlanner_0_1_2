@@ -66,7 +66,7 @@ public abstract class Vehicle implements TaskLoadedCallback {
     private PolylineOptions dirFromHome;
 
     protected int backgroundId = R.drawable.car_title_image;
-    protected int descriptionId = R.string.app_string_info;
+    protected int infoDescriptionId = R.string.app_string_info;
     protected int quickDescriptionId = R.string.app_name;
 
     public void setDirections(LatLng home, TaskLoadedCallback taskLoadedCallback, Context context) {
@@ -334,8 +334,8 @@ public abstract class Vehicle implements TaskLoadedCallback {
         return backgroundId;
     }
 
-    public int getDescriptionId() {
-        return descriptionId;
+    public int getInfoDescriptionId() {
+        return infoDescriptionId;
     }
 
     public int getQuickDescriptionId() {

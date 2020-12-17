@@ -273,7 +273,7 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
     private void updateText(int type, int subType) {
         vehicles[type].setSubType(subType);
 
-        vehicleInfo.setText(getString(vehicles[type].getDescriptionId()));
+        vehicleInfo.setText(getString(vehicles[type].getInfoDescriptionId()));
         vehicleCostInfo.setText(vehicles[type].printNetCost());
 
         vehicleCostInfoBreakdown.setText(vehicles[type].printCostBreakdown());

@@ -8,8 +8,8 @@ public class Walk extends Vehicle {
         dirSelection = 1;
 
         backgroundId = R.drawable.walking_title_image;
-        descriptionId = R.string.about_this_app;
-        quickDescriptionId = R.string.app_string_info;
+        infoDescriptionId = R.string.walk_info;
+        quickDescriptionId = R.string.walk_description;
 
         type = "walk";
 

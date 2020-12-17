@@ -1,10 +1,16 @@
 package com.example.travelplanner_0_1_1.vehicles;
 
+import com.example.travelplanner_0_1_1.R;
+
 //for the car, motorcycle, and Rt
 public class Car extends Vehicle {
 
     public Car() {
         super();
+
+        backgroundId = R.drawable.car_title_image;
+        infoDescriptionId = R.string.car_info;
+        quickDescriptionId = R.string.car_description;
 
         dirSelection = 0;
 

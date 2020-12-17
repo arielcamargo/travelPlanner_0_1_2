@@ -82,7 +82,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 fragmentOrder[i].getCardView().setForeground(null);
             fragmentOrder[i].setBackgroundImg(vehicles[i].getBackgroundId());
             fragmentOrder[i].setTitle(vehicles[i].getTitle());
-            fragmentOrder[i].setInfo("Click this to get info on " + vehicles[i].getType());
+            fragmentOrder[i].setInfo(getString(vehicles[i].getQuickDescriptionId()));
             fragmentOrder[i].setOnClickListener(this);
         }
     }

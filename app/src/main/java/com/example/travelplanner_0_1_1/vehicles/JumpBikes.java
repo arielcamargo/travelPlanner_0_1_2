@@ -10,8 +10,8 @@ public class JumpBikes extends Vehicle {
         super();
 
         backgroundId = R.drawable.jump_bike_title_image;
-        descriptionId = R.string.about_this_app;
-        quickDescriptionId = R.string.app_string_info;
+        infoDescriptionId = R.string.jump_bike_info;
+        quickDescriptionId = R.string.jump_bike_description;
 
         type = "Jump bike";
 

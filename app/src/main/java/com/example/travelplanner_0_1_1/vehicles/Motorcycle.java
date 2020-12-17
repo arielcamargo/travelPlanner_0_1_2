@@ -7,8 +7,8 @@ public class Motorcycle extends Vehicle {
         super();
 
         backgroundId = R.drawable.motorcycle_title_image;
-        descriptionId = R.string.about_this_app;
-        quickDescriptionId = R.string.app_string_info;
+        infoDescriptionId = R.string.motorcycle_info;
+        quickDescriptionId = R.string.motorcycle_description;
 
         dirSelection = 0;
 

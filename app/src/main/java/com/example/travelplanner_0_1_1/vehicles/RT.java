@@ -7,8 +7,8 @@ public class RT extends Vehicle {
         super();
 
         backgroundId = R.drawable.transit_title_image;
-        descriptionId = R.string.about_this_app;
-        quickDescriptionId = R.string.app_string_info;
+        infoDescriptionId = R.string.transit_info;
+        quickDescriptionId = R.string.transit_description;
 
         dirSelection = 3;
 
