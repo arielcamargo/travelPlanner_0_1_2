@@ -32,11 +32,16 @@ public class Bike extends Vehicle {
     public void updateSubType() {
         switch (subType) {
             case 1:
-                // normal
-                // update variables and calculations for each mode
+                numOfCosts = 2;
+                costs = new double[]{275, 175};
+                costId = new String[]{"maintenance", "insurance"};
+                calculateCosts();
                 break;
             case 2:
-
+                numOfCosts = 2;
+                costs = new double[]{418, 200};
+                costId = new String[]{"maintenance", "insurance"};
+                calculateCosts();
                 break;
         }
     }
