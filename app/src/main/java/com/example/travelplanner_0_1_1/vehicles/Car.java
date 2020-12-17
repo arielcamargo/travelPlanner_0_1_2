@@ -39,19 +39,38 @@ public class Car extends Vehicle {
     // no need to call this here, will be called when setSubType is called
     @Override
     public void updateSubType() {
-        switch (subType){
+        switch (subType) {
             case 1:
-                // normal
-                // update variables and calculations for each mode
+                avgMpg = 32;
+
+                numOfCosts = 4;
+                costs = new double[]{gasCost, 1462, 368, 178};
+                costId = new String[]{"gas", "insurance", "maintenance", "parking pass"};
+
+                avgEmissions = 286.68;
+                calculateCosts();
                 break;
             case 2:
-                //rides hare, uber
                 break;
             case 3:
-                // hybrid
+                avgMpg = 50;
+
+                numOfCosts = 4;
+                costs = new double[]{gasCost, 1462, 500, 178};
+                costId = new String[]{"gas", "insurance", "maintenance", "parking pass"};
+
+                avgEmissions = 286.68;
+                calculateCosts();
                 break;
             case 4:
-                // electric
+                avgMpg = 0;
+
+                numOfCosts = 3;
+                costs = new double[]{1462, 900, 178};
+                costId = new String[]{"insurance", "maintenance", "parking pass"};
+
+                avgEmissions = 0;
+                calculateCosts();
                 break;
         }
     }
@@ -63,7 +82,11 @@ public class Car extends Vehicle {
 
     @Override
     public void calculateGas() {
-        gasCost = GAS_AVG / avgMpg * 34 * 10 * (distFromHome + distFromSac);
-        costs[0] = gasCost;
+        if(avgMpg != 0) {
+            gasCost = GAS_AVG / avgMpg * 34 * 10 * (distFromHome + distFromSac);
+            costs[0] = gasCost;
+        } else{
+            gasCost = 0;
+        }
     }
 }

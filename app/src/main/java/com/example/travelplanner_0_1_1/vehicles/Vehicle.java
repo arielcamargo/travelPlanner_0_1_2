@@ -44,6 +44,10 @@ public abstract class Vehicle implements TaskLoadedCallback {
     protected double timeFromSac = -1;
     protected double timeFromHome = -1;
 
+    //string values
+    protected String strTimeFromSac;
+    protected String strTimeFromHome;
+
     protected double avgMpg = 0;
     protected double gasCost = 0;
 
@@ -57,6 +61,10 @@ public abstract class Vehicle implements TaskLoadedCallback {
 
     protected double distFromSac = -1;
     protected double distFromHome = -1;
+
+    //string values
+    protected String strDistFromSac;
+    protected String strDistFromHome;
 
     protected double avgEmissions;
     protected double netEmissions;
@@ -92,37 +100,16 @@ public abstract class Vehicle implements TaskLoadedCallback {
         }
     }
 
-    public void clearDirections(){
-        timeFromSac = -1;
-        timeFromHome = -1;
-        distFromSac = -1;
-        distFromHome = -1;
-        dirFromSac = null;
-        dirFromHome = null;
-        calculateCosts();
-    }
-
-    //used to create the url to be used to get the directions
-    //TODO: https://developers.google.com/maps/documentation/directions/overview#TravelModes
-    //research above for the other modes of transportation and options for things like traffic
-    private String getUrl(LatLng origin, LatLng dest, String directionMode, Context context) {
-        String str_origin = "origin=" + origin.latitude + "," + origin.longitude;
-        String str_dest = "destination=" + dest.latitude + "," + dest.longitude;
-        String mode = "mode=" + directionMode;
-        String parameters = str_origin + "&" + str_dest + "&" + mode;
-        String output = "json";
-        return "https://maps.googleapis.com/maps/api/directions/" + output + "?"
-                + parameters + "&key=" + context.getString(R.string.google_maps_key);
-    }
-
     //when the setDirections are completed
     @Override
     public void onTaskDone(String key, Object... values) {
         if (key.equals("from home")) {
             if (values[0] != null) {
                 dirFromSac = (PolylineOptions) values[0];
-                distFromSac = parseDistance((String) values[1]);
-                timeFromSac = parseDuration((String) values[2]);
+                strDistFromSac = (String) values[1];
+                strTimeFromSac = (String) values[2];
+                distFromSac = parseDistance(strDistFromSac);
+                timeFromSac = parseDuration(strTimeFromSac);
             } else {
                 dirFromSac = null;
                 distFromSac = -1;
@@ -143,8 +130,33 @@ public abstract class Vehicle implements TaskLoadedCallback {
 
     public void updateHomeDir(Object... values) {
         dirFromHome = (PolylineOptions) values[0];
-        distFromHome = parseDistance((String) values[1]);
-        timeFromHome = parseDuration((String) values[2]);
+        strDistFromHome = (String) values[1];
+        strTimeFromHome = (String) values[2];
+        distFromHome = parseDistance(strDistFromHome);
+        timeFromHome = parseDuration(strTimeFromHome);
+    }
+
+    //used to create the url to be used to get the directions
+    //TODO: https://developers.google.com/maps/documentation/directions/overview#TravelModes
+    //research above for the other modes of transportation and options for things like traffic
+    private String getUrl(LatLng origin, LatLng dest, String directionMode, Context context) {
+        String str_origin = "origin=" + origin.latitude + "," + origin.longitude;
+        String str_dest = "destination=" + dest.latitude + "," + dest.longitude;
+        String mode = "mode=" + directionMode;
+        String parameters = str_origin + "&" + str_dest + "&" + mode;
+        String output = "json";
+        return "https://maps.googleapis.com/maps/api/directions/" + output + "?"
+                + parameters + "&key=" + context.getString(R.string.google_maps_key);
+    }
+
+    public void clearDirections(){
+        timeFromSac = -1;
+        timeFromHome = -1;
+        distFromSac = -1;
+        distFromHome = -1;
+        dirFromSac = null;
+        dirFromHome = null;
+        calculateCosts();
     }
 
     public double parseDistance(String value) {
@@ -173,7 +185,7 @@ public abstract class Vehicle implements TaskLoadedCallback {
 
     public void setSubType(int subType) {
         //error checking to prevent input greater than max
-        this.subType = Math.max(subType, numOfSubtypes);
+        this.subType = Math.min(subType, numOfSubtypes);
         updateSubType();
     }
 
@@ -243,8 +255,8 @@ public abstract class Vehicle implements TaskLoadedCallback {
         if (distFromSac == -1) {
             return "no possible routes found";
         }
-        info = String.format("Distance going to Sac State: %.2f mi\n", distFromHome);
-        info += String.format("Distance going home: %.2f mi", distFromSac);
+        info = String.format("Distance going to Sac State: %s\n", strDistFromHome);
+        info += String.format("Distance going home: %s", strDistFromSac);
 
         return info;
     }
@@ -254,8 +266,8 @@ public abstract class Vehicle implements TaskLoadedCallback {
         if (timeFromHome == -1) {
             return "unknown duration";
         }
-        info = String.format("ETA going to Sac State: %.0f mins\n", timeFromHome);
-        info += String.format("ETA going Home: %.0f mins", timeFromHome);
+        info = String.format("ETA going to Sac State: %s\n", strTimeFromHome);
+        info += String.format("ETA going Home: %s", strTimeFromHome);
 
         return info;
     }

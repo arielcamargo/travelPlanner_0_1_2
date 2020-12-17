@@ -48,11 +48,6 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
     private RadioGroup subTypeGroup;
     private RadioButton vehicleType1, vehicleType2, vehicleType3, vehicleType4;
 
-    //for whichever subType the radio buttons has selected, default value is 1, values are [1,2,3,4]
-    //We could cut the radio buttons for the sake of time but I would not. The sub type will only
-    //affect the calculations on the screen and its text
-    private int subType = 1;
-
     //text views for displaying all the information
     private TextView vehicleInfo, vehicleCostInfo, vehicleCostInfoBreakdown, vehicleEmissionsInfo, vehicleDistanceInfo, vehicleTravelTimeInfo;
 
@@ -64,11 +59,7 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
     //button for toggling between distance from home to Sac State
     private Button distanceFromHome, distanceFromSacState;
 
-    // fragment that will hold specific view that is designed specifically for each mode
-    private Fragment vehicleFragmentHolder;
-
-    //navigation buttons, show nextDisplay will show next vehicle type to display
-    private Button displayToComparison, displayToSurvey, showNextDisplay;
+    private Button showNextDisplay;
 
     private String[] vehicleDisplayOrder;
     private String type;
@@ -125,11 +116,10 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
         distanceFromSacState = findViewById(R.id.distanceFromSac);
         distanceFromSacState.setOnClickListener(this);
 
-        vehicleFragmentHolder = getSupportFragmentManager().findFragmentById(R.id.vehicleFragmentHolder);
-
-        displayToComparison = findViewById(R.id.displayToComparison);
+        //navigation buttons, show nextDisplay will show next vehicle type to display
+        Button displayToComparison = findViewById(R.id.displayToComparison);
         displayToComparison.setOnClickListener(this);
-        displayToSurvey = findViewById(R.id.displayToSurvey);
+        Button displayToSurvey = findViewById(R.id.displayToSurvey);
         displayToSurvey.setOnClickListener(this);
         showNextDisplay = findViewById(R.id.showNextDisplay);
         showNextDisplay.setOnClickListener(this);
@@ -163,7 +153,10 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
         int curr = getIndex(displayVehicleTitle.getSelectedItem().toString().toLowerCase());
         switch (view.getId()) {
             case R.id.vehicleType1:
-                subType = 1;
+                //for whichever subType the radio buttons has selected, default value is 1, values are [1,2,3,4]
+                //We could cut the radio buttons for the sake of time but I would not. The sub type will only
+                //affect the calculations on the screen and its text
+                int subType = 1;
                 updateText(curr, subType);
                 break;
             case R.id.vehicleType2:
@@ -266,7 +259,7 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
     private void setDisplay(int type) {
         displayBackgroundImage.setImageResource(vehicles[type].getBackgroundId());
 
-        updateText(type, 1);
+        updateText(type, vehicles[type].getSubType());
 
         updateRadioGroup(type);
 
