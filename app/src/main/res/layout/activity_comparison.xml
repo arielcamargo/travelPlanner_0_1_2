@@ -28,27 +28,6 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="24sp" />
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <Button
-                    android:id="@+id/saveComparisonData"
-                    android:layout_width="208dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/evergreenAsh"
-                    android:text="Save Comparison"
-                    android:textColor="@color/colorWhite" />
-
-                <Button
-                    android:id="@+id/clearComparisonData"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/design_default_color_error"
-                    android:text="Clear All"
-                    android:textColor="@color/colorWhite" />
-            </TableRow>
-
             <Spinner
                 android:id="@+id/comparisonOption"
                 android:layout_width="393dp"

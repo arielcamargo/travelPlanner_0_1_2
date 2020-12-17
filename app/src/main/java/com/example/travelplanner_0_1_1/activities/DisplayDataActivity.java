@@ -130,7 +130,7 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
 
         displayVehicleTitle.setAdapter(adapter);
         displayVehicleTitle.setOnItemSelectedListener(this);
-        displayVehicleTitle.setSelection(getIndex(type));
+        displayVehicleTitle.setSelection(Vehicle.getIndex(type));
 
         //edits all the components based on what vehicle type the user clicked on
         displayData(type);
@@ -138,19 +138,10 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
 
     }
 
-    private int getIndex(String type) {
-        int i;
-        for (i = 0; i < 5; i++) {
-            if (vehicleDisplayOrder[i].equalsIgnoreCase(type))
-                break;
-        }
-        return i;
-    }
-
     @Override
     public void onClick(View view) {
         Intent intent;
-        int curr = getIndex(displayVehicleTitle.getSelectedItem().toString().toLowerCase());
+        int curr = Vehicle.getIndex(displayVehicleTitle.getSelectedItem().toString());
         switch (view.getId()) {
             case R.id.vehicleType1:
                 //for whichever subType the radio buttons has selected, default value is 1, values are [1,2,3,4]
@@ -213,7 +204,7 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
 
     //method for swapping to whichever mode of transportation necessary
     public void displayData(String vehicleType) {
-        setDisplay(getIndex(vehicleType));
+        setDisplay(Vehicle.getIndex(vehicleType));
 
         Class fragmentClass;
         switch (vehicleType) {

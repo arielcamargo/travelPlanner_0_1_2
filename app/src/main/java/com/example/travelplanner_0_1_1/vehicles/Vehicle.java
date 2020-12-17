@@ -1,5 +1,6 @@
 package com.example.travelplanner_0_1_1.vehicles;
 
+
 import android.content.Context;
 
 import androidx.fragment.app.Fragment;
@@ -10,7 +11,6 @@ import com.example.travelplanner_0_1_1.directionhelpers.TaskLoadedCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.PolylineOptions;
 import java.text.DecimalFormat;
-
 //this class contains all the common attributes of all the vehicle types
 //protected attributes should not be accessed from outside of vehicles package
 public abstract class Vehicle implements TaskLoadedCallback {
@@ -183,6 +183,14 @@ public abstract class Vehicle implements TaskLoadedCallback {
         return duration + hrDur;
     }
 
+    public static int getIndex(String type) {
+        int i;
+        for (i = 0; i < 5; i++) {
+            if (vehicles[i].getTitle().equalsIgnoreCase(type))
+                break;
+        }
+        return i;
+    }
     public void setSubType(int subType) {
         //error checking to prevent input greater than max
         this.subType = Math.min(subType, numOfSubtypes);
