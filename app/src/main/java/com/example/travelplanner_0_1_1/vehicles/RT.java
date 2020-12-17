@@ -14,12 +14,12 @@ public class RT extends Vehicle {
 
         type = "transit";
 
-        numOfSubtypes = 2;
-        subTypeId = new String[]{"Bus", "light rail"};
+        //numOfSubtypes = 2;
+        //subTypeId = new String[]{"Bus", "light rail"};
 
-        numOfCosts = 1;
-        costs = new double[]{100};
-        costId = new String[]{"monthly pass"};
+        numOfCosts = 0;
+        //costs = new double[]{100};
+        //costId = new String[]{"monthly pass"};
 
         avgEmissions = 64;
     }

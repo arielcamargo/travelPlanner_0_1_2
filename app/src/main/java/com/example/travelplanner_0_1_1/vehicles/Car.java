@@ -51,6 +51,13 @@ public class Car extends Vehicle {
                 calculateCosts();
                 break;
             case 2:
+                numOfCosts = 1;
+                double fairPrice =  ((0.21 * (timeFromHome + timeFromSac)) + (0.78 * (distFromHome + distFromSac)) + 4.15) * 340;
+                costs = new double[]{fairPrice};
+                costId = new String[]{"Expected fair price"};
+                avgMpg = 0;
+                avgEmissions = 286.68;
+                calculateCosts();
                 break;
             case 3:
                 avgMpg = 50;

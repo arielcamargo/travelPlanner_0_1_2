@@ -161,7 +161,7 @@ public class ComparisonActivity extends AppCompatActivity implements View.OnClic
         graphview.getViewport().setXAxisBoundsManual(true);
         graphview.getViewport().setYAxisBoundsManual(true);
         graphview.getViewport().setMinY(0.0);
-        graphview.getViewport().setMaxY((double) (value1 + value2));
+        graphview.getViewport().setMaxY(maxYValue(value1, value2));
         graphview.getViewport().setMinX(0.5);
         graphview.getViewport().setMaxX(2.5);
         StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(graphview);
@@ -206,6 +206,12 @@ public class ComparisonActivity extends AppCompatActivity implements View.OnClic
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    private double maxYValue(double number1, double number2)
+    {
+        double maxNumber = Math.max(number1 + 1, number2);
+        return maxNumber * 1.1;
     }
 
 

@@ -5,8 +5,7 @@
     <!--You are able to have strings that span multiple lines without changing the text-->
     <string name="app_string_info">
         What is this app about? Every year there is tons of traffic at Sac State. The goal of this app is to reduce traffic
-        and show you alternative modes of transportation. This can help reduce traffic, carbon emissions.
-        talk about facts that are bad about single occupant vehicles
+        and show you alternative modes of transportation. This can help reduce traffic, carbon emissions, and reduce strain on your wallet.
     </string>
     <string name="go">Start</string>
     <string name="skip">Skip</string>
@@ -24,11 +23,11 @@
 
     <string name="address_prompt">Please enter in your home address above. This is to help us find what
         modes of transportation will work best for you. You may put a general location if you don\'t
-        want to put your actual address but that will reduce the accuracy of our recommendations for you</string>
+        want to put your actual address, but that will reduce the accuracy of our recommendations for you.</string>
     <string name="vehicle_btn_bckgrnd_des">image of whichever type this button will send user to</string>
     <string name="select">Select</string>
     <string name="menu_to_survey">Finish tour</string>
-    <string name="menu_info">Here are the different ways you can get to school. Click on one to get more info about it</string>
+    <string name="menu_info">Here are the different ways you can get to school. Click on one to get more info about it.</string>
     <string name="menu_to_compare">Compare transportation</string>
     <string name="gradient">gradient</string>
     <string name="about_this_app">About this App</string>
@@ -83,6 +82,11 @@
     <string name="option_to_reserve">~Option to reserve</string>
     <string name="take_the_survey">Take the Survey</string>
     <string name="time">time</string>
+
+    <string name="bikedyk">There are multiple bike cages at Sac State that always under supervision all day.</string>
+    <string name="motorcycledyk">There\'s plenty of motorcycle parking plus convenient parking.</string>
+    <string name="walkdyk">Walking is great to do! There\'s a lot of footpaths to get to Sac State.</string>
+
     <string name="radio_button_prompt">Select the following to see the different types:</string>
     <string name="scroll_bottom_prompt">
         Click \"Next\" to see the next mode of transportation.
@@ -100,13 +104,13 @@
     <string name="jump_bike_description">The electric bicycle sharing system you could rent anytime.</string>
 
     <string name="car_info">The most common form of transportation. Commuting via car is one of the
-        most convenient modes of transportation for college students. Though it is also one of the
-        most harmful to the environment.</string>
+        most convenient modes of transportation for college students.</string>
     <string name="motorcycle_info">This mode of transportation helps reduce traffic congestion and CSUS
         campus has multiple motorcycle parking lots.</string>
     <string name="transit_info">Sacramento Regional Transit is accessible and affordable for everyone.
         They provide bus, light rail, shuttle and para transit services. It\'s services extend to
-        Citrus Heights, Elk Grove, Folsom and Rancho Cordova.</string>
+        Citrus Heights, Elk Grove, Folsom and Rancho Cordova. As a Sac State Student, access to RT is
+        included in your tuition, known as the Sac State Student Commuter.</string>
     <string name="bike_info">A convenient mode of transportation that doesn\'t harm the environment
         and provides health benefits. CSUS campus has multiple bike compounds and provides bike
         locker rentals.</string>

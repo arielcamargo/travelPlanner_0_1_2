@@ -40,13 +40,19 @@ public class Motorcycle extends Vehicle {
             case 1:
                 // normal
                 avgMpg = 60;
-
                 numOfCosts = 4;
                 costs = new double[]{gasCost, 900, 1000, 44};
                 costId = new String[]{"gas", "insurance", "maintenance", "parking pass"};
                 break;
             case 2:
-                //electric
+                //0.1 = 0.1 kilowatt-hour per mile, 0.12 dollars per kwh
+                double electricityCost = 0.1 * 0.12 * 340 * (distFromHome + distFromSac);
+
+                numOfCosts = 4;
+                costs = new double[]{electricityCost, 900, 1000, 44};
+                costId = new String[]{"electricity", "insurance", "maintenance", "parking pass"};
+                calculateEmissions();
+                calculateNetCost();
                 break;
         }
     }
