@@ -84,10 +84,10 @@ public class ComparisonActivity extends AppCompatActivity implements View.OnClic
             if (vehicles[i].getDistFromHome() == -1)
                 noDir++;
         }
-        if(noDir > 1){
+        if (noDir > 1) {
             compareByDistance.setEnabled(false);
             compareByDistance.setVisibility(View.INVISIBLE);
-        } else{
+        } else {
             compareByDistance.setEnabled(true);
             compareByDistance.setVisibility(View.VISIBLE);
         }
@@ -180,19 +180,43 @@ public class ComparisonActivity extends AppCompatActivity implements View.OnClic
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String item = parent.getItemAtPosition(position).toString();
 
-        String itemType;
-        switch (item.toLowerCase()){
-            case "electric bike":
+        String itemType = "";
+        int itemId = 1;
+        switch (item.toLowerCase()) {
+            case "ride share":
+                itemType = "car";
+                itemId = 2;
                 break;
+            case "hybrid car":
+                itemType = "car";
+                itemId = 3;
+                break;
+            case "electric car":
+                itemType = "car";
+                itemId = 4;
+                break;
+            case "electric bike":
+                itemType = "bike";
+                itemId = 2;
+                break;
+            case "electric motorcycle":
+                itemType = "motorcycle";
+                itemId = 2;
+                break;
+            default:
+                itemType = item;
         }
-        //comparisonTitle.setText(item);
-        int vehiclePos = Vehicle.getIndex(item);
+        int vehiclePos;
+
+            vehiclePos = Vehicle.getIndex(itemType);
+
 
 
         switch (parent.getId()) {
             case R.id.comparisonOption:
                 //comparisonTitle.setText(item);
-                vehicle1 = item;
+                vehicle1 = itemType;
+                vehicles[vehiclePos].setSubType(itemId);
                 vehicle1Cost = vehicles[vehiclePos].getNetCost();
                 vehicle1Distance = vehicles[vehiclePos].getDistFromSac();
                 vehicle1Emissions = vehicles[vehiclePos].getNetEmissions();
@@ -203,7 +227,8 @@ public class ComparisonActivity extends AppCompatActivity implements View.OnClic
 
             case R.id.comparisonOption2:
                 //comparisonTitle.setText("test2");
-                vehicle2 = item;
+                vehicle2 = itemType;
+                vehicles[vehiclePos].setSubType(itemId);
                 vehicle2Cost = vehicles[vehiclePos].getNetCost();
                 vehicle2Distance = vehicles[vehiclePos].getDistFromSac();
                 vehicle2Emissions = vehicles[vehiclePos].getNetEmissions();
@@ -220,8 +245,7 @@ public class ComparisonActivity extends AppCompatActivity implements View.OnClic
 
     }
 
-    private double maxYValue(double number1, double number2)
-    {
+    private double maxYValue(double number1, double number2) {
         double maxNumber = Math.max(number1 + 1, number2);
         return maxNumber * 1.1;
     }

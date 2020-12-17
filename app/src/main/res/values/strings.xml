@@ -119,16 +119,24 @@
     <string name="jump_bike_info">The electric bicycle sharing system you could rent anytime.</string>
     <string name="pro">Pros</string>
     <string name="con">Cons</string>
+    <string name="compare_two_modes_of_transportation_with_each_other">Compare Two modes of transportation with each other</string>
+    <string name="choose_which_atribute_to_compare">Choose which atribute to compare:</string>
+    <string name="distance">distance</string>
+    <string name="emissions">emissions</string>
+    <string name="cost">cost</string>
 
     <string-array name="vehicle_array_subtypes">
         <item>car</item>
+        <item>ride share</item>
+        <item>hybrid car</item>
         <item>electric car</item>
         <item>bike</item>
         <item>electric bike</item>
+        <item>jump bike</item>
         <item>transit</item>
         <item>motorcycle</item>
+        <item>electric motorcycle</item>
         <item>walk</item>
-        <item>ride share</item>
     </string-array>
 
     <string-array name="vehicle_array">

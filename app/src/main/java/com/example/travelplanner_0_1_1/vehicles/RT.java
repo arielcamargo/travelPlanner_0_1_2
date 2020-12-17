@@ -48,7 +48,7 @@ public class RT extends Vehicle {
         if (timeFromHome != -1)
             netEmissions = (distFromHome + distFromSac) * 10 * 34 * avgEmissions;
         else
-            netEmissions = 0;
+            netEmissions = (40) * 10 * 34 * avgEmissions;
 
     }
 
