@@ -95,11 +95,25 @@ public class InputActivity extends AppCompatActivity implements View.OnClickList
             case R.id.goToNext:
                 Intent intent = new Intent(this, HomeActivity.class);
 
-                for(int i = 1; i <6; i++){
+                String[] order;
+                for (int i = 1; i < 6; i++) {
                     //update directions for other vehicle modes
                     Vehicle.vehicles[i].setDirections(addressLatLng, this);
                 }
 
+                if (car.getDistFromHome() == -1) {
+                    order = new String[]{"bike", "jump bike", "transit", "motorcycle", "walk", "car"};
+                } else if (car.getDistFromHome() < 6) {
+                    order = new String[]{"walk", "bike", "jump bike", "transit", "motorcycle", "car"};
+                } else if (car.getDistFromHome() < 12) {
+                    order = new String[]{"bike", "jump bike", "walk", "transit", "motorcycle", "car"};
+                } else if (car.getDistFromHome() > 25) {
+                    order = new String[]{"transit", "motorcycle", "car", "bike", "jump bike", "walk"};
+                } else {
+                    order = new String[]{"transit", "bike", "jump bike", "motorcycle", "car", "walk"};
+                }
+
+                intent.putExtra("order", order);
                 intent.putExtra("LatLng", addressLatLng);
                 startActivity(intent);
                 break;

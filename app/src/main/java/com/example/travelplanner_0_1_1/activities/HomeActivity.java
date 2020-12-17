@@ -2,6 +2,7 @@ package com.example.travelplanner_0_1_1.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 
@@ -20,9 +21,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private VehicleButtonFragment display3;
     private VehicleButtonFragment display4;
     private VehicleButtonFragment display5;
+    private VehicleButtonFragment[] fragmentOrder;
 
     private Vehicle[] vehicles;
     private final String[] vehicleDisplayOrder = new String[6];
+    private String[] order;
 
     private LatLng homeAddress;
 
@@ -32,10 +35,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_home);
 
         homeAddress = getIntent().getParcelableExtra("LatLng");
+        order = getIntent().getStringArrayExtra("order");
 
         vehicles = Vehicle.vehicles;
+        getIntent().removeExtra("order");
 
-        sortVehicles(vehicles);
 
         Button menuToCompare = findViewById(R.id.menuToCompare);
         menuToCompare.setOnClickListener(this);
@@ -49,24 +53,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         display4 = (VehicleButtonFragment) getSupportFragmentManager().findFragmentById(R.id.fragment4);
         display5 = (VehicleButtonFragment) getSupportFragmentManager().findFragmentById(R.id.fragment5);
 
-        VehicleButtonFragment[] fragmentOrder = new VehicleButtonFragment[]{display0, display1, display2, display3, display4, display5};
-        createButtons(fragmentOrder);
-
-        for (int i = 0; i < 6; i++)
-            vehicleDisplayOrder[i] = vehicles[i].getTitle();
+        fragmentOrder = new VehicleButtonFragment[]{display0, display1, display2, display3, display4, display5};
     }
 
-    public void sortVehicles(Vehicle[] vehicles) {
-        //if no distances were given
-        if (vehicles[0].getDistFromHome() == -1) {
-            swap(vehicles, 0, 1);
-            swap(vehicles, 1, 2);
-            swap(vehicles, 2, 3);
-            swap(vehicles, 3, 4);
-            swap(vehicles, 4, 5);
-        } else {
-            //todo: sort vehicles
-
+    private void setOrder(String[] order) {
+        for (int i = 0; i < 6; i++) {
+            swap(vehicles, Vehicle.getIndex(order[i]), i);
         }
     }
 
@@ -134,5 +126,24 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
         startActivity(intent);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        setOrder(order);
+        createButtons(fragmentOrder);
+
+        for (int i = 0; i < 6; i++)
+            vehicleDisplayOrder[i] = vehicles[i].getTitle();
+
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+            finish();
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

@@ -21,11 +21,6 @@ import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
 
 public class ComparisonActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
-    //TODO: Get distance into ComparisonActivity.java
-
-
-    //TODO: Need to figure out how to import data
-
 
     private RadioButton compareByCost, compareByDistance, compareByEmissions;
     private Spinner comparisonOption, comparisonOption2;
