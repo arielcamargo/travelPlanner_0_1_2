@@ -1,81 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragments.transportation.MotorcycleFragment">
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:orientation="vertical"
+    tools:context=".fragments.vehiclefragments.MotorcycleFragment">
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imageOne"
         android:layout_width="match_parent"
-        android:layout_height="186dp"
-        android:layout_marginBottom="480dp"
-        android:scaleType="fitXY"
+        android:layout_height="240dp"
+        android:scaleType="centerCrop"
         android:src="@drawable/motorcycle_image_two" />
 
-    <TextView
-        android:id="@+id/textView14"
+    <Space
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="170dp"
-        android:layout_marginEnd="211dp"
-        android:layout_marginRight="211dp"
-        android:background="#043927"
-        android:gravity="center_horizontal"
-        android:text="Pros"
-        android:textAlignment="center"
-        android:textColor="#f0e1b0"
-        android:textSize="25sp"
-        android:textStyle="bold|italic" />
+        android:layout_height="4dp" />
 
-    <TextView
-        android:id="@+id/textView15"
+    <TableRow
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="210dp"
-        android:layout_marginEnd="210dp"
-        android:layout_marginRight="210dp"
-        android:gravity="center_vertical"
-        android:text="- Motorcycles and scooters are, on average, about twice as fuel efficient as cars"
-        android:textColor="#f0e1b0"
-        android:textSize="15sp" />
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView16"
+        <LinearLayout
+            android:id="@+id/proLayout"
+            android:layout_width="200dp"
+            android:layout_height="180dp"
+            android:background="@color/redwoodGroveGreen"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:textAlignment="center">
+
+            <TextView
+                android:id="@+id/pros"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/trajan_pro_bold"
+                android:gravity="center_vertical"
+                android:text="@string/pro"
+                android:textAlignment="center"
+                android:textColor="@color/webColor6"
+                android:textSize="22sp" />
+
+
+            <TextView
+                android:id="@+id/proOne"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/lato"
+                android:gravity="center_vertical"
+                android:text="- More fuel Efficient than cars"
+                android:textColor="@color/webColor6"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/proTwo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/lato"
+                android:text="- More parking availibility"
+                android:textColor="@color/webColor6"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/proThree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/lato"
+                android:text="- Move faster through traffic"
+                android:textColor="@color/webColor6"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="4dp"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:id="@+id/conLayout"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="@color/redwoodGroveGreen"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/cons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/trajan_pro_bold"
+                android:gravity="center_vertical"
+                android:text="@string/con"
+                android:textAlignment="center"
+                android:textColor="@color/webColor6"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/conOne"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/lato"
+                android:gravity="center_vertical"
+                android:text="- Produces greater amounts of smog"
+                android:textColor="@color/webColor6"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/conTwo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/lato"
+                android:gravity="center_vertical"
+                android:text="- Requires Maintenance"
+                android:textColor="@color/webColor6"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/conThree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/lato"
+                android:gravity="center_vertical"
+                android:text="- More dangerous to get in accidents with"
+                android:textColor="@color/webColor6"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+    </TableRow>
+
+    <Space
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginStart="203dp"
-        android:layout_marginLeft="203dp"
-        android:layout_marginTop="170dp"
-        android:background="#043927"
-        android:gravity="center_horizontal"
-        android:text="Cons"
-        android:textColor="#f0e1b0"
-        android:textSize="25sp"
-        android:textStyle="bold|italic" />
+        android:layout_height="4dp" />
 
-    <TextView
-        android:id="@+id/textView17"
+    <LinearLayout
+        android:id="@+id/moreInfoLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="220dp"
-        android:layout_marginTop="210dp"
-        android:gravity="center_vertical"
-        android:text="- Pollution: it produces greater amounts of a smog-forming emission called oxides of nitrogen"
-        android:textColor="#f0e1b0"
-        android:textSize="15sp" />
+        android:background="@color/redwoodGroveGreen"
+        android:orientation="vertical"
+        android:padding="10dp">
 
-    <TextView
-        android:id="@+id/textView18"
+        <!-- Just copy this text here-->
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/lato"
+            android:gravity="center_vertical"
+            android:text="text"
+            android:textColor="@color/webColor6"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <Space
         android:layout_width="match_parent"
-        android:layout_height="91dp"
-        android:layout_marginLeft="220dp"
-        android:layout_marginTop="250dp"
-        android:gravity="center_vertical"
-        android:text="- Requires Maintenance"
-        android:textColor="#f0e1b0"
-        android:textSize="15sp" />
-</FrameLayout>
+        android:layout_height="4dp" />
+
+    <ImageView
+        android:id="@+id/imageTwo"
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/motorcycle_image_one" />
+
+</LinearLayout>

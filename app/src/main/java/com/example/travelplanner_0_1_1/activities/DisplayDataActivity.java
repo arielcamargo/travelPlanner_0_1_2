@@ -222,32 +222,33 @@ public class DisplayDataActivity extends AppCompatActivity implements View.OnCli
     public void displayData(String vehicleType) {
         setDisplay(getIndex(vehicleType));
 
-        Fragment fragment;
+        Class fragmentClass;
         switch (vehicleType) {
             case "bike":
             default:
-                fragment = (Fragment) new BikeFragment();
+                fragmentClass = BikeFragment.class;
                 break;
             case "car":
-                fragment = (Fragment) new CarFragment();
+                fragmentClass = CarFragment.class;
                 break;
             case "jump bike":
-                fragment = (Fragment) new JumpBikeFragment();
+                fragmentClass = JumpBikeFragment.class;
                 break;
             case "motorcycle":
-                fragment = (Fragment) new MotorcycleFragment();
+                fragmentClass = MotorcycleFragment.class;
                 break;
             case "transit":
-                fragment = (Fragment) new TransitFragment();
+                fragmentClass = TransitFragment.class;
                 break;
             case "walk":
-                fragment = (Fragment) new WalkFragment();
+                fragmentClass = WalkFragment.class;
                 break;
 
         }
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(vehicleFragmentHolder.getId(), fragment)
+                .setReorderingAllowed(true)
+                .replace(R.id.vehicleFragmentHolder, fragmentClass, null)
                 .commit();
 
     }

@@ -268,12 +268,12 @@
                     android:text="@string/from_sac_state" />
             </TableRow>
 
-            <fragment
+            <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/vehicleFragmentHolder"
                 android:name="com.example.travelplanner_0_1_1.fragments.vehiclefragments.CarFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:ignore="FragmentTagUsage" />
+                 />
 
             <ImageView
                 android:id="@+id/displayDivider5"

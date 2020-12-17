@@ -1,176 +1,214 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:orientation="vertical"
     tools:context=".fragments.vehiclefragments.CarFragment">
-    
-        <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="182dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/car_image_one" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="188dp"
-        android:layout_marginRight="205dp"
-        android:background="#043927"
-        android:gravity="center_horizontal"
-        android:text="@string/pros"
-        android:textAlignment="center"
-        android:textColor="#f0e1b0"
-        android:textSize="25sp"
-        android:textStyle="bold|italic"
-        android:layout_marginEnd="205dp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:text="@string/option_to_carpool"
-        android:layout_marginTop="220dp"
-        android:gravity="center_vertical"
-        android:textColor="#f0e1b0"
-        android:textSize="15sp"
-        android:layout_marginRight="205dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="205dp" />
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:text="@string/availability"
-        android:layout_marginTop="260dp"
-        android:gravity="center_vertical"
-        android:textColor="#f0e1b0"
-        android:textSize="15sp"
-        android:layout_marginRight="205dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="205dp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="@string/flexibility_used_at_one_s_convenience"
-        android:layout_marginTop="300dp"
-        android:gravity="center_vertical"
-        android:textColor="#f0e1b0"
-        android:textSize="15sp"
-        android:layout_marginRight="205dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="205dp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="188dp"
-        android:layout_marginLeft="210dp"
-        android:background="#043927"
-        android:text="@string/cons"
-        android:textStyle="bold|italic"
-        android:textColor="#f0e1b0"
-        android:gravity="center_horizontal"
-        android:textSize="25sp"
-        android:layout_marginStart="210dp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="220dp"
-        android:layout_marginLeft="220dp"
-        android:text="@string/traffic_congestion"
-        android:textColor="#f0e1b0"
-        android:gravity="center_vertical"
-        android:textSize="15sp"
-        android:layout_marginStart="220dp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="260dp"
-        android:layout_marginLeft="220dp"
-        android:text="@string/carbon_emissions_emitted"
-        android:textColor="#f0e1b0"
-        android:gravity="center_vertical"
-        android:textSize="15sp"
-        android:layout_marginStart="220dp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="300dp"
-        android:layout_marginLeft="220dp"
-        android:text="@string/the_toxic_remains_of_its_battery_plastics_are_placed_into_landfills"
-        android:textColor="#f0e1b0"
-        android:gravity="center_vertical"
-        android:textSize="15sp"
-        android:layout_marginStart="220dp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="205dp"
-        android:layout_marginTop="393dp"
-        android:background="#043927"
-        android:text="@string/additional_information"
-        android:textStyle="bold"
-        android:textColor="#f0e1b0"
-        android:textSize="20sp"
-        />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:layout_marginTop="425dp"
-        android:layout_marginLeft="10dp"
-        android:text="@string/carpooling"
-        android:gravity="center_vertical"
-        android:textColor="#f0e1b0"
-        android:textSize="15sp"
-        android:layout_marginStart="10dp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginTop="445dp"
-        android:layout_marginLeft="20dp"
-        android:text="@string/carpooling_allows_you_to_share_the_costs_with_a_friend_csus_offers_carpooling_permits_and_prime_parking_spaces"
-        android:gravity="center_vertical"
-        android:textColor="#f0e1b0"
-        android:textSize="15sp"
-        android:layout_marginStart="20dp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:layout_marginTop="496dp"
-        android:layout_marginLeft="10dp"
-        android:text="@string/electric_vehicles_ev"
-        android:gravity="center_vertical"
-        android:textColor="#f0e1b0"
-        android:textSize="15sp"
-        android:layout_marginStart="10dp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginTop="520dp"
-        android:layout_marginLeft="20dp"
-        android:text="@string/electric_cars"
-        android:gravity="center_vertical"
-        android:textColor="#f0e1b0"
-        android:textSize="15sp"
-        android:layout_marginStart="20dp" />
 
     <ImageView
+        android:id="@+id/imageOne"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/car_image_one" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="4dp" />
+
+    <TableRow
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="603dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/proLayout"
+            android:layout_width="200dp"
+            android:layout_height="180dp"
+            android:background="@color/redwoodGroveGreen"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:textAlignment="center">
+
+            <TextView
+                android:id="@+id/pros"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/trajan_pro_bold"
+                android:gravity="center_vertical"
+                android:text="@string/pro"
+                android:textAlignment="center"
+                android:textColor="@color/webColor6"
+                android:textSize="22sp" />
+
+
+            <TextView
+                android:id="@+id/proOne"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/lato"
+                android:gravity="center_vertical"
+                android:text="@string/option_to_carpool"
+                android:textColor="@color/webColor6"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/proTwo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/lato"
+                android:text="@string/availability"
+                android:textColor="@color/webColor6"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/proThree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/lato"
+                android:text="@string/flexibility_used_at_one_s_convenience"
+                android:textColor="@color/webColor6"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="4dp"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:id="@+id/conLayout"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="@color/redwoodGroveGreen"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/cons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/trajan_pro_bold"
+                android:gravity="center_vertical"
+                android:text="@string/con"
+                android:textAlignment="center"
+                android:textColor="@color/webColor6"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/conOne"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/lato"
+                android:gravity="center_vertical"
+                android:text="@string/reduces_traffic_congestion"
+                android:textColor="@color/webColor6"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/conTwo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/lato"
+                android:gravity="center_vertical"
+                android:text="@string/carbon_emissions_emitted"
+                android:textColor="@color/webColor6"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/conThree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/lato"
+                android:gravity="center_vertical"
+                android:text="@string/the_toxic_remains_of_its_battery_plastics_are_placed_into_landfills"
+                android:textColor="@color/webColor6"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+    </TableRow>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="4dp" />
+
+
+    <LinearLayout
+        android:id="@+id/moreInfoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/redwoodGroveGreen"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <!-- Just copy this text here-->
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/lato"
+            android:gravity="center_vertical"
+            android:text="@string/carpooling"
+            android:textColor="@color/webColor6"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="0dp"
+            android:fontFamily="@font/lato"
+            android:gravity="center_vertical"
+            android:text="@string/carpooling_allows_you_to_share_the_costs_with_a_friend_csus_offers_carpooling_permits_and_prime_parking_spaces"
+            android:textColor="@color/webColor6"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/lato"
+            android:gravity="center_vertical"
+            android:text="@string/electric_vehicles_ev"
+            android:textColor="@color/webColor6"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="0dp"
+            android:fontFamily="@font/lato"
+            android:gravity="center_vertical"
+            android:text="@string/electric_cars"
+            android:textColor="@color/webColor6"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="4dp" />
+
+    <ImageView
+        android:id="@+id/imageTwo"
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
         android:scaleType="centerCrop"
         android:src="@drawable/car_image_two" />
 
-</FrameLayout>
+</LinearLayout>
