@@ -9,9 +9,37 @@
     android:orientation="vertical"
     tools:context=".activities.HomeActivity">
 
+    <TextView
+        android:id="@+id/menuTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/sacStateGreen"
+        android:fontFamily="@font/trajan_pro_bold"
+        android:padding="10dp"
+        android:text="@string/here_are_your_travel_options"
+        android:textAlignment="center"
+        android:textColor="@color/colorWhite"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/guy_west_bridge" />
+
+    <ImageView
+        android:id="@+id/displayDivider1"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:contentDescription="@string/gradient"
+        android:scaleType="fitXY"
+        android:src="@drawable/gradient" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorBlack"
         android:orientation="horizontal">
 
         <Button
@@ -19,8 +47,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:backgroundTint="@color/colorWhite"
+            android:backgroundTint="@color/sacStateGreen"
+            android:fontFamily="@font/trajan_pro_bold"
             android:text="@string/menu_to_compare"
+            android:textColor="@color/colorWhite"
             tools:ignore="ButtonStyle" />
 
         <Button
@@ -28,20 +58,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:backgroundTint="@color/colorWhite"
+            android:backgroundTint="@color/sacStateGreen"
+            android:fontFamily="@font/trajan_pro_bold"
             android:text="@string/menu_to_survey"
+            android:textColor="@color/colorWhite"
             tools:ignore="ButtonStyle" />
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/menuInfo"
-        android:layout_width="395dp"
-        android:layout_height="47dp"
-        android:text="@string/menu_info"
-        android:textAlignment="viewStart"
-        android:textColor="@color/colorWhite"
-        android:textSize="16sp" />
+    <ImageView
+        android:id="@+id/displayDivider2"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:contentDescription="@string/gradient"
+        android:rotationY="180"
+        android:scaleType="fitXY"
+        android:src="@drawable/gradient" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -56,6 +88,19 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="4dp">
+
+            <TextView
+                android:id="@+id/menuInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_frame"
+                android:backgroundTint="@color/webColor6"
+                android:layout_marginBottom="5dp"
+                android:padding="10dp"
+                android:text="@string/menu_info"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorBlack"
+                android:textSize="15sp" />
 
             <fragment
                 android:id="@+id/fragment0"

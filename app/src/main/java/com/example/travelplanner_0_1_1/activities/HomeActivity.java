@@ -70,8 +70,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     private void createButtons(VehicleButtonFragment[] fragmentOrder) {
         for (int i = 0; i < 6; i++) {
-            if (i != 0)
-                fragmentOrder[i].getCardView().setForeground(null);
+
             fragmentOrder[i].setBackgroundImg(vehicles[i].getBackgroundId());
             fragmentOrder[i].setTitle(vehicles[i].getTitle());
             fragmentOrder[i].setInfo(getString(vehicles[i].getQuickDescriptionId()));
