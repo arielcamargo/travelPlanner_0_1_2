@@ -12,7 +12,7 @@
         <ImageView
             android:layout_width="180dp"
             android:layout_height="120dp"
-            android:foreground="@color/shade"
+            android:foreground="@color/darkGrey"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/bike_title_image" />
 
@@ -23,7 +23,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:foreground="@color/shade"
+            android:foreground="@color/darkGrey"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/walking_title_image" />
     </TableRow>
@@ -39,7 +39,7 @@
         <ImageView
             android:layout_width="269dp"
             android:layout_height="200dp"
-            android:foreground="@color/shade"
+            android:foreground="@color/darkGrey"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/guy_west_bridge" />
 
@@ -55,7 +55,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="97dp"
-                android:foreground="@color/shade"
+                android:foreground="@color/darkGrey"
                 android:scaleType="centerCrop"
                 app:srcCompat="@drawable/car_image_one" />
 
@@ -66,7 +66,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="97dp"
-                android:foreground="@color/shade"
+                android:foreground="@color/darkGrey"
                 android:scaleType="centerCrop"
                 app:srcCompat="@drawable/bike_image_two" />
         </LinearLayout>
@@ -89,7 +89,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="79dp"
-                android:foreground="@color/shade"
+                android:foreground="@color/darkGrey"
                 android:scaleType="centerCrop"
                 app:srcCompat="@drawable/jump_bike_image_two" />
 
@@ -100,7 +100,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:foreground="@color/shade"
+                android:foreground="@color/darkGrey"
                 android:scaleType="centerCrop"
                 app:srcCompat="@drawable/walking_image_two" />
         </LinearLayout>
@@ -112,7 +112,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="160dp"
-            android:foreground="@color/shade"
+            android:foreground="@color/darkGrey"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/motorcycle_image_one" />
     </TableRow>
@@ -128,7 +128,7 @@
         <ImageView
             android:layout_width="214dp"
             android:layout_height="match_parent"
-            android:foreground="@color/shade"
+            android:foreground="@color/darkGrey"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/car_title_image" />
 
@@ -139,7 +139,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:foreground="@color/shade"
+            android:foreground="@color/darkGrey"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/transit_title_image" />
     </TableRow>

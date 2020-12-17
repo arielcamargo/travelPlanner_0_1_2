@@ -10,7 +10,7 @@
         android:id="@+id/displayScrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorWhite"
+        android:background="@color/webColor6"
         app:layout_constraintBottom_toTopOf="@+id/tableRow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,7 +88,7 @@
                     android:id="@+id/vehicleType1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:buttonTint="@color/hornetYellow"
+                    android:buttonTint="@color/redMaple"
                     android:checked="true"
                     android:text="@string/vehicle_type_1_txt"
                     android:textColor="@color/colorWhite" />
@@ -97,7 +97,7 @@
                     android:id="@+id/vehicleType2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:buttonTint="@color/sacStateGold"
+                    android:buttonTint="@color/hornetYellow"
                     android:text="@string/vehicle_type_2_txt"
                     android:textColor="@color/colorWhite" />
 
@@ -105,7 +105,7 @@
                     android:id="@+id/vehicleType3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:buttonTint="@color/spruceGreen"
+                    android:buttonTint="@color/appleGreen"
                     android:text="@string/vehicle_type_3_txt"
                     android:textColor="@color/colorWhite" />
 
@@ -113,7 +113,7 @@
                     android:id="@+id/vehicleType4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:buttonTint="@color/spruceGreen"
+                    android:buttonTint="@color/blueGumEucalyptus"
                     android:text="@string/vehicle_type_4_txt"
                     android:textColor="@color/colorWhite" />
             </RadioGroup>
@@ -131,7 +131,6 @@
                 android:id="@+id/vehicleInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorWhite"
                 android:fontFamily="@font/lato"
                 android:padding="7dp"
                 android:text="@string/vehicle_info_description"
@@ -140,10 +139,12 @@
 
             <TextView
                 android:id="@+id/vehicleCostInfo"
-                android:layout_width="375dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/redMaple"
+                android:layout_marginEnd="4dp"
+                android:background="@color/americanRiverTeal"
                 android:fontFamily="@font/trajan_pro_bold"
                 android:padding="1dp"
                 android:paddingStart="5dp"
@@ -155,10 +156,12 @@
 
             <TextView
                 android:id="@+id/vehicleCostInfoBreakdown"
-                android:layout_width="375dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:background="#D5000000"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="4dp"
+                android:background="#1B3649"
                 android:fontFamily="@font/lato_italic"
                 android:padding="10dp"
                 android:text="@string/vehicle_cost_info_description"
@@ -272,8 +275,7 @@
                 android:id="@+id/vehicleFragmentHolder"
                 android:name="com.example.travelplanner_0_1_1.fragments.vehiclefragments.CarFragment"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                 />
+                android:layout_height="wrap_content" />
 
             <ImageView
                 android:id="@+id/displayDivider5"
@@ -309,16 +311,26 @@
         android:id="@+id/tableRow"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:background="@color/colorBlack"
+        android:background="#E6000000"
         android:gravity="center|center_horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
+            android:id="@+id/showNextDisplay"
+            android:layout_width="138dp"
+            android:layout_height="70dp"
+            android:background="@drawable/next_button"
+            android:backgroundTint="@color/evergreenAsh"
+            android:padding="10dp"
+            android:text="@string/show_next_option"
+            tools:ignore="ButtonStyle" />
+
+        <Button
             android:id="@+id/displayToComparison"
             android:layout_width="wrap_content"
             android:layout_height="70dp"
-            android:backgroundTint="@color/colorWhite"
+            android:backgroundTint="@color/kumquatOrange"
             android:text="@string/compare_this"
             tools:ignore="ButtonStyle" />
 
@@ -330,14 +342,5 @@
             android:text="@string/display_to_survey"
             tools:ignore="ButtonStyle" />
 
-        <Button
-            android:id="@+id/showNextDisplay"
-            android:layout_width="138dp"
-            android:layout_height="70dp"
-            android:background="@drawable/next_button"
-            android:backgroundTint="@color/evergreenAsh"
-            android:padding="10dp"
-            android:text="@string/show_next_option"
-            tools:ignore="ButtonStyle" />
     </TableRow>
 </androidx.constraintlayout.widget.ConstraintLayout>

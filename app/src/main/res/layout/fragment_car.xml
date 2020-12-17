@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorWhite"
+    android:background="@color/webColor6"
     android:orientation="vertical"
     tools:context=".fragments.vehiclefragments.CarFragment">
 
@@ -145,7 +145,7 @@
         android:id="@+id/moreInfoLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/redwoodGroveGreen"
+        android:background="@color/pomegranate"
         android:orientation="vertical"
         android:padding="10dp">
 
