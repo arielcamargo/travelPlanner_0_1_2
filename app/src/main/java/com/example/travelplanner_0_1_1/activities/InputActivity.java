@@ -1,3 +1,19 @@
+/**
+ * InputActivity.java requests data from the user. If they
+ * choose to skip entering info a default value of 20 miles
+ * away from Sac State is assumed instead. Otherwise
+ * the address is sent to the AddressFragment that shows the
+ * location entered, on a map. Also, multiple vehicles are
+ * created from the abstract vehicle object.
+ *
+ * directly related files
+ * Vehicle.java, AddressFragment.java
+ *
+ * activity_input.xml corresponds to the design of the page.
+ *
+ * Previous Page: ActivityAbout.java
+ * Next Page: HomeActivity.java
+ */
 package com.example.travelplanner_0_1_1.activities;
 
 import android.content.Intent;

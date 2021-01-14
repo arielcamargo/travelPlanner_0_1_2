@@ -1,3 +1,13 @@
+/**
+ * MainActivity.java is the first screen the user sees.
+ * There's a blurb about terms and conditions that the user
+ * must accept before they can continue to use the program.
+ *
+ * activity_main.xml corresponds to the design of the page.
+ *
+ * Next Page: ActivityAbout.java
+ * Previous Page: None
+ */
 package com.example.travelplanner_0_1_1.activities;
 
 import androidx.appcompat.app.AppCompatActivity;

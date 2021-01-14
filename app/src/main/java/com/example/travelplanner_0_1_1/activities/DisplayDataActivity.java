@@ -1,3 +1,15 @@
+/**
+ * DisplayDataActivity.java shows the user a detailed
+ * breakdown of the costs of the selected method of transportation.
+ * Depending on which method they selected from HomeActivity.java, does the
+ * corresponding data show. Also, data gets updated as well if the button
+ * representing a subtype of that vehicle gets chosen.
+ *
+ * activity_display_data.xml corresponds to the design of the page.
+ *
+ * Previous Page: HomeActivity.java
+ * Next Page: ComparisonActivity.java, SurveyActivity.java
+ */
 package com.example.travelplanner_0_1_1.activities;
 
 import androidx.appcompat.app.AppCompatActivity;

@@ -1,3 +1,11 @@
+/**
+ * SurveyActivity.java contains a link to a Google survey.
+ *
+ * activity_survey.xml corresponds to the design of the page.
+ *
+ * Next Page: none
+ * Previous Page: ComparisonActivity.java, HomeActivity.java, DisplayDataActivity.java
+ */
 package com.example.travelplanner_0_1_1.activities;
 
 import android.app.Activity;

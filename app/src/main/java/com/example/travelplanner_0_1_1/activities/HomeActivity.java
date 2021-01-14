@@ -1,3 +1,14 @@
+/**
+ * HomeActivity.java is our menu that takes the user on
+ * the many ways they can view how each method of transportation
+ * can impact themselves and the world. This is more of a menu
+ * more than anything.
+ *
+ * activity_home.xml corresponds to the design of the page.
+ *
+ * Previous Page: InputActivity.java
+ * Next Page: SurveyActivity.java, ComparisonActivity.java, DisplayDataActivity.java
+ */
 package com.example.travelplanner_0_1_1.activities;
 
 import android.content.Intent;

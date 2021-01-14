@@ -1,3 +1,13 @@
+/**
+ * ComparisonActivity.java displays a bar graph. The user can
+ * select different methods of transportation, including subtypes,
+ * and choose between 3 data points to compare: cost, emissions, and distance.
+ *
+ * activity_comparison.xml corresponds to the design of the page.
+ *
+ * Previous Page: HomeActivity.java, DisplayData.java
+ * Next Page: SurveyActivity.java
+ */
 package com.example.travelplanner_0_1_1.activities;
 
 import android.content.Intent;

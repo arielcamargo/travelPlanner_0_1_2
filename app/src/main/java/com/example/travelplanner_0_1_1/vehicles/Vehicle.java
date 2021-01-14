@@ -1,3 +1,14 @@
+/**
+ * This sets up the skeleton for the information we should expect
+ * for the specific vehicles we are implementing. This is a more standard
+ * java class.
+ *
+ * directly related files
+ * Bike.java, Car.java, JumpBikes.java, Motorcycle.java, RT.java, Walk.java
+ *
+ * For more information on the setup of our Vehicles and how they work
+ * go to Car.java
+ */
 package com.example.travelplanner_0_1_1.vehicles;
 
 

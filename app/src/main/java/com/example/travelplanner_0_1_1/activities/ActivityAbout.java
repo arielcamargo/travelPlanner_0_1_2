@@ -1,3 +1,12 @@
+/**
+ * ActivityAbout.java is a screen that details to the user
+ * the goal of the program.
+ *
+ * activity_about.xml corresponds to the design of the page.
+ *
+ * Previous Page: MainActivity.java
+ * Next Page: InputActivity.java
+ */
 package com.example.travelplanner_0_1_1.activities;
 
 import androidx.appcompat.app.AppCompatActivity;

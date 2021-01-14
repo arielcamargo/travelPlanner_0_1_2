@@ -1,3 +1,10 @@
+/**
+ * Here we adopt all aspects of Vehicle, but with some modifications.
+ * We have some constants like avgMpg and avgEmissions that can be
+ * changed as we get new data. Subtypes help simplify other closely related
+ * cars that would not warrant their own page, but only differ by small changes in
+ * the data that is involved.
+ */
 package com.example.travelplanner_0_1_1.vehicles;
 
 import com.example.travelplanner_0_1_1.R;
